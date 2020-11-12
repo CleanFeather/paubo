@@ -7,10 +7,20 @@ let imp = component => () => import('../components/' + component);
 
 const routes = [
     {
-        name: 'test',
-        path: '/test',
-        component: imp('Test')
-    }
+        name: 'home',
+        path: '/',
+        component: imp('Home')
+    },
+    {
+        name: 'register',
+        path: '/register',
+        component: imp('user/Register')
+    },
+    {
+        name: 'login',
+        path: '/login',
+        component: imp('user/Login')
+    },
 ]
 
 export default new VueRouter({
