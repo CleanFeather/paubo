@@ -14,6 +14,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+// 测试
+Route::any('test', function () {
+    echo 'test';
+})->middleware('auth.token');
+
+// 用户操作
+Route::namespace('User')->group(function () {
+    Route::prefix('user')->group(function () {
+        // 注册
+        Route::post('store', 'UserController@store')->name('user.store');
+    });
+    // 登录
+    Route::post('login', 'AuthController@store')->name('login');
+    Route::middleware('auth.token')->group(function () {
+        // 登出
+        Route::delete('logout', 'AuthController@destroy')->name('logout');
+        Route::prefix('partner')->group(function () {
+            // 绑定伴侣
+            Route::post('bind', 'UserController@bind')->name('partner.bind');
+        });
+    });
 });

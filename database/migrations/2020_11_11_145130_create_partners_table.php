@@ -2,9 +2,10 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFamiliesTable extends Migration
+class CreatePartnersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +14,11 @@ class CreateFamiliesTable extends Migration
      */
     public function up()
     {
-        Schema::create('families', function (Blueprint $table) {
+        Schema::create('partners', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('boy_uid')->comment('男孩uid');
             $table->bigInteger('girl_uid')->comment('女孩uid');
-            $table->dateTime('bind_time')->nullable();
+            $table->dateTime('bind_time')->default(Carbon::now());
         });
     }
 
@@ -28,6 +29,6 @@ class CreateFamiliesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('families');
+        Schema::dropIfExists('partners');
     }
 }
