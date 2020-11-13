@@ -51,6 +51,7 @@
 </template>
 
 <script>
+import {request} from '../../network/request';
 export default {
   data() {
     return {
@@ -63,7 +64,7 @@ export default {
   },
   methods: {
     submit() {
-      axios({
+      request({
           method: 'post',
           url: 'user/store',
           data: this.$data

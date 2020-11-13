@@ -1,4 +1,4 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([[2],{
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([[4],{
 
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/user/Login.vue?vue&type=script&lang=js&":
 /*!*********************************************************************************************************************************************************************!*\
@@ -314,9 +314,44 @@ __webpack_require__.r(__webpack_exports__);
   !*** ./resources/js/network/request.js ***!
   \*****************************************/
 /*! exports provided: request */
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: /home/vagrant/code/paubo/resources/js/network/request.js: Identifier 'request' has already been declared (24:13)\n\n\u001b[0m \u001b[90m 22 | \u001b[39m    \u001b[36mreturn\u001b[39m instance(config)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 23 | \u001b[39m}\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 24 | \u001b[39m\u001b[36mexport\u001b[39m \u001b[36mconst\u001b[39m request\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m    | \u001b[39m             \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n    at Parser._raise (/home/vagrant/code/paubo/node_modules/@babel/parser/lib/index.js:790:17)\n    at Parser.raiseWithData (/home/vagrant/code/paubo/node_modules/@babel/parser/lib/index.js:783:17)\n    at Parser.raise (/home/vagrant/code/paubo/node_modules/@babel/parser/lib/index.js:777:17)\n    at ScopeHandler.checkRedeclarationInScope (/home/vagrant/code/paubo/node_modules/@babel/parser/lib/index.js:4915:12)\n    at ScopeHandler.declareName (/home/vagrant/code/paubo/node_modules/@babel/parser/lib/index.js:4881:12)\n    at Parser.checkLVal (/home/vagrant/code/paubo/node_modules/@babel/parser/lib/index.js:9550:22)\n    at Parser.parseVarId (/home/vagrant/code/paubo/node_modules/@babel/parser/lib/index.js:12327:10)\n    at Parser.parseVar (/home/vagrant/code/paubo/node_modules/@babel/parser/lib/index.js:12302:12)\n    at Parser.parseVarStatement (/home/vagrant/code/paubo/node_modules/@babel/parser/lib/index.js:12114:10)\n    at Parser.parseStatementContent (/home/vagrant/code/paubo/node_modules/@babel/parser/lib/index.js:11706:21)\n    at Parser.parseStatement (/home/vagrant/code/paubo/node_modules/@babel/parser/lib/index.js:11639:17)\n    at Parser.parseExportDeclaration (/home/vagrant/code/paubo/node_modules/@babel/parser/lib/index.js:12858:17)\n    at Parser.maybeParseExportDeclaration (/home/vagrant/code/paubo/node_modules/@babel/parser/lib/index.js:12814:31)\n    at Parser.parseExport (/home/vagrant/code/paubo/node_modules/@babel/parser/lib/index.js:12752:29)\n    at Parser.parseStatementContent (/home/vagrant/code/paubo/node_modules/@babel/parser/lib/index.js:11745:27)\n    at Parser.parseStatement (/home/vagrant/code/paubo/node_modules/@babel/parser/lib/index.js:11639:17)\n    at Parser.parseBlockOrModuleBlockBody (/home/vagrant/code/paubo/node_modules/@babel/parser/lib/index.js:12221:25)\n    at Parser.parseBlockBody (/home/vagrant/code/paubo/node_modules/@babel/parser/lib/index.js:12207:10)\n    at Parser.parseTopLevel (/home/vagrant/code/paubo/node_modules/@babel/parser/lib/index.js:11570:10)\n    at Parser.parse (/home/vagrant/code/paubo/node_modules/@babel/parser/lib/index.js:13381:10)\n    at parse (/home/vagrant/code/paubo/node_modules/@babel/parser/lib/index.js:13434:38)\n    at parser (/home/vagrant/code/paubo/node_modules/@babel/core/lib/parser/index.js:54:34)\n    at parser.next (<anonymous>)\n    at normalizeFile (/home/vagrant/code/paubo/node_modules/@babel/core/lib/transformation/normalize-file.js:99:38)\n    at normalizeFile.next (<anonymous>)\n    at run (/home/vagrant/code/paubo/node_modules/@babel/core/lib/transformation/index.js:31:50)\n    at run.next (<anonymous>)\n    at Function.transform (/home/vagrant/code/paubo/node_modules/@babel/core/lib/transform.js:27:41)\n    at transform.next (<anonymous>)\n    at step (/home/vagrant/code/paubo/node_modules/gensync/index.js:261:32)\n    at /home/vagrant/code/paubo/node_modules/gensync/index.js:273:13\n    at async.call.result.err.err (/home/vagrant/code/paubo/node_modules/gensync/index.js:223:11)");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "request", function() { return request; });
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+var _this = undefined;
+
+
+var request = function request(config) {
+  console.log(_this);
+  var instance = axios__WEBPACK_IMPORTED_MODULE_0___default.a.create({
+    baseURL: 'api',
+    timeout: 5000,
+    headers: {
+      'Authorization': localStorage.getItem('access_token')
+    }
+  });
+  instance.interceptors.response.use(function (response) {
+    if ('authorization' in response.headers) {
+      localStorage.setItem('access_token', response.headers.authorization);
+    }
+
+    return response;
+  }, function (error) {
+    if (error.response.status == 401) {
+      _app.$message.error('登录已超时，请重新登录');
+
+      _app.$router.push({
+        name: 'login'
+      });
+    }
+
+    return Promise.reject(error);
+  });
+  return instance(config);
+};
 
 /***/ })
 

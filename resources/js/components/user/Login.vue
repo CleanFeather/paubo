@@ -1,5 +1,5 @@
 <template>
-  <div id="form">
+  <div id="form" @keyup.enter="submit">
     <el-form size="small">
       <el-form-item>
         <el-input
@@ -26,6 +26,7 @@
 </template>
 
 <script>
+import {request} from '../../network/request';
 export default {
   data() {
     return {
@@ -35,14 +36,14 @@ export default {
   },
   methods: {
     submit() {
-      axios({
+      request({
           method: 'post',
           url: 'login',
           data: this.$data
       }).then((response) => {
           console.log(response);
           if (response.status == 200){
-            localStorage.setItem('access_token',response.data.access_token);
+            localStorage.setItem('access_token','Bearer ' + response.data.access_token);
             this.$router.push({name: 'home'});
           }
       }).catch((error) => {

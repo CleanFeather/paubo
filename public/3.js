@@ -9,35 +9,32 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-var _this = undefined;
+/* harmony import */ var _network_request__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../network/request */ "./resources/js/network/request.js");
+//
+//
+//
+//
+//
+//
+//
 
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      message: ''
+      message: ""
     };
   },
-  computed: {
-    test: function test() {
-      that = _this;
-      axios({
-        method: 'get',
-        url: 'test',
-        headers: {
-          'Authorization': 'Bearer ' + localStorage.getItem('access_token')
-        },
-        data: {}
-      }).then(function (response) {
-        that.message = response.data;
-      });
-    }
+  created: function created() {
+    var _this = this;
+
+    console.log(this);
+    Object(_network_request__WEBPACK_IMPORTED_MODULE_0__["request"])({
+      method: "get",
+      url: "test",
+      data: {}
+    }).then(function (response) {
+      _this.message = response.data;
+    });
   }
 });
 
@@ -61,7 +58,7 @@ var render = function() {
   return _c("div", [
     _c("h1", [_vm._v("首页")]),
     _vm._v(" "),
-    _c("p", [_vm._v(_vm._s(_vm.test))])
+    _c("p", [_vm._v(_vm._s(_vm.message))])
   ])
 }
 var staticRenderFns = []
@@ -137,6 +134,52 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Home_vue_vue_type_template_id_f2b6376c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
+
+/***/ }),
+
+/***/ "./resources/js/network/request.js":
+/*!*****************************************!*\
+  !*** ./resources/js/network/request.js ***!
+  \*****************************************/
+/*! exports provided: request */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "request", function() { return request; });
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+var _this = undefined;
+
+
+var request = function request(config) {
+  console.log(_this);
+  var instance = axios__WEBPACK_IMPORTED_MODULE_0___default.a.create({
+    baseURL: 'api',
+    timeout: 5000,
+    headers: {
+      'Authorization': localStorage.getItem('access_token')
+    }
+  });
+  instance.interceptors.response.use(function (response) {
+    if ('authorization' in response.headers) {
+      localStorage.setItem('access_token', response.headers.authorization);
+    }
+
+    return response;
+  }, function (error) {
+    if (error.response.status == 401) {
+      _app.$message.error('登录已超时，请重新登录');
+
+      _app.$router.push({
+        name: 'login'
+      });
+    }
+
+    return Promise.reject(error);
+  });
+  return instance(config);
+};
 
 /***/ })
 

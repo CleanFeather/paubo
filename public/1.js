@@ -9,6 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _network_request__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../network/request */ "./resources/js/network/request.js");
 //
 //
 //
@@ -61,6 +62,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -73,7 +75,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     submit: function submit() {
-      axios({
+      Object(_network_request__WEBPACK_IMPORTED_MODULE_0__["request"])({
         method: 'post',
         url: 'user/store',
         data: this.$data
@@ -305,15 +307,14 @@ render._withStripped = true
 /*!***************************************************!*\
   !*** ./resources/js/components/user/Register.vue ***!
   \***************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Register_vue_vue_type_template_id_a3194668___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Register.vue?vue&type=template&id=a3194668& */ "./resources/js/components/user/Register.vue?vue&type=template&id=a3194668&");
 /* harmony import */ var _Register_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Register.vue?vue&type=script&lang=js& */ "./resources/js/components/user/Register.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _Register_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _Register_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _Register_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Register.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/user/Register.vue?vue&type=style&index=0&lang=css&");
+/* empty/unused harmony star reexport *//* harmony import */ var _Register_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Register.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/user/Register.vue?vue&type=style&index=0&lang=css&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -345,7 +346,7 @@ component.options.__file = "resources/js/components/user/Register.vue"
 /*!****************************************************************************!*\
   !*** ./resources/js/components/user/Register.vue?vue&type=script&lang=js& ***!
   \****************************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -386,6 +387,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Register_vue_vue_type_template_id_a3194668___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
+
+/***/ }),
+
+/***/ "./resources/js/network/request.js":
+/*!*****************************************!*\
+  !*** ./resources/js/network/request.js ***!
+  \*****************************************/
+/*! exports provided: request */
+/***/ (function(module, exports) {
+
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: /home/vagrant/code/paubo/resources/js/network/request.js: Identifier 'request' has already been declared (24:13)\n\n\u001b[0m \u001b[90m 22 | \u001b[39m    \u001b[36mreturn\u001b[39m instance(config)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 23 | \u001b[39m}\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 24 | \u001b[39m\u001b[36mexport\u001b[39m \u001b[36mconst\u001b[39m request\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m    | \u001b[39m             \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n    at Parser._raise (/home/vagrant/code/paubo/node_modules/@babel/parser/lib/index.js:790:17)\n    at Parser.raiseWithData (/home/vagrant/code/paubo/node_modules/@babel/parser/lib/index.js:783:17)\n    at Parser.raise (/home/vagrant/code/paubo/node_modules/@babel/parser/lib/index.js:777:17)\n    at ScopeHandler.checkRedeclarationInScope (/home/vagrant/code/paubo/node_modules/@babel/parser/lib/index.js:4915:12)\n    at ScopeHandler.declareName (/home/vagrant/code/paubo/node_modules/@babel/parser/lib/index.js:4881:12)\n    at Parser.checkLVal (/home/vagrant/code/paubo/node_modules/@babel/parser/lib/index.js:9550:22)\n    at Parser.parseVarId (/home/vagrant/code/paubo/node_modules/@babel/parser/lib/index.js:12327:10)\n    at Parser.parseVar (/home/vagrant/code/paubo/node_modules/@babel/parser/lib/index.js:12302:12)\n    at Parser.parseVarStatement (/home/vagrant/code/paubo/node_modules/@babel/parser/lib/index.js:12114:10)\n    at Parser.parseStatementContent (/home/vagrant/code/paubo/node_modules/@babel/parser/lib/index.js:11706:21)\n    at Parser.parseStatement (/home/vagrant/code/paubo/node_modules/@babel/parser/lib/index.js:11639:17)\n    at Parser.parseExportDeclaration (/home/vagrant/code/paubo/node_modules/@babel/parser/lib/index.js:12858:17)\n    at Parser.maybeParseExportDeclaration (/home/vagrant/code/paubo/node_modules/@babel/parser/lib/index.js:12814:31)\n    at Parser.parseExport (/home/vagrant/code/paubo/node_modules/@babel/parser/lib/index.js:12752:29)\n    at Parser.parseStatementContent (/home/vagrant/code/paubo/node_modules/@babel/parser/lib/index.js:11745:27)\n    at Parser.parseStatement (/home/vagrant/code/paubo/node_modules/@babel/parser/lib/index.js:11639:17)\n    at Parser.parseBlockOrModuleBlockBody (/home/vagrant/code/paubo/node_modules/@babel/parser/lib/index.js:12221:25)\n    at Parser.parseBlockBody (/home/vagrant/code/paubo/node_modules/@babel/parser/lib/index.js:12207:10)\n    at Parser.parseTopLevel (/home/vagrant/code/paubo/node_modules/@babel/parser/lib/index.js:11570:10)\n    at Parser.parse (/home/vagrant/code/paubo/node_modules/@babel/parser/lib/index.js:13381:10)\n    at parse (/home/vagrant/code/paubo/node_modules/@babel/parser/lib/index.js:13434:38)\n    at parser (/home/vagrant/code/paubo/node_modules/@babel/core/lib/parser/index.js:54:34)\n    at parser.next (<anonymous>)\n    at normalizeFile (/home/vagrant/code/paubo/node_modules/@babel/core/lib/transformation/normalize-file.js:99:38)\n    at normalizeFile.next (<anonymous>)\n    at run (/home/vagrant/code/paubo/node_modules/@babel/core/lib/transformation/index.js:31:50)\n    at run.next (<anonymous>)\n    at Function.transform (/home/vagrant/code/paubo/node_modules/@babel/core/lib/transform.js:27:41)\n    at transform.next (<anonymous>)\n    at step (/home/vagrant/code/paubo/node_modules/gensync/index.js:261:32)\n    at /home/vagrant/code/paubo/node_modules/gensync/index.js:273:13\n    at async.call.result.err.err (/home/vagrant/code/paubo/node_modules/gensync/index.js:223:11)");
 
 /***/ })
 

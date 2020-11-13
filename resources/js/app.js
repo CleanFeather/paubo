@@ -10,7 +10,7 @@ import store from './store';
 
 Vue.use(ElementUi);
 
-const app = new Vue({
+window._app = new Vue({
     router,
     store,
     render: h => h(App)
