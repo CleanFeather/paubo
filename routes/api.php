@@ -36,3 +36,11 @@ Route::namespace('User')->group(function () {
         });
     });
 });
+
+// 笔记
+Route::namespace('Note')->group(function (){
+    Route::prefix('note')->group(function (){
+        // 创建笔记
+        Route::post('store','NoteController@store')->name('note.store');
+    });
+});

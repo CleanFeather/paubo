@@ -21,6 +21,11 @@ const routes = [
         path: '/login',
         component: imp('user/Login')
     },
+    {
+        name: 'note.create',
+        path: '/note',
+        component: imp('note/Create')
+    }
 ]
 
 export default new VueRouter({
