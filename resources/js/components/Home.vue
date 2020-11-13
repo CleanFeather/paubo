@@ -13,7 +13,7 @@ export default {
       message: "",
     };
   },
-  created: function () {console.log(this);
+  mounted: function () {
     request({
       method: "get",
       url: "test",

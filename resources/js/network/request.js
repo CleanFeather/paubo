@@ -15,7 +15,7 @@ export const request = config => {console.log(this);
         return response;
     },error => {
         if (error.response.status == 401){
-            _app.$message.error('登录已超时，请重新登录');
+            _app.$message.error('请登录');
             _app.$router.push({name: 'login'});
         }
         return Promise.reject(error);
