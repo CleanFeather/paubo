@@ -24,7 +24,9 @@ class CreateNoteRequest extends FormRequest
     public function rules()
     {
         return [
-            
+            'title' => 'required|string|max:50',
+            'content' => 'required|string',
+            'category_id' => 'required|integer'
         ];
     }
 }

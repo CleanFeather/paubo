@@ -24,10 +24,9 @@ __webpack_require__.r(__webpack_exports__);
       message: ""
     };
   },
-  created: function created() {
+  mounted: function mounted() {
     var _this = this;
 
-    console.log(this);
     Object(_network_request__WEBPACK_IMPORTED_MODULE_0__["request"])({
       method: "get",
       url: "test",
