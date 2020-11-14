@@ -97109,6 +97109,16 @@ var map = {
 		5,
 		1
 	],
+	"./note/Index": [
+		"./resources/js/components/note/Index.vue",
+		0,
+		7
+	],
+	"./note/Index.vue": [
+		"./resources/js/components/note/Index.vue",
+		0,
+		7
+	],
 	"./user/Login": [
 		"./resources/js/components/user/Login.vue",
 		0,
@@ -97187,8 +97197,12 @@ var routes = [{
   path: '/login',
   component: imp('user/Login')
 }, {
-  name: 'note.create',
+  name: 'note',
   path: '/note',
+  component: imp('note/Index')
+}, {
+  name: 'note.create',
+  path: '/note/create',
   component: imp('note/Create')
 }];
 /* harmony default export */ __webpack_exports__["default"] = (new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({

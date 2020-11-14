@@ -38,9 +38,15 @@ Route::namespace('User')->group(function () {
 });
 
 // 笔记
-Route::namespace('Note')->group(function (){
+Route::namespace('Note')->middleware('auth.token')->group(function (){
     Route::prefix('note')->group(function (){
+        // 笔记列表
+        Route::get('/','NoteController@index')->name('note.index');
         // 创建笔记
         Route::post('store','NoteController@store')->name('note.store');
+        // 笔记
+        Route::prefix('category')->group(function (){
+            Route::get('/','CategoryController@index')->name('note.category.index');
+        });
     });
 });

@@ -44,7 +44,7 @@
         ></el-input>
       </el-form-item>
       <el-form-item>
-        <el-button type="normal" @click="submit">注册</el-button>
+        <el-button @click="submit">注册</el-button>
       </el-form-item>
     </el-form>
   </div>

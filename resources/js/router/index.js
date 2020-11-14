@@ -22,8 +22,13 @@ const routes = [
         component: imp('user/Login')
     },
     {
-        name: 'note.create',
+        name: 'note',
         path: '/note',
+        component: imp('note/Index')
+    },
+    {
+        name: 'note.create',
+        path: '/note/create',
         component: imp('note/Create')
     }
 ]

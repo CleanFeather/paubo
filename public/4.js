@@ -154,7 +154,7 @@ var _this = undefined;
 var request = function request(config) {
   console.log(_this);
   var instance = axios__WEBPACK_IMPORTED_MODULE_0___default.a.create({
-    baseURL: 'api',
+    baseURL: '/api',
     timeout: 5000,
     headers: {
       'Authorization': localStorage.getItem('access_token')
@@ -167,12 +167,19 @@ var request = function request(config) {
 
     return response;
   }, function (error) {
-    if (error.response.status == 401) {
-      _app.$message.error('请登录');
+    switch (error.response.status) {
+      case 401:
+        _app.$message.error('请登录');
 
-      _app.$router.push({
-        name: 'login'
-      });
+        _app.$router.push({
+          name: 'login'
+        });
+
+        break;
+
+      default:
+        _app.$message.error('操作失败');
+
     }
 
     return Promise.reject(error);

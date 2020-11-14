@@ -29,6 +29,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -37,26 +48,43 @@ __webpack_require__.r(__webpack_exports__);
       editor: "",
       title: "",
       content: "",
-      category_id: ""
+      category_id: "",
+      category: []
     };
   },
   mounted: function mounted() {
+    var _this = this;
+
     this.editor = new wangeditor__WEBPACK_IMPORTED_MODULE_0___default.a("#editor");
     this.editor.config.showLinkImg = false;
     this.editor.config.uploadImgServer = "api/note/store";
+    this.editor.config.zIndex = 1;
     this.editor.create();
+    Object(_network_request__WEBPACK_IMPORTED_MODULE_1__["request"])({
+      method: "get",
+      url: "note/category"
+    }).then(function (response) {
+      console.log(response.data);
+      _this.category = response.data;
+    });
   },
   methods: {
     submit: function submit() {
-      var content = this.editor.txt.html();
+      var _this2 = this;
+
       Object(_network_request__WEBPACK_IMPORTED_MODULE_1__["request"])({
         method: "post",
         url: "note/store",
         data: {
           title: this.title,
-          content: this.content,
+          content: this.editor.txt.html(),
           category_id: this.category_id
         }
+      }).then(function (response) {
+        _this2.$message({
+          message: "创建成功",
+          type: "success"
+        });
       });
     }
   }
@@ -169,16 +197,43 @@ var render = function() {
             1
           ),
           _vm._v(" "),
-          _c("el-form-item", [_c("div", { attrs: { id: "editor" } })])
+          _c(
+            "el-form-item",
+            [
+              _c(
+                "el-select",
+                {
+                  model: {
+                    value: _vm.category_id,
+                    callback: function($$v) {
+                      _vm.category_id = $$v
+                    },
+                    expression: "category_id"
+                  }
+                },
+                _vm._l(_vm.category, function(item, index) {
+                  return _c(
+                    "el-option",
+                    { key: index, attrs: { value: item.id, label: item.name } },
+                    [_vm._v(_vm._s(item.name))]
+                  )
+                }),
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("el-form-item", [_c("div", { attrs: { id: "editor" } })]),
+          _vm._v(" "),
+          _c(
+            "el-form-item",
+            [_c("el-button", { on: { click: _vm.submit } }, [_vm._v("创建")])],
+            1
+          )
         ],
         1
-      ),
-      _vm._v(" "),
-      _c("p", [_vm._v(_vm._s(_vm.content))]),
-      _vm._v(" "),
-      _c("button", { attrs: { type: "normal" }, on: { click: _vm.submit } }, [
-        _vm._v("创建")
-      ])
+      )
     ],
     1
   )
@@ -295,7 +350,7 @@ var _this = undefined;
 var request = function request(config) {
   console.log(_this);
   var instance = axios__WEBPACK_IMPORTED_MODULE_0___default.a.create({
-    baseURL: 'api',
+    baseURL: '/api',
     timeout: 5000,
     headers: {
       'Authorization': localStorage.getItem('access_token')
@@ -308,12 +363,19 @@ var request = function request(config) {
 
     return response;
   }, function (error) {
-    if (error.response.status == 401) {
-      _app.$message.error('请登录');
+    switch (error.response.status) {
+      case 401:
+        _app.$message.error('请登录');
 
-      _app.$router.push({
-        name: 'login'
-      });
+        _app.$router.push({
+          name: 'login'
+        });
+
+        break;
+
+      default:
+        _app.$message.error('操作失败');
+
     }
 
     return Promise.reject(error);

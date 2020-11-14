@@ -9,4 +9,9 @@ class Category extends Model
     public $timestamps = false;
 
     protected $fillable = ['name','type','own_to'];
+
+    public function note()
+    {
+        return $this->hasMany(Note::class);
+    }
 }
