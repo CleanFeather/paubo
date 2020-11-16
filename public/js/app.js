@@ -97090,54 +97090,64 @@ var map = {
 	"./Home": [
 		"./resources/js/components/Home.vue",
 		0,
-		4
+		5
 	],
 	"./Home.vue": [
 		"./resources/js/components/Home.vue",
 		0,
-		4
+		5
 	],
 	"./note/Create": [
 		"./resources/js/components/note/Create.vue",
 		0,
-		5,
+		6,
 		1
 	],
 	"./note/Create.vue": [
 		"./resources/js/components/note/Create.vue",
 		0,
-		5,
+		6,
 		1
 	],
 	"./note/Index": [
 		"./resources/js/components/note/Index.vue",
 		0,
-		7
+		2
 	],
 	"./note/Index.vue": [
 		"./resources/js/components/note/Index.vue",
 		0,
-		7
+		2
+	],
+	"./note/Show": [
+		"./resources/js/components/note/Show.vue",
+		0,
+		8
+	],
+	"./note/Show.vue": [
+		"./resources/js/components/note/Show.vue",
+		0,
+		8
 	],
 	"./user/Login": [
 		"./resources/js/components/user/Login.vue",
 		0,
-		2
+		3
 	],
 	"./user/Login.vue": [
 		"./resources/js/components/user/Login.vue",
 		0,
-		2
+		3
 	],
 	"./user/Register": [
 		"./resources/js/components/user/Register.vue",
 		0,
-		3
+		4
 	],
 	"./user/Register.vue": [
 		"./resources/js/components/user/Register.vue",
 		0,
-		3
+		4
 	]
 };
 function webpackAsyncContext(req) {
@@ -97200,6 +97210,10 @@ var routes = [{
   name: 'note',
   path: '/note',
   component: imp('note/Index')
+}, {
+  name: 'note.show',
+  path: '/note/:note_id',
+  component: imp('note/Show')
 }, {
   name: 'note.create',
   path: '/note/create',

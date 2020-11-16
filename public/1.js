@@ -85,6 +85,10 @@ __webpack_require__.r(__webpack_exports__);
           message: "创建成功",
           type: "success"
         });
+
+        _this2.$router.push({
+          name: 'note'
+        });
       });
     }
   }
@@ -104,7 +108,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n#editor {\r\n  width: 1200px;\n}\n#main {\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: center;\r\n  justify-content: center;\r\n  height: 800px;\n}\r\n", ""]);
+exports.push([module.i, "\n#editor {\n  width: 1200px;\n}\n#main {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n  height: 800px;\n}\n", ""]);
 
 // exports
 

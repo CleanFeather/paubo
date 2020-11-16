@@ -9,14 +9,8 @@
           </router-link>
         </span>
       </div>
-      <div v-for="(item, index) in notes" :key="index" class="text item">
-        <p>
-          <router-link :to="{ name: 'note.show', params: { note_id: item.id } }">
-            {{ item.title }}
-          </router-link>
-          <span style="float: right">{{ item.created_at }}</span>
-        </p>
-        <span>{{ item.category_name + " | " + item.user_name }}</span>
+      <div v-bind="note">
+          <h1>{{ note.title }}</h1>
       </div>
     </el-card>
   </div>
@@ -27,17 +21,21 @@ import { request } from "../../network/request";
 export default {
   data() {
     return {
-      notes: [],
+      note: ''
     };
   },
-  mounted: function () {
-    request({
-      method: "get",
-      url: "note",
-    }).then((response) => {
-      this.notes = response.data;
-    });
-  },
+  mounted: function (){
+      request({
+          method: 'get',
+          url: 'note/show',
+          params: {
+              note_id: this.$route.params.note_id
+          }
+      }).then(response => {
+          this.note = response.data
+          console.log(this.note);
+      })
+  }
 };
 </script>
 

@@ -27,6 +27,11 @@ const routes = [
         component: imp('note/Index')
     },
     {
+        name: 'note.show',
+        path: '/note/:note_id',
+        component: imp('note/Show')
+    },
+    {
         name: 'note.create',
         path: '/note/create',
         component: imp('note/Create')

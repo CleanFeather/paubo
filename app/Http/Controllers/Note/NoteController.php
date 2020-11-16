@@ -5,12 +5,21 @@ namespace App\Http\Controllers\Note;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Note\CreateNoteRequest;
 use App\Models\Note;
+use Illuminate\Http\Request;
 
 class NoteController extends Controller
 {
     public function index(Note $note)
     {
-        return $note->query()->get();
+        return $note->query()->orderByDesc('id')->get(['id','title','user_id','category_id','created_at']);
+    }
+
+    public function show(Request $request,Note $note)
+    {
+        $this->validate($request,[
+            'note_id' => 'required'
+        ]);
+        return $note->query()->find($request->note_id);
     }
 
     public function store(CreateNoteRequest $request,Note $note)

@@ -42,6 +42,8 @@ Route::namespace('Note')->middleware('auth.token')->group(function (){
     Route::prefix('note')->group(function (){
         // 笔记列表
         Route::get('/','NoteController@index')->name('note.index');
+        // 笔记详情
+        Route::get('show','NoteController@show')->name('note.show');
         // 创建笔记
         Route::post('store','NoteController@store')->name('note.store');
         // 笔记

@@ -70,6 +70,7 @@ export default {
           message: "创建成功",
           type: "success",
         });
+        this.$router.push({name: 'note'});
       });
     },
   },
