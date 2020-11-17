@@ -36,11 +36,7 @@ __webpack_require__.r(__webpack_exports__);
       note: ''
     };
   },
-  props: {
-    note_id: {
-      type: Number
-    }
-  },
+  props: ['note_id'],
   mounted: function mounted() {
     var _this = this;
 

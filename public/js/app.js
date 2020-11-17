@@ -97211,14 +97211,14 @@ var routes = [{
   path: '/note',
   component: imp('note/Index')
 }, {
+  name: 'note.create',
+  path: '/note/create',
+  component: imp('note/Create')
+}, {
   name: 'note.show',
   path: '/note/:note_id',
   component: imp('note/Show'),
   props: true
-}, {
-  name: 'note.create',
-  path: '/note/create',
-  component: imp('note/Create')
 }];
 /* harmony default export */ __webpack_exports__["default"] = (new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   mode: 'history',

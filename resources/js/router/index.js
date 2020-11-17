@@ -27,16 +27,16 @@ const routes = [
         component: imp('note/Index')
     },
     {
+        name: 'note.create',
+        path: '/note/create',
+        component: imp('note/Create')
+    },
+    {
         name: 'note.show',
         path: '/note/:note_id',
         component: imp('note/Show'),
         props: true
     },
-    {
-        name: 'note.create',
-        path: '/note/create',
-        component: imp('note/Create')
-    }
 ]
 
 export default new VueRouter({

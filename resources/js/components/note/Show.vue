@@ -25,9 +25,7 @@ export default {
       note: ''
     };
   },
-  props: {
-    note_id: {type: Number}
-  },
+  props: ['note_id'],
   mounted: function (){
       request({
           method: 'get',
