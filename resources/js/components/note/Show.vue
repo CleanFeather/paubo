@@ -11,6 +11,7 @@
       </div>
       <div v-bind="note">
           <h1>{{ note.title }}</h1>
+          <h1>{{ note_id }}</h1>
       </div>
     </el-card>
   </div>
@@ -24,16 +25,18 @@ export default {
       note: ''
     };
   },
+  props: {
+    note_id: {type: Number}
+  },
   mounted: function (){
       request({
           method: 'get',
           url: 'note/show',
           params: {
-              note_id: this.$route.params.note_id
+              note_id: this.note_id
           }
       }).then(response => {
           this.note = response.data
-          console.log(this.note);
       })
   }
 };

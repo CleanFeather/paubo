@@ -1,5 +1,5 @@
 <template>
-  <div id="main" @keyup.enter="submit">
+  <div id="main">
     <h1 style="margin-bottom: 60px">创建笔记</h1>
     <el-form>
       <el-form-item>

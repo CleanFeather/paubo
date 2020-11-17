@@ -162,20 +162,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    {
-      attrs: { id: "main" },
-      on: {
-        keyup: function($event) {
-          if (
-            !$event.type.indexOf("key") &&
-            _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
-          ) {
-            return null
-          }
-          return _vm.submit($event)
-        }
-      }
-    },
+    { attrs: { id: "main" } },
     [
       _c("h1", { staticStyle: { "margin-bottom": "60px" } }, [
         _vm._v("创建笔记")

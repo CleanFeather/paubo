@@ -29,7 +29,8 @@ const routes = [
     {
         name: 'note.show',
         path: '/note/:note_id',
-        component: imp('note/Show')
+        component: imp('note/Show'),
+        props: true
     },
     {
         name: 'note.create',

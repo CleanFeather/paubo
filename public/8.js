@@ -5,51 +5,9 @@
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/note/Show.vue?vue&type=script&lang=js& ***!
   \********************************************************************************************************************************************************************/
 /*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _network_request__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../network/request */ "./resources/js/network/request.js");
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  data: function data() {
-    return {
-      note: ''
-    };
-  },
-  mounted: function mounted() {
-    var _this = this;
-
-    Object(_network_request__WEBPACK_IMPORTED_MODULE_0__["request"])({
-      method: 'get',
-      url: 'note/show',
-      params: {
-        note_id: this.$route.params.note_id
-      }
-    }).then(function (response) {
-      _this.note = response.data;
-      console.log(_this.note);
-    });
-  }
-});
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: /home/vagrant/code/paubo/resources/js/components/note/Show.vue: Unexpected token (29:4)\n\n\u001b[0m \u001b[90m 27 | \u001b[39m  }\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 28 | \u001b[39m  props\u001b[33m:\u001b[39m {\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 29 | \u001b[39m    {}\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m    | \u001b[39m    \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 30 | \u001b[39m  }\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 31 | \u001b[39m  mounted\u001b[33m:\u001b[39m \u001b[36mfunction\u001b[39m (){\u001b[0m\n\u001b[0m \u001b[90m 32 | \u001b[39m      request({\u001b[0m\n    at Parser._raise (/home/vagrant/code/paubo/node_modules/@babel/parser/lib/index.js:790:17)\n    at Parser.raiseWithData (/home/vagrant/code/paubo/node_modules/@babel/parser/lib/index.js:783:17)\n    at Parser.raise (/home/vagrant/code/paubo/node_modules/@babel/parser/lib/index.js:777:17)\n    at Parser.unexpected (/home/vagrant/code/paubo/node_modules/@babel/parser/lib/index.js:9095:16)\n    at Parser.parseIdentifierName (/home/vagrant/code/paubo/node_modules/@babel/parser/lib/index.js:11306:18)\n    at Parser.parseIdentifier (/home/vagrant/code/paubo/node_modules/@babel/parser/lib/index.js:11279:23)\n    at Parser.parseMaybePrivateName (/home/vagrant/code/paubo/node_modules/@babel/parser/lib/index.js:10599:19)\n    at Parser.parsePropertyName (/home/vagrant/code/paubo/node_modules/@babel/parser/lib/index.js:11093:155)\n    at Parser.parsePropertyDefinition (/home/vagrant/code/paubo/node_modules/@babel/parser/lib/index.js:10979:22)\n    at Parser.parseObjectLike (/home/vagrant/code/paubo/node_modules/@babel/parser/lib/index.js:10894:25)\n    at Parser.parseExprAtom (/home/vagrant/code/paubo/node_modules/@babel/parser/lib/index.js:10445:23)\n    at Parser.parseExprSubscripts (/home/vagrant/code/paubo/node_modules/@babel/parser/lib/index.js:10094:23)\n    at Parser.parseUpdate (/home/vagrant/code/paubo/node_modules/@babel/parser/lib/index.js:10074:21)\n    at Parser.parseMaybeUnary (/home/vagrant/code/paubo/node_modules/@babel/parser/lib/index.js:10063:17)\n    at Parser.parseExprOps (/home/vagrant/code/paubo/node_modules/@babel/parser/lib/index.js:9933:23)\n    at Parser.parseMaybeConditional (/home/vagrant/code/paubo/node_modules/@babel/parser/lib/index.js:9907:23)\n    at Parser.parseMaybeAssign (/home/vagrant/code/paubo/node_modules/@babel/parser/lib/index.js:9870:21)\n    at /home/vagrant/code/paubo/node_modules/@babel/parser/lib/index.js:9837:39\n    at Parser.allowInAnd (/home/vagrant/code/paubo/node_modules/@babel/parser/lib/index.js:11510:12)\n    at Parser.parseMaybeAssignAllowIn (/home/vagrant/code/paubo/node_modules/@babel/parser/lib/index.js:9837:17)\n    at Parser.parseObjectProperty (/home/vagrant/code/paubo/node_modules/@babel/parser/lib/index.js:11055:101)\n    at Parser.parseObjPropValue (/home/vagrant/code/paubo/node_modules/@babel/parser/lib/index.js:11080:100)\n    at Parser.parsePropertyDefinition (/home/vagrant/code/paubo/node_modules/@babel/parser/lib/index.js:11004:10)\n    at Parser.parseObjectLike (/home/vagrant/code/paubo/node_modules/@babel/parser/lib/index.js:10894:25)\n    at Parser.parseExprAtom (/home/vagrant/code/paubo/node_modules/@babel/parser/lib/index.js:10445:23)\n    at Parser.parseExprSubscripts (/home/vagrant/code/paubo/node_modules/@babel/parser/lib/index.js:10094:23)\n    at Parser.parseUpdate (/home/vagrant/code/paubo/node_modules/@babel/parser/lib/index.js:10074:21)\n    at Parser.parseMaybeUnary (/home/vagrant/code/paubo/node_modules/@babel/parser/lib/index.js:10063:17)\n    at Parser.parseExprOps (/home/vagrant/code/paubo/node_modules/@babel/parser/lib/index.js:9933:23)\n    at Parser.parseMaybeConditional (/home/vagrant/code/paubo/node_modules/@babel/parser/lib/index.js:9907:23)\n    at Parser.parseMaybeAssign (/home/vagrant/code/paubo/node_modules/@babel/parser/lib/index.js:9870:21)\n    at /home/vagrant/code/paubo/node_modules/@babel/parser/lib/index.js:9837:39\n    at Parser.allowInAnd (/home/vagrant/code/paubo/node_modules/@babel/parser/lib/index.js:11504:16)\n    at Parser.parseMaybeAssignAllowIn (/home/vagrant/code/paubo/node_modules/@babel/parser/lib/index.js:9837:17)\n    at Parser.parseExportDefaultExpression (/home/vagrant/code/paubo/node_modules/@babel/parser/lib/index.js:12851:24)\n    at Parser.parseExport (/home/vagrant/code/paubo/node_modules/@babel/parser/lib/index.js:12761:31)");
 
 /***/ }),
 
@@ -146,7 +104,9 @@ var render = function() {
         ),
         _vm._v(" "),
         _c("div", _vm._b({}, "div", _vm.note, false), [
-          _c("h1", [_vm._v(_vm._s(_vm.note.title))])
+          _c("h1", [_vm._v(_vm._s(_vm.note.title))]),
+          _vm._v(" "),
+          _c("h1", [_vm._v(_vm._s(_vm.note_id))])
         ])
       ])
     ],
@@ -244,59 +204,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Show_vue_vue_type_template_id_5d7b1742___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
-
-/***/ }),
-
-/***/ "./resources/js/network/request.js":
-/*!*****************************************!*\
-  !*** ./resources/js/network/request.js ***!
-  \*****************************************/
-/*! exports provided: request */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "request", function() { return request; });
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-var _this = undefined;
-
-
-var request = function request(config) {
-  console.log(_this);
-  var instance = axios__WEBPACK_IMPORTED_MODULE_0___default.a.create({
-    baseURL: '/api',
-    timeout: 5000,
-    headers: {
-      'Authorization': localStorage.getItem('access_token')
-    }
-  });
-  instance.interceptors.response.use(function (response) {
-    if ('authorization' in response.headers) {
-      localStorage.setItem('access_token', response.headers.authorization);
-    }
-
-    return response;
-  }, function (error) {
-    switch (error.response.status) {
-      case 401:
-        _app.$message.error('请登录');
-
-        _app.$router.push({
-          name: 'login'
-        });
-
-        break;
-
-      default:
-        _app.$message.error('操作失败');
-
-    }
-
-    return Promise.reject(error);
-  });
-  return instance(config);
-};
 
 /***/ })
 

@@ -97090,23 +97090,23 @@ var map = {
 	"./Home": [
 		"./resources/js/components/Home.vue",
 		0,
-		5
+		6
 	],
 	"./Home.vue": [
 		"./resources/js/components/Home.vue",
 		0,
-		5
+		6
 	],
 	"./note/Create": [
 		"./resources/js/components/note/Create.vue",
 		0,
-		6,
+		7,
 		1
 	],
 	"./note/Create.vue": [
 		"./resources/js/components/note/Create.vue",
 		0,
-		6,
+		7,
 		1
 	],
 	"./note/Index": [
@@ -97122,32 +97122,32 @@ var map = {
 	"./note/Show": [
 		"./resources/js/components/note/Show.vue",
 		0,
-		8
+		3
 	],
 	"./note/Show.vue": [
 		"./resources/js/components/note/Show.vue",
 		0,
-		8
+		3
 	],
 	"./user/Login": [
 		"./resources/js/components/user/Login.vue",
 		0,
-		3
+		4
 	],
 	"./user/Login.vue": [
 		"./resources/js/components/user/Login.vue",
 		0,
-		3
+		4
 	],
 	"./user/Register": [
 		"./resources/js/components/user/Register.vue",
 		0,
-		4
+		5
 	],
 	"./user/Register.vue": [
 		"./resources/js/components/user/Register.vue",
 		0,
-		4
+		5
 	]
 };
 function webpackAsyncContext(req) {
@@ -97213,7 +97213,8 @@ var routes = [{
 }, {
   name: 'note.show',
   path: '/note/:note_id',
-  component: imp('note/Show')
+  component: imp('note/Show'),
+  props: true
 }, {
   name: 'note.create',
   path: '/note/create',
