@@ -28,6 +28,7 @@ Route::namespace('User')->group(function () {
     // 登录
     Route::post('login', 'AuthController@store')->name('login');
     Route::middleware('auth.token')->group(function () {
+        Route::get('auth/user','AuthController@show')->name('auth.user');
         // 登出
         Route::delete('logout', 'AuthController@destroy')->name('logout');
         Route::prefix('partner')->group(function () {

@@ -41,4 +41,9 @@ class AuthController extends Controller
             'expires_in' => Auth::guard('api')->factory()->getTTL()*60
         ]);
     }
+
+    public function show()
+    {
+        return auth('api')->user();
+    }
 }

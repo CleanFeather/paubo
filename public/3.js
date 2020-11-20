@@ -26,9 +26,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -131,7 +128,7 @@ var render = function() {
             slot: "header"
           },
           [
-            _c("span", [_vm._v("笔记")]),
+            _c("span", [_vm._v(_vm._s(_vm.note.title))]),
             _vm._v(" "),
             _c(
               "span",
@@ -146,11 +143,7 @@ var render = function() {
           ]
         ),
         _vm._v(" "),
-        _c("div", _vm._b({}, "div", _vm.note, false), [
-          _c("h1", [_vm._v(_vm._s(_vm.note.title))]),
-          _vm._v(" "),
-          _c("h1", [_vm._v(_vm._s(_vm.note_id))])
-        ])
+        _c("div", { domProps: { innerHTML: _vm._s(_vm.note.content) } })
       ])
     ],
     1
@@ -283,6 +276,8 @@ var request = function request(config) {
   }, function (error) {
     switch (error.response.status) {
       case 401:
+        localStorage.removeItem('auth');
+
         _app.$message.error('请登录');
 
         _app.$router.push({

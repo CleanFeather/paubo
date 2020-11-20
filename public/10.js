@@ -1,4 +1,4 @@
-(window["webpackJsonp"] = window["webpackJsonp"] || []).push([[5],{
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([[10],{
 
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/user/Register.vue?vue&type=script&lang=js&":
 /*!************************************************************************************************************************************************************************!*\
@@ -381,61 +381,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Register_vue_vue_type_template_id_a3194668___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
-
-/***/ }),
-
-/***/ "./resources/js/network/request.js":
-/*!*****************************************!*\
-  !*** ./resources/js/network/request.js ***!
-  \*****************************************/
-/*! exports provided: request */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "request", function() { return request; });
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-var _this = undefined;
-
-
-var request = function request(config) {
-  console.log(_this);
-  var instance = axios__WEBPACK_IMPORTED_MODULE_0___default.a.create({
-    baseURL: '/api',
-    timeout: 5000,
-    headers: {
-      'Authorization': localStorage.getItem('access_token')
-    }
-  });
-  instance.interceptors.response.use(function (response) {
-    if ('authorization' in response.headers) {
-      localStorage.setItem('access_token', response.headers.authorization);
-    }
-
-    return response;
-  }, function (error) {
-    switch (error.response.status) {
-      case 401:
-        localStorage.removeItem('auth');
-
-        _app.$message.error('请登录');
-
-        _app.$router.push({
-          name: 'login'
-        });
-
-        break;
-
-      default:
-        _app.$message.error('操作失败');
-
-    }
-
-    return Promise.reject(error);
-  });
-  return instance(config);
-};
 
 /***/ })
 

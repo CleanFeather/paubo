@@ -2,17 +2,14 @@
   <div id="main">
     <el-card class="box-card">
       <div slot="header" class="clearfix">
-        <span>笔记</span>
+        <span>{{ note.title }}</span>
         <span style="float: right">
           <router-link :to="{ name: 'note.create' }">
             <i class="el-icon-plus"></i>
           </router-link>
         </span>
       </div>
-      <div v-bind="note">
-          <h1>{{ note.title }}</h1>
-          <h1>{{ note_id }}</h1>
-      </div>
+      <div v-html="note.content"></div>
     </el-card>
   </div>
 </template>

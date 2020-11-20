@@ -313,6 +313,8 @@ var request = function request(config) {
   }, function (error) {
     switch (error.response.status) {
       case 401:
+        localStorage.removeItem('auth');
+
         _app.$message.error('请登录');
 
         _app.$router.push({

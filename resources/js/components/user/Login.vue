@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import {request} from '../../network/request';
+import { request } from "../../network/request";
 export default {
   data() {
     return {
@@ -37,18 +37,33 @@ export default {
   methods: {
     submit() {
       request({
-          method: 'post',
-          url: 'login',
-          data: this.$data
-      }).then((response) => {
-          console.log(response);
-          if (response.status == 200){
-            localStorage.setItem('access_token','Bearer ' + response.data.access_token);
-            this.$router.push({name: 'home'});
-          }
-      }).catch((error) => {
-          console.log('asd',error.response);
+        method: "post",
+        url: "login",
+        data: this.$data,
       })
+        .then((response) => {
+          if (response.status == 200) {
+            localStorage.setItem(
+              "access_token",
+              "Bearer " + response.data.access_token
+            );
+            this.$store.commit('setStatus',true);
+            localStorage.setItem(
+              "auth",
+              JSON.stringify(this.$store.state.auth)
+            );
+            request({
+              method: "get",
+              url: "auth/user",
+            }).then((response) => {
+              this.$store.commit("setName", response.data.username);
+            });
+            this.$router.push({ name: "home" });
+          }
+        })
+        .catch((error) => {
+          console.log("asd", error.response);
+        });
     },
   },
 };
