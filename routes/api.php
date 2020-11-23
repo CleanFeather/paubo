@@ -47,6 +47,8 @@ Route::namespace('Note')->middleware('auth.token')->group(function (){
         Route::get('show','NoteController@show')->name('note.show');
         // 创建笔记
         Route::post('store','NoteController@store')->name('note.store');
+        // 上传图片
+        Route::post('upload','NoteController@upload')->name('note.upload');
         // 笔记
         Route::prefix('category')->group(function (){
             Route::get('/','CategoryController@index')->name('note.category.index');

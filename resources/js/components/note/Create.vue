@@ -43,7 +43,11 @@ export default {
   mounted: function () {
     this.editor = new E("#editor");
     this.editor.config.showLinkImg = false;
-    this.editor.config.uploadImgServer = "api/note/store";
+    this.editor.config.uploadImgServer = "/api/note/upload";
+    this.editor.config.uploadImgHeaders = {
+      Authorization: localStorage.getItem('access_token')
+    };
+    this.editor.config.uploadFileName = 'img';
     this.editor.config.zIndex = 1;
     this.editor.create();
 

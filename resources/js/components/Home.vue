@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>首页</h1>
-    <p>{{ message }}</p>
+    <marquee>{{ message }}</marquee>
   </div>
 </template>
 
@@ -10,17 +10,11 @@ import {request} from '../network/request';
 export default {
   data() {
     return {
-      message: "",
+      message: "我是首页",
     };
   },
   mounted: function () {
-    request({
-      method: "get",
-      url: "test",
-      data: {},
-    }).then((response) => {
-      this.message = response.data;
-    });
+    
   },
 };
 </script>
