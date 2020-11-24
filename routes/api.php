@@ -47,8 +47,12 @@ Route::namespace('Note')->middleware('auth.token')->group(function (){
         Route::get('show','NoteController@show')->name('note.show');
         // 创建笔记
         Route::post('store','NoteController@store')->name('note.store');
+        // 修改笔记
+        Route::put('/','NoteController@update')->name('note.update');
+        // 删除笔记
+        Route::delete('/','NoteController@delete')->name('note.delete');
         // 上传图片
-        Route::post('upload','NoteController@upload')->name('note.upload');
+        Route::post('upload','NoteController@upload')->withoutMiddleware('auth.token')->name('note.upload');
         // 笔记
         Route::prefix('category')->group(function (){
             Route::get('/','CategoryController@index')->name('note.category.index');

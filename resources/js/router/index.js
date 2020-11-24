@@ -32,10 +32,21 @@ const routes = [
         component: imp('note/Create')
     },
     {
+        name: 'note.update',
+        path: '/note/:note_id/update',
+        component: imp('note/Update'),
+        props: true
+    },
+    {
         name: 'note.show',
         path: '/note/:note_id',
         component: imp('note/Show'),
         props: true
+    },
+    {
+        name: 'test',
+        path: '/test',
+        component: imp('common/RichTextEditor'),
     },
 ]
 

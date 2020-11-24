@@ -20,7 +20,7 @@
         <RichTextEditor ref="content"/>
       </el-form-item>
       <el-form-item>
-        <el-button @click="submit">创建</el-button>
+        <el-button @click="submit">修改</el-button>
       </el-form-item>
     </el-form>
   </div>
@@ -38,6 +38,7 @@ export default {
       category: [],
     };
   },
+  props: ['note_id'],
   components: {
     RichTextEditor
   },
@@ -48,20 +49,32 @@ export default {
     }).then((response) => {
       this.category = response.data;
     });
+    request({
+      method: 'get',
+      url: 'note/show',
+      params: {
+        note_id: this.note_id
+      }
+    }).then(response => {
+      this.title = response.data.title;
+      this.category_id = response.data.category_id;
+      this.$refs.content.setContent(response.data.content);
+    })
   },
   methods: {
     submit() {
       request({
-        method: "post",
-        url: "note/store",
+        method: "put",
+        url: "note",
         data: {
+          note_id: this.note_id,
           title: this.title,
           content: this.$refs.content.getContent(),
           category_id: this.category_id,
         },
       }).then((response) => {
         this.$message({
-          message: "创建成功",
+          message: "修改成功",
           type: "success",
         });
         this.$router.push({ name: "note" });

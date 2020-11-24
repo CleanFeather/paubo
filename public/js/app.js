@@ -98974,23 +98974,33 @@ var map = {
 		"./resources/js/components/Home.vue",
 		5
 	],
+	"./common/RichTextEditor": [
+		"./resources/js/components/common/RichTextEditor.vue",
+		1,
+		8
+	],
+	"./common/RichTextEditor.vue": [
+		"./resources/js/components/common/RichTextEditor.vue",
+		1,
+		8
+	],
 	"./note/Create": [
 		"./resources/js/components/note/Create.vue",
-		6,
+		1,
 		0
 	],
 	"./note/Create.vue": [
 		"./resources/js/components/note/Create.vue",
-		6,
+		1,
 		0
 	],
 	"./note/Index": [
 		"./resources/js/components/note/Index.vue",
-		1
+		7
 	],
 	"./note/Index.vue": [
 		"./resources/js/components/note/Index.vue",
-		1
+		7
 	],
 	"./note/Show": [
 		"./resources/js/components/note/Show.vue",
@@ -98999,6 +99009,16 @@ var map = {
 	"./note/Show.vue": [
 		"./resources/js/components/note/Show.vue",
 		2
+	],
+	"./note/Update": [
+		"./resources/js/components/note/Update.vue",
+		1,
+		6
+	],
+	"./note/Update.vue": [
+		"./resources/js/components/note/Update.vue",
+		1,
+		6
 	],
 	"./user/Login": [
 		"./resources/js/components/user/Login.vue",
@@ -99137,10 +99157,19 @@ var routes = [{
   path: '/note/create',
   component: imp('note/Create')
 }, {
+  name: 'note.update',
+  path: '/note/:note_id/update',
+  component: imp('note/Update'),
+  props: true
+}, {
   name: 'note.show',
   path: '/note/:note_id',
   component: imp('note/Show'),
   props: true
+}, {
+  name: 'test',
+  path: '/test',
+  component: imp('common/RichTextEditor')
 }];
 /* harmony default export */ __webpack_exports__["default"] = (new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   mode: 'history',

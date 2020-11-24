@@ -4,10 +4,11 @@ namespace App\Http\Controllers\Note;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Note\CreateNoteRequest;
+use App\Http\Requests\Note\DeleteNoteRequest;
+use App\Http\Requests\Note\UpdateNoteRequest;
 use App\Library\Upload;
 use App\Models\Note;
 use Illuminate\Http\Request;
-use Illuminate\Support\Carbon;
 
 class NoteController extends Controller
 {
@@ -29,13 +30,19 @@ class NoteController extends Controller
         $params = $request->all();
         $params['user_id'] = $request->user()->id;
         $note->query()->create($params);
-        return response()->json([
-            'errno' => 0,
-            'data' => [
-                'https://seopic.699pic.com/photo/50083/9506.jpg_wh1200.jpg',
-                'https://seopic.699pic.com/photo/50083/9506.jpg_wh1200.jpg'
-            ]
-        ]);
+        return response()->json(['message' => 'success']);
+    }
+
+    public function update(UpdateNoteRequest $request,Note $note)
+    {
+        $note->query()->find($request->note_id)->update($request->except('note_id'));
+        return response()->json(['message' => 'success']);
+    }
+
+    public function delete(DeleteNoteRequest $request,Note $note)
+    {
+        $note->query()->find($request->note_id)->delete();
+        return response()->json(['message' => 'success']);
     }
 
     public function upload(Request $request)
