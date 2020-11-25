@@ -75,14 +75,21 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     submit: function submit() {
+      var _this = this;
+
       Object(_network_request__WEBPACK_IMPORTED_MODULE_0__["request"])({
-        method: 'post',
-        url: 'user/store',
+        method: "post",
+        url: "user/store",
         data: this.$data
       }).then(function (response) {
-        console.log(response);
-      })["catch"](function (error) {
-        console.log('asd', error.response);
+        _this.$message({
+          type: "success",
+          message: "注册成功"
+        });
+
+        _this.$router.push({
+          name: "login"
+        });
       });
     }
   }

@@ -51,7 +51,7 @@
 </template>
 
 <script>
-import {request} from '../../network/request';
+import { request } from "../../network/request";
 export default {
   data() {
     return {
@@ -65,14 +65,16 @@ export default {
   methods: {
     submit() {
       request({
-          method: 'post',
-          url: 'user/store',
-          data: this.$data
+        method: "post",
+        url: "user/store",
+        data: this.$data,
       }).then((response) => {
-          console.log(response);
-      }).catch((error) => {
-          console.log('asd',error.response);
-      })
+        this.$message({
+          type: "success",
+          message: "注册成功",
+        });
+        this.$router.push({ name: "login" });
+      });
     },
   },
 };
