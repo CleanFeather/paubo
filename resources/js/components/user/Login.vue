@@ -19,7 +19,7 @@
         ></el-input>
       </el-form-item>
       <el-form-item>
-        <el-button @click="submit">登录</el-button>
+        <el-button @click.once="submit">登录</el-button>
       </el-form-item>
     </el-form>
   </div>
