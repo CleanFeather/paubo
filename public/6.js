@@ -92,7 +92,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.input-normal-width {\n  width: 200px;\n}\n#form {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  height: 800px;\n}\n", ""]);
+exports.push([module.i, "\n.input-normal-width {\n  width: 200px;\n}\n#main {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  height: 800px;\n}\n", ""]);
 
 // exports
 
@@ -147,7 +147,7 @@ var render = function() {
   return _c(
     "div",
     {
-      attrs: { id: "form" },
+      attrs: { id: "main" },
       on: {
         keyup: function($event) {
           if (

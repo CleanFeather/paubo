@@ -1,5 +1,5 @@
 <template>
-  <div id="form">
+  <div id="main">
     <el-form size="small">
       <el-form-item>
         <el-input
@@ -82,7 +82,7 @@ export default {
 .input-normal-width {
   width: 200px;
 }
-#form {
+#main {
   display: flex;
   align-items: center;
   justify-content: center;

@@ -1,5 +1,5 @@
 <template>
-  <div id="form" @keyup.enter="submit">
+  <div id="main" @keyup.enter="submit">
     <el-form size="small">
       <el-form-item>
         <el-input
@@ -73,7 +73,7 @@ export default {
 .input-normal-width {
   width: 200px;
 }
-#form {
+#main {
   display: flex;
   align-items: center;
   justify-content: center;
