@@ -5701,7 +5701,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, "\nbody {\r\n  margin: 0;\r\n  padding: 0;\n}\nhtml{\r\n  position: relative;\n}\nfooter {\r\n  position: absolute;\r\n  padding: 0 !important;\r\n  bottom: 0;\r\n  left: 0;\r\n  right: 0;\n}\r\n", ""]);
+exports.push([module.i, "\nbody {\r\n  margin: 0;\r\n  padding: 0;\n}\nhtml{\r\n  position: relative;\r\n  width: 100%;\r\n  height: 100%;\n}\nfooter {\r\n  position: absolute;\r\n  padding: 0 !important;\r\n  bottom: 0;\r\n  left: 0;\r\n  right: 0;\n}\r\n", ""]);
 
 // exports
 
@@ -99290,21 +99290,21 @@ window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
 var map = {
 	"./Home": [
 		"./resources/js/components/Home.vue",
-		8
+		3
 	],
 	"./Home.vue": [
 		"./resources/js/components/Home.vue",
-		8
+		3
 	],
 	"./common/RichTextEditor": [
 		"./resources/js/components/common/RichTextEditor.vue",
 		0,
-		3
+		4
 	],
 	"./common/RichTextEditor.vue": [
 		"./resources/js/components/common/RichTextEditor.vue",
 		0,
-		3
+		4
 	],
 	"./layouts/Footer": [
 		"./resources/js/components/layouts/Footer.vue"
@@ -99336,19 +99336,19 @@ var map = {
 	],
 	"./note/Index": [
 		"./resources/js/components/note/Index.vue",
-		4
+		5
 	],
 	"./note/Index.vue": [
 		"./resources/js/components/note/Index.vue",
-		4
+		5
 	],
 	"./note/Show": [
 		"./resources/js/components/note/Show.vue",
-		5
+		6
 	],
 	"./note/Show.vue": [
 		"./resources/js/components/note/Show.vue",
-		5
+		6
 	],
 	"./note/Update": [
 		"./resources/js/components/note/Update.vue",
@@ -99362,19 +99362,19 @@ var map = {
 	],
 	"./user/Login": [
 		"./resources/js/components/user/Login.vue",
-		6
+		7
 	],
 	"./user/Login.vue": [
 		"./resources/js/components/user/Login.vue",
-		6
+		7
 	],
 	"./user/Register": [
 		"./resources/js/components/user/Register.vue",
-		7
+		8
 	],
 	"./user/Register.vue": [
 		"./resources/js/components/user/Register.vue",
-		7
+		8
 	]
 };
 function webpackAsyncContext(req) {
