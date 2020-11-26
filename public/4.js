@@ -107,7 +107,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n#main {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}\n.box-card {\n  width: 1200px;\n  height: 800px;\n  margin-top: 100px;\n}\n.item {\n  margin-bottom: 1em;\n}\n.item p {\n  margin-bottom: 0.2px;\n}\n.item span {\n  color: darkgrey;\n}\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* #main {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n} */\n.box-card {\n  width: 1200px;\n  height: 800px;\n  margin-top: 100px;\n}\n.item {\n  margin-bottom: 1em;\n}\n.item p {\n  margin-bottom: 0.2px;\n}\n.item span {\n  color: darkgrey;\n}\n", ""]);
 
 // exports
 

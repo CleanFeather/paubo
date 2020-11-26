@@ -1,21 +1,25 @@
 <template>
   <div id="app">
-    <p style="float: right">
-      <span v-if="$store.state.auth.status">
-        <span>{{ $store.state.auth.username }}</span>
-        <router-link to="" @click.native="logout">登出</router-link>
-      </span>
-      <span v-else>
-        <router-link :to="{ name: 'login' }">登录</router-link>
-        <router-link :to="{ name: 'register' }">注册</router-link>
-      </span>
-    </p>
-    <router-view />
+    <el-container>
+      <el-header>
+        <Header />
+      </el-header>
+      <el-main>
+        <Main />
+      </el-main>
+      <el-footer>
+        <Footer />
+      </el-footer>
+    </el-container>
   </div>
 </template>
 
 <script>
 import { request } from "../js/network/request";
+import Header from "./components/layouts/Header";
+import Main from "./components/layouts/Main";
+import Footer from "./components/layouts/Footer";
+
 export default {
   created: function () {
     let auth = localStorage.getItem("auth");
@@ -34,12 +38,17 @@ export default {
         method: "delete",
         url: "logout",
       }).then((response) => {
-        this.$store.commit('setStatus',false);
-        this.$store.commit('setName','');
-        localStorage.removeItem('auth');
+        this.$store.commit("setStatus", false);
+        this.$store.commit("setName", "");
+        localStorage.removeItem("auth");
         this.$router.push({ name: "login" });
       });
     },
+  },
+  components: {
+    Header,
+    Main,
+    Footer,
   },
 };
 </script>
@@ -49,5 +58,11 @@ body {
   margin: 0;
   padding: 0;
   background-color: rgb(245, 250, 215);
+}
+footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 </style>

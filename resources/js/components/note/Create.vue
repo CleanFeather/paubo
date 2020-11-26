@@ -72,11 +72,11 @@ export default {
 </script>
 
 <style>
-#main {
+/* #main {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 800px;
-}
+} */
 </style>

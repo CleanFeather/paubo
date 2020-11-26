@@ -38,11 +38,11 @@ export default {
 </script>
 
 <style>
-#main {
+/* #main {
   display: flex;
   align-items: center;
   justify-content: center;
-}
+} */
 .box-card {
   width: 1200px;
   margin-top: 20px;
