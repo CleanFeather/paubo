@@ -57,10 +57,13 @@ export default {
 body {
   margin: 0;
   padding: 0;
-  background-color: rgb(245, 250, 215);
+}
+html{
+  position: relative;
 }
 footer {
   position: absolute;
+  padding: 0 !important;
   bottom: 0;
   left: 0;
   right: 0;

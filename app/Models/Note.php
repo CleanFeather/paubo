@@ -23,7 +23,6 @@ class Note extends Model
 
     public function getCreatedAtAttribute($value)
     {
-        // return $this->attributes['created_at'];
         return Carbon::parse($value)->diffForHumans();
     }
 

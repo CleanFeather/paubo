@@ -14,7 +14,7 @@ class NoteController extends Controller
 {
     public function index(Note $note)
     {
-        return $note->query()->orderByDesc('id')->get(['id','title','user_id','category_id','created_at']);
+        return auth('api')->user()->note()->orderByDesc('id')->get(['id','title','user_id','category_id','created_at']);
     }
 
     public function show(Request $request,Note $note)

@@ -1,6 +1,6 @@
 <template>
   <div id="main">
-    <h1 behavior="" direction="">我是底部</h1>
+    <p>copyright@cleather</p>
   </div>
 </template>
 
@@ -8,5 +8,15 @@
 export default {};
 </script>
 
-<style>
+<style lang="scss" scoped>
+#main{
+  text-align: center;
+  background-color: white;
+  box-shadow: 0px 3px 5px black;
+}
+p{
+  line-height: 60px;
+  color:darkgrey;
+  margin-bottom: 0;
+}
 </style>

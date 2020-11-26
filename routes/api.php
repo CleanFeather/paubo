@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 // 测试
 Route::any('test', function () {
-    echo 'test';
+    return auth('api')->user()->note()->with(['user','category'])->get();
 })->middleware('auth.token');
 
 // 用户操作
