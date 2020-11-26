@@ -9,7 +9,7 @@
           </router-link>
         </span>
       </div>
-      <div v-html="note.content"></div>
+      <div id="content" v-html="note.content"></div>
     </el-card>
   </div>
 </template>
@@ -45,8 +45,7 @@ export default {
 }
 .box-card {
   width: 1200px;
-  height: 800px;
-  margin-top: 100px;
+  margin-top: 20px;
 }
 .item {
   margin-bottom: 1em;
@@ -56,5 +55,13 @@ export default {
 }
 .item span {
   color: darkgrey;
+}
+#content{
+  overflow: scroll;
+  height: 800px;
+}
+img{
+  display: inline-block;
+  max-width: 100%;
 }
 </style>
