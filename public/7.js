@@ -65,14 +65,18 @@ __webpack_require__.r(__webpack_exports__);
             url: "auth/user"
           }).then(function (response) {
             _this.$store.commit("setName", response.data.username);
+
+            _this.$message({
+              type: 'success',
+              message: '欢迎您 ' + response.data.username,
+              center: true
+            });
           });
 
           _this.$router.push({
             name: "home"
           });
         }
-      })["catch"](function (error) {
-        console.log("asd", error.response);
       });
     }
   }

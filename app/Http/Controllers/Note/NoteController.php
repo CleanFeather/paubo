@@ -12,20 +12,34 @@ use Illuminate\Http\Request;
 
 class NoteController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        return auth('api')->user()->note()->orderByDesc('id')->get(['id','title','user_id','category_id','created_at']);
+        $this->validate($request, [
+            'page' => 'required|integer',
+            'limit' => 'required|integer'
+        ]);
+        $query = $request->user()
+            ->note()
+            ->orderByDesc('id');
+        $count = $query->count();
+        $data = $query->offset(($request->page - 1) * $request->limit)
+            ->limit($request->limit)
+            ->get(['id', 'title', 'user_id', 'category_id', 'created_at']);
+        return response()->json([
+            'data' => $data,
+            'count' => $count
+        ]);
     }
 
-    public function show(Request $request,Note $note)
+    public function show(Request $request, Note $note)
     {
-        $this->validate($request,[
+        $this->validate($request, [
             'note_id' => 'required'
         ]);
         return $note->query()->find($request->note_id);
     }
 
-    public function store(CreateNoteRequest $request,Note $note)
+    public function store(CreateNoteRequest $request, Note $note)
     {
         $params = $request->all();
         $params['user_id'] = $request->user()->id;
@@ -33,13 +47,13 @@ class NoteController extends Controller
         return response()->json(['message' => 'success']);
     }
 
-    public function update(UpdateNoteRequest $request,Note $note)
+    public function update(UpdateNoteRequest $request, Note $note)
     {
         $note->query()->find($request->note_id)->update($request->except('note_id'));
         return response()->json(['message' => 'success']);
     }
 
-    public function delete(DeleteNoteRequest $request,Note $note)
+    public function delete(DeleteNoteRequest $request, Note $note)
     {
         $note->query()->find($request->note_id)->delete();
         return response()->json(['message' => 'success']);
@@ -47,7 +61,7 @@ class NoteController extends Controller
 
     public function upload(Request $request)
     {
-        $url = app(Upload::class)->upload($request->file('img'),'note');
+        $url = app(Upload::class)->upload($request->file('img'), 'note');
         return response()->json([
             'errno' => 0,
             'data' => [

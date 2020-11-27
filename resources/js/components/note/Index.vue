@@ -27,10 +27,22 @@
             </router-link>
           </span>
         </p>
-        <span
-          >{{ item.category_name }} | {{ item.user_name }}
-          {{ item.created_at }}</span
-        >
+        <span>
+          {{ item.category_name }}
+          <el-divider direction="vertical"></el-divider>
+          {{ item.user_name }}
+          <el-divider direction="vertical"></el-divider>
+          {{ item.created_at }}
+        </span>
+      </div>
+      <el-divider></el-divider>
+      <div id="paginate">
+        <el-pagination
+          background
+          layout="prev, pager, next"
+          :total="count"
+          @current-change="changePage"
+        ></el-pagination>
       </div>
     </el-card>
   </div>
@@ -43,14 +55,20 @@ export default {
   data() {
     return {
       notes: [],
+      count: 0,
     };
   },
   mounted: function () {
     request({
       method: "get",
       url: "note",
+      params: {
+        page: 1,
+        limit: 10,
+      },
     }).then((response) => {
-      this.notes = response.data;
+      this.notes = response.data.data;
+      this.count = response.data.count;
     });
   },
   methods: {
@@ -75,6 +93,19 @@ export default {
         });
       });
     },
+    changePage(page) {
+      request({
+        method: "get",
+        url: "note",
+        params: {
+          page: page,
+          limit: 10,
+        },
+      }).then((response) => {
+        this.notes = response.data.data;
+        this.count = response.data.count;
+      });
+    },
   },
 };
 </script>
@@ -88,5 +119,8 @@ export default {
 }
 .item span {
   color: darkgrey;
+}
+#paginate {
+  text-align: center;
 }
 </style>

@@ -48,11 +48,24 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      notes: []
+      notes: [],
+      count: 0
     };
   },
   mounted: function mounted() {
@@ -60,9 +73,14 @@ __webpack_require__.r(__webpack_exports__);
 
     Object(_network_request__WEBPACK_IMPORTED_MODULE_0__["request"])({
       method: "get",
-      url: "note"
+      url: "note",
+      params: {
+        page: 1,
+        limit: 10
+      }
     }).then(function (response) {
-      _this.notes = response.data;
+      _this.notes = response.data.data;
+      _this.count = response.data.count;
     });
   },
   methods: {
@@ -89,6 +107,21 @@ __webpack_require__.r(__webpack_exports__);
           });
         });
       });
+    },
+    changePage: function changePage(page) {
+      var _this3 = this;
+
+      Object(_network_request__WEBPACK_IMPORTED_MODULE_0__["request"])({
+        method: "get",
+        url: "note",
+        params: {
+          page: page,
+          limit: 10
+        }
+      }).then(function (response) {
+        _this3.notes = response.data.data;
+        _this3.count = response.data.count;
+      });
     }
   }
 });
@@ -107,7 +140,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.item {\n  margin-bottom: 1em;\n}\n.item p {\n  margin-bottom: 0.2px;\n}\n.item span {\n  color: darkgrey;\n}\n", ""]);
+exports.push([module.i, "\n.item {\n  margin-bottom: 1em;\n}\n.item p {\n  margin-bottom: 0.2px;\n}\n.item span {\n  color: darkgrey;\n}\n#paginate {\n  text-align: center;\n}\n", ""]);
 
 // exports
 
@@ -243,17 +276,39 @@ var render = function() {
                 1
               ),
               _vm._v(" "),
-              _c("span", [
-                _vm._v(
-                  _vm._s(item.category_name) +
-                    " | " +
-                    _vm._s(item.user_name) +
-                    "\n        " +
-                    _vm._s(item.created_at)
-                )
-              ])
+              _c(
+                "span",
+                [
+                  _vm._v(
+                    "\n        " + _vm._s(item.category_name) + "\n        "
+                  ),
+                  _c("el-divider", { attrs: { direction: "vertical" } }),
+                  _vm._v("\n        " + _vm._s(item.user_name) + "\n        "),
+                  _c("el-divider", { attrs: { direction: "vertical" } }),
+                  _vm._v("\n        " + _vm._s(item.created_at) + "\n      ")
+                ],
+                1
+              )
             ])
-          })
+          }),
+          _vm._v(" "),
+          _c("el-divider"),
+          _vm._v(" "),
+          _c(
+            "div",
+            { attrs: { id: "paginate" } },
+            [
+              _c("el-pagination", {
+                attrs: {
+                  background: "",
+                  layout: "prev, pager, next",
+                  total: _vm.count
+                },
+                on: { "current-change": _vm.changePage }
+              })
+            ],
+            1
+          )
         ],
         2
       )

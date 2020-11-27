@@ -1,33 +1,41 @@
 <template>
   <div id="main">
-    <h1 style="margin-bottom: 60px">创建笔记</h1>
-    <el-form>
-      <el-form-item>
-        <el-input v-model="title" placeholder="请输入标题"></el-input>
-      </el-form-item>
-      <el-form-item>
-        <el-select v-model="category_id">
-          <el-option
-            v-for="(item, index) in category"
-            :key="index"
-            :value="item.id"
-            :label="item.name"
-            >{{ item.name }}</el-option
-          >
-        </el-select>
-      </el-form-item>
-      <el-form-item>
-        <RichTextEditor ref="content"/>
-      </el-form-item>
-      <el-form-item>
-        <el-button @click.once="submit">修改</el-button>
-      </el-form-item>
-    </el-form>
+    <el-row>
+      <el-col :span="24">
+        <el-page-header @back="goBack" content="编辑笔记"></el-page-header>
+      </el-col>
+    </el-row>
+    <el-row>
+      <el-col :span="24">
+        <el-form>
+          <el-form-item>
+            <el-input v-model="title" placeholder="请输入标题"></el-input>
+          </el-form-item>
+          <el-form-item>
+            <el-select v-model="category_id">
+              <el-option
+                v-for="(item, index) in category"
+                :key="index"
+                :value="item.id"
+                :label="item.name"
+                >{{ item.name }}</el-option
+              >
+            </el-select>
+          </el-form-item>
+          <el-form-item>
+            <RichTextEditor ref="content" />
+          </el-form-item>
+          <el-form-item>
+            <el-button @click.once="submit">修改</el-button>
+          </el-form-item>
+        </el-form>
+      </el-col>
+    </el-row>
   </div>
 </template>
 
 <script>
-import RichTextEditor from '../common/RichTextEditor';
+import RichTextEditor from "../common/RichTextEditor";
 import { request } from "../../network/request";
 
 export default {
@@ -38,9 +46,9 @@ export default {
       category: [],
     };
   },
-  props: ['note_id'],
+  props: ["note_id"],
   components: {
-    RichTextEditor
+    RichTextEditor,
   },
   mounted: function () {
     request({
@@ -50,16 +58,16 @@ export default {
       this.category = response.data;
     });
     request({
-      method: 'get',
-      url: 'note/show',
+      method: "get",
+      url: "note/show",
       params: {
-        note_id: this.note_id
-      }
-    }).then(response => {
+        note_id: this.note_id,
+      },
+    }).then((response) => {
       this.title = response.data.title;
       this.category_id = response.data.category_id;
       this.$refs.content.setContent(response.data.content);
-    })
+    });
   },
   methods: {
     submit() {
@@ -80,16 +88,18 @@ export default {
         this.$router.push({ name: "note" });
       });
     },
+    goBack() {
+      history.go(-1);
+    },
   },
 };
 </script>
 
-<style>
-/* #main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 800px;
-} */
+<style lang="scss" scoped>
+.el-row {
+  margin-bottom: 10%;
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
 </style>

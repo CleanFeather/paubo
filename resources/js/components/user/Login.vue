@@ -57,13 +57,15 @@ export default {
               url: "auth/user",
             }).then((response) => {
               this.$store.commit("setName", response.data.username);
+              this.$message({
+                type: 'success',
+                message: '欢迎您 ' + response.data.username,
+                center: true
+              });
             });
             this.$router.push({ name: "home" });
           }
         })
-        .catch((error) => {
-          console.log("asd", error.response);
-        });
     },
   },
 };
