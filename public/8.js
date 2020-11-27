@@ -109,7 +109,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.input-normal-width {\r\n  width: 200px;\n}\n#main {\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  height: 800px;\n}\r\n", ""]);
+exports.push([module.i, "\n.input-normal-width {\n  width: 200px;\n}\n#main {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  height: 740px;\n}\n", ""]);
 
 // exports
 

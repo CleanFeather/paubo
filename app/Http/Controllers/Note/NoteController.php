@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 
 class NoteController extends Controller
 {
-    public function index(Note $note)
+    public function index()
     {
         return auth('api')->user()->note()->orderByDesc('id')->get(['id','title','user_id','category_id','created_at']);
     }

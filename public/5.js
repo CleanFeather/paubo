@@ -107,7 +107,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.item {\r\n  margin-bottom: 1em;\n}\n.item p {\r\n  margin-bottom: 0.2px;\n}\n.item span {\r\n  color: darkgrey;\n}\r\n", ""]);
+exports.push([module.i, "\n.item {\n  margin-bottom: 1em;\n}\n.item p {\n  margin-bottom: 0.2px;\n}\n.item span {\n  color: darkgrey;\n}\n", ""]);
 
 // exports
 

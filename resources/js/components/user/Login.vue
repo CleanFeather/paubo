@@ -69,7 +69,7 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
 .input-normal-width {
   width: 200px;
 }
@@ -77,6 +77,6 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 800px;
+  height: 740px;
 }
 </style>

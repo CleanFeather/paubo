@@ -4,10 +4,9 @@
       :default-active="activeIndex"
       class="el-menu-demo"
       mode="horizontal"
-      @select="handleSelect"
     >
-      <el-menu-item index="1">
-        <router-link :to="{ name: 'note' }">填坑笔记</router-link>
+      <el-menu-item v-for="(item,index) in menu" :key="index" :index="index.toString()" v-show="$store.state.auth.status">
+        <router-link :to="{ name: item.route }">{{ item.title }}</router-link>
       </el-menu-item>
       <p id="auth" style="float: right">
         <span v-if="$store.state.auth.status">
@@ -26,23 +25,40 @@
 </template>
 
 <script>
+import {request} from '../../network/request';
+
 export default {
   data() {
     return {
+      menu: [
+        {
+          title: "填坑笔记",
+          route: "note",
+        },
+      ],
       activeIndex: "",
     };
   },
   methods: {
-    handleSelect(key, keyPath) {
-      console.log(key, keyPath);
-    },
+    logout() {
+      request({
+        method: 'delete',
+        url: 'logout'
+      }).then(response => {
+        this.$store.commit('setStatus',false);
+        this.$router.push({name: 'login'});
+      })
+    }
   },
+  mounted: function (){
+    console.log(this.$store.state.auth.status);
+  }
 };
 </script>
 
 <style lang="scss" scoped>
-  #auth{
-    line-height: 60px;
-    margin-bottom: 0;
-  }
+#auth {
+  line-height: 60px;
+  margin-bottom: 0;
+}
 </style>

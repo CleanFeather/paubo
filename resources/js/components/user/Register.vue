@@ -88,6 +88,6 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 800px;
+  height: 740px;
 }
 </style>
