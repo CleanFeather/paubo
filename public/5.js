@@ -88,7 +88,8 @@ __webpack_require__.r(__webpack_exports__);
       categories: [],
       category_id: "",
       category_name: "分类",
-      count: 0
+      count: 0,
+      loading: true
     };
   },
   mounted: function mounted() {
@@ -139,6 +140,7 @@ __webpack_require__.r(__webpack_exports__);
           category_id: this.category_id
         }
       }).then(function (response) {
+        _this3.loading = false;
         _this3.notes = response.data.data;
         _this3.count = response.data.count;
       });
@@ -227,7 +229,18 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { attrs: { id: "main" } },
+    {
+      directives: [
+        {
+          name: "loading",
+          rawName: "v-loading.fullscreen.lock",
+          value: _vm.loading,
+          expression: "loading",
+          modifiers: { fullscreen: true, lock: true }
+        }
+      ],
+      attrs: { id: "main" }
+    },
     [
       _c(
         "el-card",

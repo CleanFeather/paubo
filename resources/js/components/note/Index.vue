@@ -1,5 +1,5 @@
 <template>
-  <div id="main">
+  <div id="main" v-loading.fullscreen.lock="loading">
     <el-card class="box-card">
       <div slot="header" class="clearfix">
         <span @click="initPage()">笔记</span>
@@ -79,6 +79,7 @@ export default {
       category_id: "",
       category_name: "分类",
       count: 0,
+      loading: true
     };
   },
   mounted: function () {
@@ -122,6 +123,7 @@ export default {
           category_id: this.category_id,
         },
       }).then((response) => {
+        this.loading = false;
         this.notes = response.data.data;
         this.count = response.data.count;
       });
