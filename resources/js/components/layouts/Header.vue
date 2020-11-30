@@ -2,7 +2,6 @@
   <div id="main">
     <el-menu
       :default-active="activeIndex"
-      class="el-menu-demo"
       mode="horizontal"
     >
       <el-menu-item v-for="(item,index) in menu" :key="index" :index="index.toString()" v-show="$store.state.auth.status">
@@ -48,7 +47,7 @@ export default {
         this.$store.commit('setStatus',false);
         this.$router.push({name: 'login'});
       })
-    }
+    },
   },
   mounted: function (){
     console.log(this.$store.state.auth.status);

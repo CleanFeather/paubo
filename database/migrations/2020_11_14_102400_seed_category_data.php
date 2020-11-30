@@ -51,10 +51,6 @@ class SeedCategoryData extends Migration
                 'name' => 'linux',
                 'type' => 'note',
             ],
-            [
-                'name' => 'swoole',
-                'type' => 'note',
-            ],
         ];
         DB::table('categories')->insert($categories);
     }

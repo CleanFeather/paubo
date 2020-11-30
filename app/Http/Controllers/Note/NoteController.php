@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Note;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Note\CreateNoteRequest;
 use App\Http\Requests\Note\DeleteNoteRequest;
+use App\Http\Requests\Note\IndexNoteRequest;
 use App\Http\Requests\Note\UpdateNoteRequest;
 use App\Library\Upload;
 use App\Models\Note;
@@ -12,17 +13,14 @@ use Illuminate\Http\Request;
 
 class NoteController extends Controller
 {
-    public function index(Request $request)
+    public function index(IndexNoteRequest $request)
     {
-        $this->validate($request, [
-            'page' => 'required|integer',
-            'limit' => 'required|integer'
-        ]);
-        $query = $request->user()
-            ->note()
-            ->orderByDesc('id');
+        $query = $request->user()->note();
+        if ($request->filled('category_id')){
+            $query->where('category_id',$request->category_id);
+        }
         $count = $query->count();
-        $data = $query->offset(($request->page - 1) * $request->limit)
+        $data = $query->orderByDesc('id')->offset(($request->page - 1) * $request->limit)
             ->limit($request->limit)
             ->get(['id', 'title', 'user_id', 'category_id', 'created_at']);
         return response()->json([

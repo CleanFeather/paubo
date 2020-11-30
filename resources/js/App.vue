@@ -53,7 +53,7 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
 body {
   margin: 0;
   padding: 0;
