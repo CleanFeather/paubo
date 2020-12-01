@@ -30,7 +30,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      note: ''
+      note: '',
+      loading: true
     };
   },
   props: ['note_id'],
@@ -44,6 +45,7 @@ __webpack_require__.r(__webpack_exports__);
         note_id: this.note_id
       }
     }).then(function (response) {
+      _this.loading = false;
       _this.note = response.data;
     });
   }
@@ -119,35 +121,51 @@ var render = function() {
     "div",
     { attrs: { id: "main" } },
     [
-      _c("el-card", { staticClass: "box-card" }, [
-        _c(
-          "div",
-          {
-            staticClass: "clearfix",
-            attrs: { slot: "header" },
-            slot: "header"
-          },
-          [
-            _c("span", [_vm._v(_vm._s(_vm.note.title))]),
-            _vm._v(" "),
-            _c(
-              "span",
-              { staticStyle: { float: "right" } },
-              [
-                _c("router-link", { attrs: { to: { name: "note.create" } } }, [
-                  _c("i", { staticClass: "el-icon-plus" })
-                ])
-              ],
-              1
-            )
-          ]
-        ),
-        _vm._v(" "),
-        _c("div", {
-          attrs: { id: "content" },
-          domProps: { innerHTML: _vm._s(_vm.note.content) }
-        })
-      ])
+      _c(
+        "el-card",
+        {
+          directives: [
+            {
+              name: "loading",
+              rawName: "v-loading",
+              value: _vm.loading,
+              expression: "loading"
+            }
+          ],
+          staticClass: "box-card"
+        },
+        [
+          _c(
+            "div",
+            {
+              staticClass: "clearfix",
+              attrs: { slot: "header" },
+              slot: "header"
+            },
+            [
+              _c("span", [_vm._v(_vm._s(_vm.note.title))]),
+              _vm._v(" "),
+              _c(
+                "span",
+                { staticStyle: { float: "right" } },
+                [
+                  _c(
+                    "router-link",
+                    { attrs: { to: { name: "note.create" } } },
+                    [_c("i", { staticClass: "el-icon-plus" })]
+                  )
+                ],
+                1
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c("div", {
+            attrs: { id: "content" },
+            domProps: { innerHTML: _vm._s(_vm.note.content) }
+          })
+        ]
+      )
     ],
     1
   )

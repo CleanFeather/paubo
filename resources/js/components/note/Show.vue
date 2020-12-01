@@ -1,6 +1,6 @@
 <template>
   <div id="main">
-    <el-card class="box-card">
+    <el-card class="box-card" v-loading="loading">
       <div slot="header" class="clearfix">
         <span>{{ note.title }}</span>
         <span style="float: right">
@@ -19,7 +19,8 @@ import { request } from "../../network/request";
 export default {
   data() {
     return {
-      note: ''
+      note: '',
+      loading: true
     };
   },
   props: ['note_id'],
@@ -31,6 +32,7 @@ export default {
               note_id: this.note_id
           }
       }).then(response => {
+        this.loading = false;
           this.note = response.data
       })
   }

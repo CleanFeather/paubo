@@ -131,6 +131,7 @@ __webpack_require__.r(__webpack_exports__);
     changePage: function changePage(page) {
       var _this3 = this;
 
+      this.loading = true;
       Object(_network_request__WEBPACK_IMPORTED_MODULE_0__["request"])({
         method: "get",
         url: "note",
@@ -146,7 +147,7 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     initPage: function initPage() {
-      this.category_id = '', this.changePage(1);
+      this.category_id = "", this.changePage(1);
     },
     selectCategory: function selectCategory(category) {
       this.category_id = category.id;
@@ -175,7 +176,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.item {\n  margin-bottom: 1em;\n}\n.item p {\n  margin-bottom: 0.2px;\n}\n.item span {\n  color: darkgrey;\n}\n#paginate {\n  text-align: center;\n}\n.el-dropdown-link {\n  color: #409eff;\n}\n#emptyStatus{\n  text-align: center;\n  color: #909399;\n}\n", ""]);
+exports.push([module.i, "\n.item {\n  margin-bottom: 1em;\n}\n.item p {\n  margin-bottom: 0.2px;\n}\n.item span {\n  color: darkgrey;\n}\n#paginate {\n  text-align: center;\n}\n.el-dropdown-link {\n  color: #409eff;\n}\n#emptyStatus {\n  text-align: center;\n  color: #909399;\n}\n", ""]);
 
 // exports
 
@@ -229,18 +230,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    {
-      directives: [
-        {
-          name: "loading",
-          rawName: "v-loading.fullscreen.lock",
-          value: _vm.loading,
-          expression: "loading",
-          modifiers: { fullscreen: true, lock: true }
-        }
-      ],
-      attrs: { id: "main" }
-    },
+    { attrs: { id: "main" } },
     [
       _c(
         "el-card",
@@ -315,99 +305,122 @@ var render = function() {
             1
           ),
           _vm._v(" "),
-          !_vm.isEmpty
-            ? _c(
-                "div",
-                _vm._l(_vm.notes, function(item, index) {
-                  return _c("div", { key: index, staticClass: "text item" }, [
-                    _c(
-                      "p",
-                      [
-                        _c(
-                          "router-link",
-                          {
-                            attrs: {
-                              to: {
-                                name: "note.show",
-                                params: { note_id: item.id }
-                              }
-                            }
-                          },
-                          [
-                            _vm._v(
-                              "\n            " +
-                                _vm._s(item.title) +
-                                "\n          "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "span",
-                          { staticStyle: { float: "right" } },
-                          [
-                            _c(
-                              "router-link",
-                              {
-                                attrs: {
-                                  to: {
-                                    name: "note.update",
-                                    params: { note_id: item.id }
+          _c(
+            "div",
+            {
+              directives: [
+                {
+                  name: "loading",
+                  rawName: "v-loading",
+                  value: _vm.loading,
+                  expression: "loading"
+                }
+              ]
+            },
+            [
+              !_vm.isEmpty
+                ? _c(
+                    "div",
+                    _vm._l(_vm.notes, function(item, index) {
+                      return _c(
+                        "div",
+                        { key: index, staticClass: "text item" },
+                        [
+                          _c(
+                            "p",
+                            [
+                              _c(
+                                "router-link",
+                                {
+                                  attrs: {
+                                    to: {
+                                      name: "note.show",
+                                      params: { note_id: item.id }
+                                    }
                                   }
-                                }
-                              },
-                              [_c("i", { staticClass: "el-icon-edit" })]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "router-link",
-                              {
-                                attrs: { to: "" },
-                                nativeOn: {
-                                  click: function($event) {
-                                    return _vm.destroy(item.id, index)
-                                  }
-                                }
-                              },
-                              [_c("i", { staticClass: "el-icon-delete" })]
-                            )
-                          ],
-                          1
-                        )
-                      ],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "span",
-                      [
-                        _vm._v(
-                          "\n          " +
-                            _vm._s(item.category_name) +
-                            "\n          "
-                        ),
-                        _c("el-divider", { attrs: { direction: "vertical" } }),
-                        _vm._v(
-                          "\n          " +
-                            _vm._s(item.user_name) +
-                            "\n          "
-                        ),
-                        _c("el-divider", { attrs: { direction: "vertical" } }),
-                        _vm._v(
-                          "\n          " +
-                            _vm._s(item.created_at) +
-                            "\n        "
-                        )
-                      ],
-                      1
-                    )
+                                },
+                                [
+                                  _vm._v(
+                                    "\n              " +
+                                      _vm._s(item.title) +
+                                      "\n            "
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "span",
+                                { staticStyle: { float: "right" } },
+                                [
+                                  _c(
+                                    "router-link",
+                                    {
+                                      attrs: {
+                                        to: {
+                                          name: "note.edit",
+                                          params: { note_id: item.id }
+                                        }
+                                      }
+                                    },
+                                    [_c("i", { staticClass: "el-icon-edit" })]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "router-link",
+                                    {
+                                      attrs: { to: "" },
+                                      nativeOn: {
+                                        click: function($event) {
+                                          return _vm.destroy(item.id, index)
+                                        }
+                                      }
+                                    },
+                                    [_c("i", { staticClass: "el-icon-delete" })]
+                                  )
+                                ],
+                                1
+                              )
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "span",
+                            [
+                              _vm._v(
+                                "\n            " +
+                                  _vm._s(item.category_name) +
+                                  "\n            "
+                              ),
+                              _c("el-divider", {
+                                attrs: { direction: "vertical" }
+                              }),
+                              _vm._v(
+                                "\n            " +
+                                  _vm._s(item.user_name) +
+                                  "\n            "
+                              ),
+                              _c("el-divider", {
+                                attrs: { direction: "vertical" }
+                              }),
+                              _vm._v(
+                                "\n            " +
+                                  _vm._s(item.created_at) +
+                                  "\n          "
+                              )
+                            ],
+                            1
+                          )
+                        ]
+                      )
+                    }),
+                    0
+                  )
+                : _c("div", { attrs: { id: "emptyStatus" } }, [
+                    _vm._v("笔记空空的，去创建吧~")
                   ])
-                }),
-                0
-              )
-            : _c("div", { attrs: { id: "emptyStatus" } }, [
-                _vm._v("\n      笔记空空的，去创建吧~\n    ")
-              ]),
+            ]
+          ),
           _vm._v(" "),
           _c("el-divider"),
           _vm._v(" "),

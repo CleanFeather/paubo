@@ -8,8 +8,8 @@ export const request = config => {
             'Authorization': localStorage.getItem('access_token')
         }
     })
-    instance.interceptors.response.use(response => {console.log(response.headers);
-        if ('authorization' in response.headers) {console.log('enter');
+    instance.interceptors.response.use(response => {
+        if ('authorization' in response.headers) {
             localStorage.setItem('access_token', response.headers.authorization);
         }
         return response;

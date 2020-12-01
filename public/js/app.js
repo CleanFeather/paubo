@@ -99359,6 +99359,16 @@ var map = {
 		0,
 		1
 	],
+	"./note/Edit": [
+		"./resources/js/components/note/Edit.vue",
+		0,
+		9
+	],
+	"./note/Edit.vue": [
+		"./resources/js/components/note/Edit.vue",
+		0,
+		9
+	],
 	"./note/Index": [
 		"./resources/js/components/note/Index.vue",
 		5
@@ -99374,16 +99384,6 @@ var map = {
 	"./note/Show.vue": [
 		"./resources/js/components/note/Show.vue",
 		6
-	],
-	"./note/Update": [
-		"./resources/js/components/note/Update.vue",
-		0,
-		2
-	],
-	"./note/Update.vue": [
-		"./resources/js/components/note/Update.vue",
-		0,
-		2
 	],
 	"./user/Login": [
 		"./resources/js/components/user/Login.vue",
@@ -99689,10 +99689,7 @@ var request = function request(config) {
     }
   });
   instance.interceptors.response.use(function (response) {
-    console.log(response.headers);
-
     if ('authorization' in response.headers) {
-      console.log('enter');
       localStorage.setItem('access_token', response.headers.authorization);
     }
 
@@ -99767,9 +99764,9 @@ var routes = [{
   path: '/note/create',
   component: imp('note/Create')
 }, {
-  name: 'note.update',
+  name: 'note.edit',
   path: '/note/:note_id/update',
-  component: imp('note/Update'),
+  component: imp('note/Edit'),
   props: true
 }, {
   name: 'note.show',

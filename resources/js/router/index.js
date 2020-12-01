@@ -32,9 +32,9 @@ const routes = [
         component: imp('note/Create')
     },
     {
-        name: 'note.update',
+        name: 'note.edit',
         path: '/note/:note_id/update',
-        component: imp('note/Update'),
+        component: imp('note/Edit'),
         props: true
     },
     {

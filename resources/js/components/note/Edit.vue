@@ -7,7 +7,7 @@
     </el-row>
     <el-row>
       <el-col :span="24">
-        <el-form>
+        <el-form v-loading="loading">
           <el-form-item>
             <el-input v-model="title" placeholder="请输入标题"></el-input>
           </el-form-item>
@@ -44,6 +44,7 @@ export default {
       title: "",
       category_id: "",
       category: [],
+      loading: true
     };
   },
   props: ["note_id"],
@@ -64,6 +65,7 @@ export default {
         note_id: this.note_id,
       },
     }).then((response) => {
+      this.loading = false;
       this.title = response.data.title;
       this.category_id = response.data.category_id;
       this.$refs.content.setContent(response.data.content);

@@ -1,5 +1,5 @@
 <template>
-  <div id="main" v-loading.fullscreen.lock="loading">
+  <div id="main">
     <el-card class="box-card">
       <div slot="header" class="clearfix">
         <span @click="initPage()">笔记</span>
@@ -24,36 +24,36 @@
           </router-link>
         </span>
       </div>
-      <div v-if="!isEmpty">
-        <div v-for="(item, index) in notes" :key="index" class="text item">
-          <p>
-            <router-link
-              :to="{ name: 'note.show', params: { note_id: item.id } }"
-            >
-              {{ item.title }}
-            </router-link>
-            <span style="float: right">
+      <div v-loading="loading">
+        <div v-if="!isEmpty">
+          <div v-for="(item, index) in notes" :key="index" class="text item">
+            <p>
               <router-link
-                :to="{ name: 'note.update', params: { note_id: item.id } }"
+                :to="{ name: 'note.show', params: { note_id: item.id } }"
               >
-                <i class="el-icon-edit"></i>
+                {{ item.title }}
               </router-link>
-              <router-link to="" @click.native="destroy(item.id, index)">
-                <i class="el-icon-delete"></i>
-              </router-link>
+              <span style="float: right">
+                <router-link
+                  :to="{ name: 'note.edit', params: { note_id: item.id } }"
+                >
+                  <i class="el-icon-edit"></i>
+                </router-link>
+                <router-link to="" @click.native="destroy(item.id, index)">
+                  <i class="el-icon-delete"></i>
+                </router-link>
+              </span>
+            </p>
+            <span>
+              {{ item.category_name }}
+              <el-divider direction="vertical"></el-divider>
+              {{ item.user_name }}
+              <el-divider direction="vertical"></el-divider>
+              {{ item.created_at }}
             </span>
-          </p>
-          <span>
-            {{ item.category_name }}
-            <el-divider direction="vertical"></el-divider>
-            {{ item.user_name }}
-            <el-divider direction="vertical"></el-divider>
-            {{ item.created_at }}
-          </span>
+          </div>
         </div>
-      </div>
-      <div id="emptyStatus" v-else>
-        笔记空空的，去创建吧~
+        <div id="emptyStatus" v-else>笔记空空的，去创建吧~</div>
       </div>
       <el-divider></el-divider>
       <div id="paginate">
@@ -79,7 +79,7 @@ export default {
       category_id: "",
       category_name: "分类",
       count: 0,
-      loading: true
+      loading: true,
     };
   },
   mounted: function () {
@@ -114,6 +114,7 @@ export default {
       });
     },
     changePage(page) {
+      this.loading = true;
       request({
         method: "get",
         url: "note",
@@ -129,8 +130,7 @@ export default {
       });
     },
     initPage() {
-      this.category_id = '',
-      this.changePage(1);
+      (this.category_id = ""), this.changePage(1);
     },
     selectCategory(category) {
       this.category_id = category.id;
@@ -141,8 +141,8 @@ export default {
   computed: {
     isEmpty() {
       return this.notes.length == 0;
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -162,7 +162,7 @@ export default {
 .el-dropdown-link {
   color: #409eff;
 }
-#emptyStatus{
+#emptyStatus {
   text-align: center;
   color: #909399;
 }
