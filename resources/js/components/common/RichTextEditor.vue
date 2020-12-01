@@ -1,5 +1,5 @@
-<template>    
-    <div id="editor"></div>
+<template>
+  <div id="editor"></div>
 </template>
 
 <script>
@@ -13,26 +13,30 @@ export default {
   },
   mounted: function () {
     this.editor = new E("#editor");
+    this.editor.config.height = 500;
     this.editor.config.showLinkImg = false;
     this.editor.config.uploadImgServer = "/api/note/upload";
-    this.editor.config.uploadFileName = 'img';
+    this.editor.config.uploadFileName = "img";
     this.editor.config.zIndex = 1;
     this.editor.config.uploadImgMaxLength = 1;
     this.editor.create();
   },
   methods: {
-      getContent() {
-          return this.editor.txt.html();
-      },
-      setContent(content) {
-        this.editor.txt.html(content);
-      }
-  }
+    getContent() {
+      return this.editor.txt.html();
+    },
+    setContent(content) {
+      this.editor.txt.html(content);
+    },
+  },
 };
 </script>
 
-<style>
+<style lang="scss">
 #editor {
   width: 1200px;
+  img {
+    max-width: 100%;
+  }
 }
 </style>

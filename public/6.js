@@ -65,7 +65,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.box-card{\r\n  margin-bottom: 60px;\n}\n.item {\r\n  margin-bottom: 1em;\n}\n.item p {\r\n  margin-bottom: 0.2px;\n}\n.item span {\r\n  color: darkgrey;\n}\nimg{\r\n  display: inline-block;\r\n  max-width: 100%;\n}\r\n", ""]);
+exports.push([module.i, "\n.box-card{\r\n  margin-bottom: 60px;\n}\n.item {\r\n  margin-bottom: 1em;\n}\n.item p {\r\n  margin-bottom: 0.2px;\n}\n.item span {\r\n  color: darkgrey;\n}\nimg{\r\n  max-width: 100%;\n}\r\n", ""]);
 
 // exports
 

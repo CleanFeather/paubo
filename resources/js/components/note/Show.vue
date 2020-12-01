@@ -53,7 +53,6 @@ export default {
   color: darkgrey;
 }
 img{
-  display: inline-block;
   max-width: 100%;
 }
 </style>

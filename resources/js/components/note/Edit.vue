@@ -99,7 +99,7 @@ export default {
 
 <style lang="scss" scoped>
 .el-row {
-  margin-bottom: 10%;
+  margin-bottom: 20px;
   &:last-child {
     margin-bottom: 0;
   }
