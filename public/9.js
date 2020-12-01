@@ -173,7 +173,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "#editor {\n  width: 1200px;\n}\n#editor img {\n  max-width: 100%;\n}", ""]);
+exports.push([module.i, "#editor {\n  width: 100%;\n}\n#editor img {\n  max-width: 100%;\n}", ""]);
 
 // exports
 
@@ -405,7 +405,7 @@ var render = function() {
                             }
                           }
                         },
-                        [_vm._v("修改")]
+                        [_vm._v("补坑")]
                       )
                     ],
                     1

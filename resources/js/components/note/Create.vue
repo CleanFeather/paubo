@@ -26,7 +26,7 @@
             <RichTextEditor ref="content" />
           </el-form-item>
           <el-form-item>
-            <el-button @click.once="submit">创建</el-button>
+            <el-button @click.once="submit">填坑</el-button>
           </el-form-item>
         </el-form>
       </el-col>

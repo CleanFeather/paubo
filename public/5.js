@@ -253,7 +253,7 @@ var render = function() {
                     }
                   }
                 },
-                [_vm._v("笔记")]
+                [_vm._v("深坑")]
               ),
               _vm._v(" "),
               _c("el-divider", { attrs: { direction: "vertical" } }),
@@ -417,7 +417,7 @@ var render = function() {
                     0
                   )
                 : _c("div", { attrs: { id: "emptyStatus" } }, [
-                    _vm._v("笔记空空的，去创建吧~")
+                    _vm._v("深不见底，快去填吧~")
                   ])
             ]
           ),

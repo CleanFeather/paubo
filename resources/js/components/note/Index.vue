@@ -2,7 +2,7 @@
   <div id="main">
     <el-card class="box-card">
       <div slot="header" class="clearfix">
-        <span @click="initPage()">笔记</span>
+        <span @click="initPage()">深坑</span>
         <el-divider direction="vertical"></el-divider>
         <el-dropdown @command="selectCategory">
           <span class="el-dropdown-link">
@@ -53,7 +53,7 @@
             </span>
           </div>
         </div>
-        <div id="emptyStatus" v-else>笔记空空的，去创建吧~</div>
+        <div id="emptyStatus" v-else>深不见底，快去填吧~</div>
       </div>
       <el-divider></el-divider>
       <div id="paginate">

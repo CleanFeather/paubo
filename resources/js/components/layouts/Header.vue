@@ -3,9 +3,19 @@
     <el-menu
       :default-active="activeIndex"
       mode="horizontal"
+      @select="clickMenu"
     >
-      <el-menu-item v-for="(item,index) in menu" :key="index" :index="index.toString()" v-show="$store.state.auth.status">
-        <router-link :to="{ name: item.route }">{{ item.title }}</router-link>
+      <el-menu-item
+        id="menu"
+        v-for="(item, index) in menu"
+        :key="index"
+        :index="index.toString()"
+        v-show="$store.state.auth.status"
+      >
+        <router-link
+          :to="{ name: item.route }"
+          v-html="item.title"
+        ></router-link>
       </el-menu-item>
       <p id="auth" style="float: right">
         <span v-if="$store.state.auth.status">
@@ -24,14 +34,18 @@
 </template>
 
 <script>
-import {request} from '../../network/request';
+import { request } from "../../network/request";
 
 export default {
   data() {
     return {
       menu: [
         {
-          title: "填坑笔记",
+          title: "<i class='el-icon-s-home'></i>",
+          route: "home",
+        },
+        {
+          title: "<i class='el-icon-notebook-2'></i>",
           route: "note",
         },
       ],
@@ -41,23 +55,28 @@ export default {
   methods: {
     logout() {
       request({
-        method: 'delete',
-        url: 'logout'
-      }).then(response => {
-        this.$store.commit('setStatus',false);
-        this.$router.push({name: 'login'});
-      })
+        method: "delete",
+        url: "logout",
+      }).then((response) => {
+        this.$store.commit("setStatus", false);
+        this.$router.push({ name: "login" });
+      });
+    },
+    clickMenu(key) {
+      document.getElementsByTagName("a")[key].click();
     },
   },
-  mounted: function (){
-    
-  }
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 #auth {
   line-height: 60px;
   margin-bottom: 0;
+}
+#menu {
+  i {
+    font-size: 25px;
+  }
 }
 </style>

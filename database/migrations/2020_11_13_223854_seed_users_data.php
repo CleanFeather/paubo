@@ -34,6 +34,11 @@ class SeedUsersData extends Migration
             ],
         ];
         DB::table('users')->insert($users);
+        DB::table('partners')->insert([
+            'boy_uid' => 1,
+            'girl_uid' => 2,
+            'bind_time' => Carbon::now(),
+        ]);
     }
 
     /**
