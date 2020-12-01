@@ -1,7 +1,6 @@
 import axios from 'axios';
 
 export const request = config => {
-    console.log(this);
     let instance = axios.create({
         baseURL: '/api',
         timeout: 5000,
@@ -9,8 +8,8 @@ export const request = config => {
             'Authorization': localStorage.getItem('access_token')
         }
     })
-    instance.interceptors.response.use(response => {
-        if ('authorization' in response.headers) {
+    instance.interceptors.response.use(response => {console.log(response.headers);
+        if ('authorization' in response.headers) {console.log('enter');
             localStorage.setItem('access_token', response.headers.authorization);
         }
         return response;

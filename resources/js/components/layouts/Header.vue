@@ -50,7 +50,7 @@ export default {
     },
   },
   mounted: function (){
-    console.log(this.$store.state.auth.status);
+    
   }
 };
 </script>

@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 // 测试
 Route::any('test', function () {
-    return auth('api')->user()->note()->with(['user','category'])->get();
+    return auth('api')->user();
 })->middleware('auth.token');
 
 // 用户操作
@@ -51,10 +51,10 @@ Route::namespace('Note')->middleware('auth.token')->group(function (){
         // 删除笔记
         Route::delete('/','NoteController@delete')->name('note.delete');
         // 上传图片
-        Route::post('upload','NoteController@upload')->withoutMiddleware('auth.token')->name('note.upload');
+        Route::post('upload','NoteController@upload')->name('note.upload')->withoutMiddleware('auth.token');
         // 笔记
         Route::prefix('category')->group(function (){
-            Route::get('/','CategoryController@index')->name('note.category.index');
+            Route::get('/','CategoryController@index')->name('note.category.index')->withoutMiddleware('auth.token');
         });
     });
 });

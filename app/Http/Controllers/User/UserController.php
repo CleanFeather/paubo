@@ -23,7 +23,7 @@ class UserController extends Controller
     {
         if (!$another = $user->query()->where([
             'phone' => $request->phone,
-            'gender' => !$request->user()->gender
+            'gender' => !auth('api')->user()->gender
         ])->first()) {
             abort(403, '无效的用户');
         }
@@ -32,11 +32,11 @@ class UserController extends Controller
         })->first()) {
             abort(403, '人家已经有心上人了');
         }
-        if ($request->user()->gender) {
-            $boy_uid = $request->user()->id;
+        if (auth('api')->user()->gender) {
+            $boy_uid = auth('api')->user()->id;
             $girl_uid = $another->id;
         } else {
-            $girl_uid = $request->user()->id;
+            $girl_uid = auth('api')->user()->id;
             $boy_uid = $another->id;
         }
         $partner->query()->create([

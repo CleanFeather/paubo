@@ -15,7 +15,7 @@ class NoteController extends Controller
 {
     public function index(IndexNoteRequest $request)
     {
-        $query = $request->user()->note();
+        $query = auth('api')->user()->note();
         if ($request->filled('category_id')){
             $query->where('category_id',$request->category_id);
         }
@@ -40,7 +40,7 @@ class NoteController extends Controller
     public function store(CreateNoteRequest $request, Note $note)
     {
         $params = $request->all();
-        $params['user_id'] = $request->user()->id;
+        $params['user_id'] = auth('api')->user()->id;
         $note->query()->create($params);
         return response()->json(['message' => 'success']);
     }

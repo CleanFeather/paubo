@@ -3801,9 +3801,7 @@ __webpack_require__.r(__webpack_exports__);
       });
     }
   },
-  mounted: function mounted() {
-    console.log(this.$store.state.auth.status);
-  }
+  mounted: function mounted() {}
 });
 
 /***/ }),
@@ -99681,11 +99679,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "request", function() { return request; });
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-var _this = undefined;
-
 
 var request = function request(config) {
-  console.log(_this);
   var instance = axios__WEBPACK_IMPORTED_MODULE_0___default.a.create({
     baseURL: '/api',
     timeout: 5000,
@@ -99694,7 +99689,10 @@ var request = function request(config) {
     }
   });
   instance.interceptors.response.use(function (response) {
+    console.log(response.headers);
+
     if ('authorization' in response.headers) {
+      console.log('enter');
       localStorage.setItem('access_token', response.headers.authorization);
     }
 
