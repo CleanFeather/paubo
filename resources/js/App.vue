@@ -64,8 +64,8 @@ html{
   min-height: 100%;
 }
 footer {
-  position: absolute;
-  padding: 0 !important;
+  position: fixed;
+  padding: 0;
   bottom: 0;
   left: 0;
   right: 0;

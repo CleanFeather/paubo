@@ -38,14 +38,8 @@ export default {
 </script>
 
 <style>
-/* #main {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-} */
-.box-card {
-  width: 1200px;
-  margin-top: 20px;
+.box-card{
+  margin-bottom: 60px;
 }
 .item {
   margin-bottom: 1em;
@@ -55,10 +49,6 @@ export default {
 }
 .item span {
   color: darkgrey;
-}
-#content{
-  overflow: scroll;
-  height: 800px;
 }
 img{
   display: inline-block;

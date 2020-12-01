@@ -5659,7 +5659,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, "body[data-v-f348271a] {\n  margin: 0;\n  padding: 0;\n}\nhtml[data-v-f348271a] {\n  position: relative;\n  width: 100%;\n  min-height: 100%;\n}\nfooter[data-v-f348271a] {\n  position: absolute;\n  padding: 0 !important;\n  bottom: 0;\n  left: 0;\n  right: 0;\n}", ""]);
+exports.push([module.i, "body[data-v-f348271a] {\n  margin: 0;\n  padding: 0;\n}\nhtml[data-v-f348271a] {\n  position: relative;\n  width: 100%;\n  min-height: 100%;\n}\nfooter[data-v-f348271a] {\n  position: fixed;\n  padding: 0;\n  bottom: 0;\n  left: 0;\n  right: 0;\n}", ""]);
 
 // exports
 
