@@ -11,10 +11,23 @@
     </el-row>
     <el-row :gutter="20">
       <el-col class="middle-col" :span="16">
-        <el-card shadow="hover" body-style="padding: 10px" class="middle-content" id="abstract" @click.native="initAbstract()">{{ abstract }}</el-card>
+        <el-card
+          shadow="hover"
+          body-style="padding: 10px"
+          class="middle-content"
+          id="abstract"
+          @click.native="initAbstract()"
+        >
+          <span style="white-space: pre">{{ abstract }}</span>
+        </el-card>
       </el-col>
       <el-col class="middle-col" :span="8">
-        <el-card shadow="none" class="middle-content" id="operate">
+        <el-card
+          shadow="none"
+          body-style="width:100%;height:100%;display: flex;align-items: center;justify-content: space-around;"
+          class="middle-content"
+          id="operate"
+        >
           <el-dropdown>
             <el-button type="primary" size="medium">
               画集类目<i class="el-icon-arrow-down el-icon--right"></i>
@@ -41,7 +54,7 @@ export default {
     return {
       abstract: "",
       abstract_index: 0,
-      interval: null
+      interval: null,
     };
   },
   mounted: function () {
@@ -57,7 +70,7 @@ export default {
       clearInterval(this.interval);
       this.abstract_index = 0;
       this.interval = setInterval(this.showAbstract, 200);
-    }
+    },
   },
 };
 </script>
@@ -77,14 +90,8 @@ export default {
 }
 #abstract {
   font-size: 14px;
-  white-space: pre;
   color: #99a9bf;
   padding: 10px;
-}
-#operate{
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
 }
 .el-carousel__item h3 {
   color: #475669;

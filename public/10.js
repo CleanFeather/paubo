@@ -46,6 +46,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -84,7 +97,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".el-row[data-v-577bd1d2] {\n  margin-bottom: 20px;\n}\n.el-row[data-v-577bd1d2]:last-child {\n  margin-bottom: 0;\n}\n.middle-content[data-v-577bd1d2] {\n  height: 100%;\n}\n.middle-col[data-v-577bd1d2] {\n  height: 100px;\n}\n#abstract[data-v-577bd1d2] {\n  font-size: 14px;\n  white-space: pre;\n  color: #99a9bf;\n  padding: 10px;\n}\n#operate[data-v-577bd1d2] {\n  display: flex;\n  align-items: center;\n  justify-content: space-around;\n}\n.el-carousel__item h3[data-v-577bd1d2] {\n  color: #475669;\n  font-size: 14px;\n  opacity: 0.75;\n  line-height: 200px;\n  margin: 0;\n}\n.el-carousel__item[data-v-577bd1d2]:nth-child(2n) {\n  background-color: #99a9bf;\n}\n.el-carousel__item[data-v-577bd1d2]:nth-child(2n+1) {\n  background-color: #d3dce6;\n}", ""]);
+exports.push([module.i, ".el-row[data-v-577bd1d2] {\n  margin-bottom: 20px;\n}\n.el-row[data-v-577bd1d2]:last-child {\n  margin-bottom: 0;\n}\n.middle-content[data-v-577bd1d2] {\n  height: 100%;\n}\n.middle-col[data-v-577bd1d2] {\n  height: 100px;\n}\n#abstract[data-v-577bd1d2] {\n  font-size: 14px;\n  color: #99a9bf;\n  padding: 10px;\n}\n.el-carousel__item h3[data-v-577bd1d2] {\n  color: #475669;\n  font-size: 14px;\n  opacity: 0.75;\n  line-height: 200px;\n  margin: 0;\n}\n.el-carousel__item[data-v-577bd1d2]:nth-child(2n) {\n  background-color: #99a9bf;\n}\n.el-carousel__item[data-v-577bd1d2]:nth-child(2n+1) {\n  background-color: #d3dce6;\n}", ""]);
 
 // exports
 
@@ -187,7 +200,11 @@ var render = function() {
                     }
                   }
                 },
-                [_vm._v(_vm._s(_vm.abstract))]
+                [
+                  _c("span", { staticStyle: { "white-space": "pre" } }, [
+                    _vm._v(_vm._s(_vm.abstract))
+                  ])
+                ]
               )
             ],
             1
@@ -201,7 +218,12 @@ var render = function() {
                 "el-card",
                 {
                   staticClass: "middle-content",
-                  attrs: { shadow: "none", id: "operate" }
+                  attrs: {
+                    shadow: "none",
+                    "body-style":
+                      "width:100%;height:100%;display: flex;align-items: center;justify-content: space-around;",
+                    id: "operate"
+                  }
                 },
                 [
                   _c(
