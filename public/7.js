@@ -96,7 +96,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".input-normal-width[data-v-67f5c210] {\n  width: 200px;\n}\n#main[data-v-67f5c210] {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  height: 740px;\n}", ""]);
+exports.push([module.i, ".input-normal-width[data-v-67f5c210] {\n  width: 200px;\n}\n#main[data-v-67f5c210] {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  margin-top: 18%;\n}", ""]);
 
 // exports
 

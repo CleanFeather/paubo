@@ -44,6 +44,12 @@ const routes = [
         props: true
     },
     {
+        name: 'album',
+        path: '/album',
+        component: imp('album/Index'),
+        props: true
+    },
+    {
         name: 'test',
         path: '/test',
         component: imp('common/RichTextEditor'),

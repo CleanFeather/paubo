@@ -41,12 +41,16 @@ export default {
     return {
       menu: [
         {
-          title: "<i class='el-icon-s-home'></i>",
+          title: "<i class='el-icon-house'></i>",
           route: "home",
         },
         {
           title: "<i class='el-icon-notebook-2'></i>",
           route: "note",
+        },
+        {
+          title: "<i class='el-icon-picture-outline'></i>",
+          route: "album",
         },
       ],
       activeIndex: "",
@@ -77,6 +81,9 @@ export default {
 #menu {
   i {
     font-size: 25px;
+    &:hover{
+      color: #3490dc;
+    }
   }
 }
 </style>

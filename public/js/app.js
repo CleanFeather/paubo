@@ -3789,11 +3789,14 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       menu: [{
-        title: "<i class='el-icon-s-home'></i>",
+        title: "<i class='el-icon-house'></i>",
         route: "home"
       }, {
         title: "<i class='el-icon-notebook-2'></i>",
         route: "note"
+      }, {
+        title: "<i class='el-icon-picture-outline'></i>",
+        route: "album"
       }],
       activeIndex: ""
     };
@@ -5712,7 +5715,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "#auth {\n  line-height: 60px;\n  margin-bottom: 0;\n}\n#menu i {\n  font-size: 25px;\n}", ""]);
+exports.push([module.i, "#auth {\n  line-height: 60px;\n  margin-bottom: 0;\n}\n#menu i {\n  font-size: 25px;\n}\n#menu i:hover {\n  color: #3490dc;\n}", ""]);
 
 // exports
 
@@ -99340,6 +99343,30 @@ var map = {
 		"./resources/js/components/Home.vue",
 		3
 	],
+	"./album/Create": [
+		"./resources/js/components/album/Create.vue",
+		9
+	],
+	"./album/Create.vue": [
+		"./resources/js/components/album/Create.vue",
+		9
+	],
+	"./album/Edit": [
+		"./resources/js/components/album/Edit.vue",
+		11
+	],
+	"./album/Edit.vue": [
+		"./resources/js/components/album/Edit.vue",
+		11
+	],
+	"./album/Index": [
+		"./resources/js/components/album/Index.vue",
+		10
+	],
+	"./album/Index.vue": [
+		"./resources/js/components/album/Index.vue",
+		10
+	],
 	"./common/RichTextEditor": [
 		"./resources/js/components/common/RichTextEditor.vue",
 		0,
@@ -99381,12 +99408,12 @@ var map = {
 	"./note/Edit": [
 		"./resources/js/components/note/Edit.vue",
 		0,
-		9
+		2
 	],
 	"./note/Edit.vue": [
 		"./resources/js/components/note/Edit.vue",
 		0,
-		9
+		2
 	],
 	"./note/Index": [
 		"./resources/js/components/note/Index.vue",
@@ -99791,6 +99818,11 @@ var routes = [{
   name: 'note.show',
   path: '/note/:note_id',
   component: imp('note/Show'),
+  props: true
+}, {
+  name: 'album',
+  path: '/album',
+  component: imp('album/Index'),
   props: true
 }, {
   name: 'test',
