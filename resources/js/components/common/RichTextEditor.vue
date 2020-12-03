@@ -34,7 +34,7 @@ export default {
 
 <style lang="scss">
 #editor {
-  width: 100%;
+  width: 90%;
   img {
     max-width: 100%;
   }

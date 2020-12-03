@@ -18,13 +18,14 @@
       <el-form-item>
         <el-upload
           class="avatar-uploader"
-          action="https://jsonplaceholder.typicode.com/posts/"
+          action=""
           ref="upload"
           :data="form"
           :auto-upload="false"
           :show-file-list="false"
           :on-change="imgChange"
           :before-upload="beforeUpload"
+          :http-request="XmlRequest"
         >
           <img v-if="imageUrl" :src="imageUrl" class="avatar" />
           <i v-else class="el-icon-plus avatar-uploader-icon"></i>
@@ -42,6 +43,8 @@
 </template>
 
 <script>
+import {request} from '../../network/request';
+
 export default {
   data() {
     return {
@@ -79,6 +82,16 @@ export default {
         this.$message.error("上传头像图片大小不能超过 2MB!");
       }
       return isImg && isLt2M;
+    },
+    XmlRequest(file) {console.log(file);
+      this.form.file = file.file;
+      request({
+        method: 'post',
+        url: 'album',
+        data: this.form
+      }).then(response => {
+        console.log(response.data);
+      });
     },
     upload() {
       this.$refs.upload.submit();

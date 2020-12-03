@@ -120,7 +120,7 @@ __webpack_require__.r(__webpack_exports__);
 
       Object(_network_request__WEBPACK_IMPORTED_MODULE_1__["request"])({
         method: "post",
-        url: "note/store",
+        url: "note",
         data: {
           title: this.title,
           content: this.$refs.content.getContent(),
@@ -157,7 +157,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "#editor {\n  width: 100%;\n}\n#editor img {\n  max-width: 100%;\n}", ""]);
+exports.push([module.i, "#editor {\n  width: 90%;\n}\n#editor img {\n  max-width: 100%;\n}", ""]);
 
 // exports
 

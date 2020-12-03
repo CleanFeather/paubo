@@ -61,7 +61,7 @@ export default {
     submit() {
       request({
         method: "post",
-        url: "note/store",
+        url: "note",
         data: {
           title: this.title,
           content: this.$refs.content.getContent(),

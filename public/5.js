@@ -56,7 +56,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "#editor {\n  width: 100%;\n}\n#editor img {\n  max-width: 100%;\n}", ""]);
+exports.push([module.i, "#editor {\n  width: 90%;\n}\n#editor img {\n  max-width: 100%;\n}", ""]);
 
 // exports
 

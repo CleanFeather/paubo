@@ -9,6 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _network_request__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../network/request */ "./resources/js/network/request.js");
 //
 //
 //
@@ -52,6 +53,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -88,6 +91,17 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       return isImg && isLt2M;
+    },
+    XmlRequest: function XmlRequest(file) {
+      console.log(file);
+      this.form.file = file.file;
+      Object(_network_request__WEBPACK_IMPORTED_MODULE_0__["request"])({
+        method: 'post',
+        url: 'album',
+        data: this.form
+      }).then(function (response) {
+        console.log(response.data);
+      });
     },
     upload: function upload() {
       this.$refs.upload.submit();
@@ -371,12 +385,13 @@ var render = function() {
                   ref: "upload",
                   staticClass: "avatar-uploader",
                   attrs: {
-                    action: "https://jsonplaceholder.typicode.com/posts/",
+                    action: "",
                     data: _vm.form,
                     "auto-upload": false,
                     "show-file-list": false,
                     "on-change": _vm.imgChange,
-                    "before-upload": _vm.beforeUpload
+                    "before-upload": _vm.beforeUpload,
+                    "http-request": _vm.XmlRequest
                   }
                 },
                 [

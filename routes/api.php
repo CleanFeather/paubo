@@ -45,7 +45,7 @@ Route::namespace('Note')->middleware('auth.token')->group(function (){
         // 笔记详情
         Route::get('show','NoteController@show')->name('note.show');
         // 创建笔记
-        Route::post('store','NoteController@store')->name('note.store');
+        Route::post('/','NoteController@store')->name('note.store');
         // 修改笔记
         Route::put('/','NoteController@update')->name('note.update');
         // 删除笔记
@@ -56,5 +56,12 @@ Route::namespace('Note')->middleware('auth.token')->group(function (){
         Route::prefix('category')->group(function (){
             Route::get('/','CategoryController@index')->name('note.category.index')->withoutMiddleware('auth.token');
         });
+    });
+});
+
+// 画册
+Route::namespace('Album')->middleware('auth.token')->group(function (){
+    Route::prefix('album')->group(function (){
+        Route::post('/','AlbumController@store')->name('album.store');
     });
 });
