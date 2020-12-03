@@ -51,6 +51,14 @@ class SeedCategoryData extends Migration
                 'name' => 'linux',
                 'type' => 'note',
             ],
+            [
+                'name' => '绘画',
+                'type' => 'album'
+            ],
+            [
+                'name' => '照片',
+                'type' => 'album'
+            ]
         ];
         DB::table('categories')->insert($categories);
     }

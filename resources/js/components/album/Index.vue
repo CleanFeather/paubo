@@ -30,13 +30,22 @@
         >
           <el-dropdown>
             <el-button type="primary" size="medium">
-              画集类目<i class="el-icon-arrow-down el-icon--right"></i>
+              作品类目<i class="el-icon-arrow-down el-icon--right"></i>
             </el-button>
             <el-dropdown-menu slot="dropdown">
               <el-dropdown-item>绘画</el-dropdown-item>
             </el-dropdown-menu>
           </el-dropdown>
-          <el-button type="primary" size="medium">上传绘画</el-button>
+          <el-button type="primary" size="medium" @click="drawer = true">
+            上传作品
+          </el-button>
+          <el-drawer
+            title="上传"
+            :visible.sync="drawer"
+            :with-header="false"
+          >
+            <Drawer />
+          </el-drawer>
         </el-card>
       </el-col>
     </el-row>
@@ -49,12 +58,15 @@
 </template>
 
 <script>
+import Drawer from './Create';
+
 export default {
   data() {
     return {
       abstract: "",
       abstract_index: 0,
       interval: null,
+      drawer: false
     };
   },
   mounted: function () {
@@ -72,6 +84,9 @@ export default {
       this.interval = setInterval(this.showAbstract, 200);
     },
   },
+  components: {
+    Drawer,
+  }
 };
 </script>
 

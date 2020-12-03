@@ -15,7 +15,12 @@ class CreateAlbumsTable extends Migration
     {
         Schema::create('albums', function (Blueprint $table) {
             $table->id();
-            // $table->string('name')->nullable()->
+            $table->string('name')->index()->comment('作品名称');
+            $table->bigInteger('category_id')->index()->comment('作品分类');
+            $table->tinyInteger('star')->index()->comment('作品评分');
+            $table->bigInteger('user_id')->index()->comment('作者uid');
+            $table->string('url')->comment('作品上传地址');
+            $table->index(['category_id','user_id','star']);
             $table->timestamps();
         });
     }

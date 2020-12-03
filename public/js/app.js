@@ -99345,11 +99345,11 @@ var map = {
 	],
 	"./album/Create": [
 		"./resources/js/components/album/Create.vue",
-		9
+		10
 	],
 	"./album/Create.vue": [
 		"./resources/js/components/album/Create.vue",
-		9
+		10
 	],
 	"./album/Edit": [
 		"./resources/js/components/album/Edit.vue",
@@ -99361,21 +99361,21 @@ var map = {
 	],
 	"./album/Index": [
 		"./resources/js/components/album/Index.vue",
-		10
+		4
 	],
 	"./album/Index.vue": [
 		"./resources/js/components/album/Index.vue",
-		10
+		4
 	],
 	"./common/RichTextEditor": [
 		"./resources/js/components/common/RichTextEditor.vue",
 		0,
-		4
+		5
 	],
 	"./common/RichTextEditor.vue": [
 		"./resources/js/components/common/RichTextEditor.vue",
 		0,
-		4
+		5
 	],
 	"./layouts/Footer": [
 		"./resources/js/components/layouts/Footer.vue"
@@ -99417,35 +99417,35 @@ var map = {
 	],
 	"./note/Index": [
 		"./resources/js/components/note/Index.vue",
-		5
+		6
 	],
 	"./note/Index.vue": [
 		"./resources/js/components/note/Index.vue",
-		5
+		6
 	],
 	"./note/Show": [
 		"./resources/js/components/note/Show.vue",
-		6
+		7
 	],
 	"./note/Show.vue": [
 		"./resources/js/components/note/Show.vue",
-		6
+		7
 	],
 	"./user/Login": [
 		"./resources/js/components/user/Login.vue",
-		7
+		8
 	],
 	"./user/Login.vue": [
 		"./resources/js/components/user/Login.vue",
-		7
+		8
 	],
 	"./user/Register": [
 		"./resources/js/components/user/Register.vue",
-		8
+		9
 	],
 	"./user/Register.vue": [
 		"./resources/js/components/user/Register.vue",
-		8
+		9
 	]
 };
 function webpackAsyncContext(req) {
