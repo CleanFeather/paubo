@@ -99369,6 +99369,14 @@ var map = {
 		5,
 		12
 	],
+	"./common/PictureCard": [
+		"./resources/js/components/common/PictureCard.vue",
+		1
+	],
+	"./common/PictureCard.vue": [
+		"./resources/js/components/common/PictureCard.vue",
+		1
+	],
 	"./common/RichTextEditor": [
 		"./resources/js/components/common/RichTextEditor.vue",
 		0,

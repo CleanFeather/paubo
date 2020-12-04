@@ -99,7 +99,10 @@ export default {
         },
         data: formData,
       }).then((response) => {
-        console.log(response.data);
+        this.$message({
+          type: "success",
+          message: "上传成功",
+        });
       });
     },
     upload() {

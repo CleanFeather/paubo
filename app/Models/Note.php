@@ -7,7 +7,7 @@ use Illuminate\Support\Carbon;
 
 class Note extends Model
 {
-    protected $fillable = ['title','content','user_id','category_id'];
+    protected $fillable = ['title','content','category_id'];
 
     protected $appends = ['user_name','category_name'];
 

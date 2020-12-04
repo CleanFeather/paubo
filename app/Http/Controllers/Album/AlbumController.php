@@ -4,13 +4,26 @@ namespace App\Http\Controllers\Album;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Album\CreateAlbumRequest;
+use App\Http\Requests\Album\IndexAlbumRequest;
+use App\Library\Upload;
+use App\Models\Album;
 use Illuminate\Http\Request;
 
 class AlbumController extends Controller
 {
-    public function store(CreateAlbumRequest $request)
+    public function index(IndexAlbumRequest $request,Album $album)
     {
-        $file = $request->file('file');
-        var_dump($file);
+        return $album->query()->get();
+    }
+
+    public function store(CreateAlbumRequest $request,Album $album)
+    {
+        $album->name = $request->name;
+        $album->category_id = $request->category_id;
+        $album->star = $request->star;
+        $album->user_id = auth('api')->user()->id;
+        $album->url = app(Upload::class)->upload($request->file,'album');
+        $album->save();
+        return response()->json(['message' => 'success'],201);
     }
 }

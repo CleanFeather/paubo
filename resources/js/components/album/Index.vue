@@ -39,11 +39,7 @@
           <el-button type="primary" size="medium" @click="drawer = true">
             上传作品
           </el-button>
-          <el-drawer
-            title="上传"
-            :visible.sync="drawer"
-            :with-header="false"
-          >
+          <el-drawer title="上传" :visible.sync="drawer" :with-header="false">
             <Drawer />
           </el-drawer>
         </el-card>
@@ -51,14 +47,17 @@
     </el-row>
     <el-row>
       <el-col :span="24">
-        <div class="middle-content">下</div>
+        <div class="middle-content">
+          <PictureCard />
+        </div>
       </el-col>
     </el-row>
   </div>
 </template>
 
 <script>
-import Drawer from './Create';
+import Drawer from "./Create";
+import PictureCard from "../common/PictureCard";
 
 export default {
   data() {
@@ -66,7 +65,7 @@ export default {
       abstract: "",
       abstract_index: 0,
       interval: null,
-      drawer: false
+      drawer: false,
     };
   },
   mounted: function () {
@@ -86,7 +85,8 @@ export default {
   },
   components: {
     Drawer,
-  }
+    PictureCard,
+  },
 };
 </script>
 

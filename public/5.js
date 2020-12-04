@@ -97,6 +97,8 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     formRequest: function formRequest(file) {
+      var _this = this;
+
       var formData = new FormData();
       formData.append("file", file.file);
       formData.append("name", this.form.name);
@@ -110,7 +112,10 @@ __webpack_require__.r(__webpack_exports__);
         },
         data: formData
       }).then(function (response) {
-        console.log(response.data);
+        _this.$message({
+          type: "success",
+          message: "上传成功"
+        });
       });
     },
     upload: function upload() {

@@ -39,10 +39,12 @@ class NoteController extends Controller
 
     public function store(CreateNoteRequest $request, Note $note)
     {
-        $params = $request->all();
-        $params['user_id'] = auth('api')->user()->id;
-        $note->query()->create($params);
-        return response()->json(['message' => 'success']);
+        $note->title = $request->title;
+        $note->content = $request->content;
+        $note->category_id = $request->category_id;
+        $note->user_id = auth('api')->user()->id;
+        $note->save();
+        return response()->json(['message' => 'success'],201);
     }
 
     public function update(UpdateNoteRequest $request, Note $note)

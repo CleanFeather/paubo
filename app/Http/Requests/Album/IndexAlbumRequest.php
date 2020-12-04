@@ -4,7 +4,7 @@ namespace App\Http\Requests\Album;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateAlbumRequest extends FormRequest
+class IndexAlbumRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,10 +24,7 @@ class CreateAlbumRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string',
-            'category_id' => 'required|integer',
-            'star' => 'required|between:0,5',
-            'file' => 'required|file'
+            //
         ];
     }
 }
