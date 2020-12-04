@@ -54,7 +54,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -77,15 +76,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     imgChange: function imgChange(file, fileList) {
-      if (fileList.length > 0) {
-        this.fileList = [fileList[fileList.length - 1]];
-      }
-
-      this.imageUrl = URL.createObjectURL(file.raw);
-    },
-    beforeUpload: function beforeUpload(file) {
       var allowFileType = ["image/jpeg", "image/png", "image/gif"];
-      var isImg = allowFileType.indexOf(file.type) >= 0 ? true : false;
+      var isImg = allowFileType.indexOf(file.raw.type) >= 0 ? true : false;
       var isLt2M = file.size / 1024 / 1024 < 2;
 
       if (!isImg) {
@@ -96,13 +88,22 @@ __webpack_require__.r(__webpack_exports__);
         this.$message.error("上传头像图片大小不能超过 2MB!");
       }
 
-      return isImg && isLt2M;
+      if (isImg && isLt2M) {
+        if (fileList.length > 0) {
+          this.fileList = [fileList[fileList.length - 1]];
+        }
+
+        this.imageUrl = URL.createObjectURL(file.raw);
+      } else {
+        this.fileList = [];
+      }
     },
-    XmlRequest: function XmlRequest(file) {
-      this.form.file = file.file;
+    formRequest: function formRequest(file) {
+      var formData = new FormData();
+      formData.append('file');
       Object(_network_request__WEBPACK_IMPORTED_MODULE_0__["request"])({
-        method: 'post',
-        url: 'album',
+        method: "post",
+        url: "album",
         data: this.form
       }).then(function (response) {
         console.log(response.data);
@@ -396,8 +397,7 @@ var render = function() {
                     "auto-upload": false,
                     "show-file-list": false,
                     "on-change": _vm.imgChange,
-                    "before-upload": _vm.beforeUpload,
-                    "http-request": _vm.XmlRequest
+                    "http-request": _vm.formRequest
                   }
                 },
                 [

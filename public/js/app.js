@@ -99361,11 +99361,13 @@ var map = {
 	],
 	"./album/Index": [
 		"./resources/js/components/album/Index.vue",
-		1
+		5,
+		12
 	],
 	"./album/Index.vue": [
 		"./resources/js/components/album/Index.vue",
-		1
+		5,
+		12
 	],
 	"./common/RichTextEditor": [
 		"./resources/js/components/common/RichTextEditor.vue",

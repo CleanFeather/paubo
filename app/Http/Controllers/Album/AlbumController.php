@@ -10,6 +10,7 @@ class AlbumController extends Controller
 {
     public function store(CreateAlbumRequest $request)
     {
-        return 'success';
+        $file = $request->file('file');
+        var_dump($file);
     }
 }

@@ -25,8 +25,7 @@
           :auto-upload="false"
           :show-file-list="false"
           :on-change="imgChange"
-          :before-upload="beforeUpload"
-          :http-request="XmlRequest"
+          :http-request="formRequest"
         >
           <img v-if="imageUrl" :src="imageUrl" class="avatar" />
           <i v-else class="el-icon-plus avatar-uploader-icon"></i>
@@ -44,7 +43,7 @@
 </template>
 
 <script>
-import {request} from '../../network/request';
+import { request } from "../../network/request";
 
 export default {
   data() {
@@ -65,36 +64,41 @@ export default {
         },
       ],
       imageUrl: "",
-      fileList: []
-    }
+      fileList: [],
+    };
   },
   methods: {
-    imgChange(file,fileList) {
-      if (fileList.length > 0){
-        this.fileList = [fileList[fileList.length - 1]];
-      }
-      this.imageUrl = URL.createObjectURL(file.raw);
-    },
-    beforeUpload(file) {
+    imgChange(file, fileList) {
       const allowFileType = ["image/jpeg", "image/png", "image/gif"];
-      const isImg = allowFileType.indexOf(file.type) >= 0 ? true : false;
+      const isImg = allowFileType.indexOf(file.raw.type) >= 0 ? true : false;
       const isLt2M = file.size / 1024 / 1024 < 2;
-
       if (!isImg) {
         this.$message.error("上传头像图片只能是图片格式!");
       }
       if (!isLt2M) {
         this.$message.error("上传头像图片大小不能超过 2MB!");
       }
-      return isImg && isLt2M;
+      if (isImg && isLt2M) {
+        if (fileList.length > 0) {
+          this.fileList = [fileList[fileList.length - 1]];
+        }
+        this.imageUrl = URL.createObjectURL(file.raw);
+      }
     },
-    XmlRequest(file) {
-      this.form.file = file.file;
+    formRequest(file) {
+      let formData = new FormData();
+      formData.append("file", file.file);
+      formData.append("name", this.form.name);
+      formData.append("category_id", this.form.category_id);
+      formData.append("star", this.form.star);
       request({
-        method: 'post',
-        url: 'album',
-        data: this.form
-      }).then(response => {
+        method: "post",
+        url: "album",
+        headers: {
+          "content-type": "multipart-data",
+        },
+        data: formData,
+      }).then((response) => {
         console.log(response.data);
       });
     },
@@ -132,7 +136,7 @@ export default {
   height: 178px;
   display: block;
 }
-.el-rate{
+.el-rate {
   display: inline;
 }
 </style>
