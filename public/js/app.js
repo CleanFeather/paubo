@@ -99337,19 +99337,19 @@ window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
 var map = {
 	"./Home": [
 		"./resources/js/components/Home.vue",
-		3
+		4
 	],
 	"./Home.vue": [
 		"./resources/js/components/Home.vue",
-		3
+		4
 	],
 	"./album/Create": [
 		"./resources/js/components/album/Create.vue",
-		10
+		5
 	],
 	"./album/Create.vue": [
 		"./resources/js/components/album/Create.vue",
-		10
+		5
 	],
 	"./album/Edit": [
 		"./resources/js/components/album/Edit.vue",
@@ -99361,21 +99361,21 @@ var map = {
 	],
 	"./album/Index": [
 		"./resources/js/components/album/Index.vue",
-		4
+		1
 	],
 	"./album/Index.vue": [
 		"./resources/js/components/album/Index.vue",
-		4
+		1
 	],
 	"./common/RichTextEditor": [
 		"./resources/js/components/common/RichTextEditor.vue",
 		0,
-		5
+		6
 	],
 	"./common/RichTextEditor.vue": [
 		"./resources/js/components/common/RichTextEditor.vue",
 		0,
-		5
+		6
 	],
 	"./layouts/Footer": [
 		"./resources/js/components/layouts/Footer.vue"
@@ -99398,54 +99398,54 @@ var map = {
 	"./note/Create": [
 		"./resources/js/components/note/Create.vue",
 		0,
-		1
+		2
 	],
 	"./note/Create.vue": [
 		"./resources/js/components/note/Create.vue",
 		0,
-		1
+		2
 	],
 	"./note/Edit": [
 		"./resources/js/components/note/Edit.vue",
 		0,
-		2
+		3
 	],
 	"./note/Edit.vue": [
 		"./resources/js/components/note/Edit.vue",
 		0,
-		2
+		3
 	],
 	"./note/Index": [
 		"./resources/js/components/note/Index.vue",
-		6
+		7
 	],
 	"./note/Index.vue": [
 		"./resources/js/components/note/Index.vue",
-		6
+		7
 	],
 	"./note/Show": [
 		"./resources/js/components/note/Show.vue",
-		7
+		8
 	],
 	"./note/Show.vue": [
 		"./resources/js/components/note/Show.vue",
-		7
+		8
 	],
 	"./user/Login": [
 		"./resources/js/components/user/Login.vue",
-		8
+		9
 	],
 	"./user/Login.vue": [
 		"./resources/js/components/user/Login.vue",
-		8
+		9
 	],
 	"./user/Register": [
 		"./resources/js/components/user/Register.vue",
-		9
+		10
 	],
 	"./user/Register.vue": [
 		"./resources/js/components/user/Register.vue",
-		9
+		10
 	]
 };
 function webpackAsyncContext(req) {

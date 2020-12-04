@@ -20,6 +20,7 @@
           class="avatar-uploader"
           action=""
           ref="upload"
+          :file-list="fileList"
           :data="form"
           :auto-upload="false"
           :show-file-list="false"
@@ -64,11 +65,15 @@ export default {
         },
       ],
       imageUrl: "",
-    };
+      fileList: []
+    }
   },
   methods: {
-    imgChange(res) {
-      this.imageUrl = URL.createObjectURL(res.raw);
+    imgChange(file,fileList) {
+      if (fileList.length > 0){
+        this.fileList = [fileList[fileList.length - 1]];
+      }
+      this.imageUrl = URL.createObjectURL(file.raw);
     },
     beforeUpload(file) {
       const allowFileType = ["image/jpeg", "image/png", "image/gif"];
@@ -83,7 +88,7 @@ export default {
       }
       return isImg && isLt2M;
     },
-    XmlRequest(file) {console.log(file);
+    XmlRequest(file) {
       this.form.file = file.file;
       request({
         method: 'post',
