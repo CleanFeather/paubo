@@ -24,7 +24,9 @@ class IndexAlbumRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'page' => 'required|integer',
+            'limit' => 'required|integer',
+            'masterpiece' => 'boolean',
         ];
     }
 }

@@ -1,22 +1,39 @@
 <template>
   <div id="main">
-    <el-row>
+    <el-row
+      class="infinite-list"
+      style="overflow: auto"
+      v-infinite-scroll="load"
+    >
       <el-col
-        :span="8"
-        v-for="(o,index) in 7"
-        :key="o"
+        class="infinite-list-item"
+        :span="6"
+        v-for="(item, index) in albums"
+        :key="index"
         :offset="getOffset(index)"
       >
         <el-card :body-style="{ padding: '10px' }">
-          <img
-            src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png"
-            class="image"
-          />
+          <div>
+            <el-image
+              :src="item.url"
+              fit="contain"
+              :preview-src-list="[item.url]"
+              class="image"
+              lazy
+            ></el-image>
+          </div>
           <div style="padding: 14px">
-            <span>好吃的汉堡</span>
+            <span>{{ item.name }}</span>
+            <span style="float:right">
+              <el-rate
+                v-model="item.star"
+                disabled
+                text-color="#ff9900"
+              >
+              </el-rate>
+            </span>
             <div class="bottom clearfix">
-              <time class="time">{{ currentDate }}</time>
-              <el-button type="text" class="button">操作按钮</el-button>
+              <time class="time">{{ item.created_at }}</time>
             </div>
           </div>
         </el-card>
@@ -26,21 +43,42 @@
 </template>
 
 <script>
+import { request } from "../../network/request";
+
 export default {
   data() {
     return {
-      currentDate: new Date(),
+      albums: [],
+      page: 1,
     };
   },
   computed: {
     getOffset() {
       return function (index) {
         let offset = 1;
-        if (index % 3 == 0) {
+        if (index % 4 == 0) {
           offset = 0;
         }
         return offset;
       };
+    },
+  },
+  methods: {
+    load() {
+      request({
+        method: "get",
+        url: "album",
+        params: {
+          page: this.page,
+          limit: 4,
+        },
+      }).then((response) => {
+        if (response.data.length > 0) {
+          this.empty_page = "";
+          this.page++;
+          this.albums = this.albums.concat(response.data);
+        }
+      });
     },
   },
 };
@@ -51,34 +89,26 @@ export default {
   font-size: 13px;
   color: #999;
 }
-
 .bottom {
   margin-top: 13px;
   line-height: 12px;
 }
-
 .button {
   padding: 0;
   float: right;
 }
-
 .image {
   width: 100%;
+  height: 300px;
   display: block;
 }
-.el-col{
-  width: 30.5%;
+.el-col {
+  width: 21.8%;
 }
-.el-card{
+.el-card {
   margin-bottom: 20px;
 }
-// .clearfix:before,
-// .clearfix:after {
-//   display: table;
-//   content: "";
-// }
-
-// .clearfix:after {
-//   clear: both;
-// }
+.infinite-list {
+  height: 1200px;
+}
 </style>

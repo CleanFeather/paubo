@@ -13,7 +13,11 @@ class AlbumController extends Controller
 {
     public function index(IndexAlbumRequest $request,Album $album)
     {
-        return $album->query()->get();
+        $query = $album->query();
+        if ($request->filled('masterpiece')){
+            $query->orderBydesc('star')->orderByDesc('created_at');
+        }
+        return $query->offset(($request->page-1)*$request->limit)->limit($request->limit)->get();
     }
 
     public function store(CreateAlbumRequest $request,Album $album)

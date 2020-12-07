@@ -103,10 +103,18 @@ export default {
           type: "success",
           message: "上传成功",
         });
+        this.initParams();
       });
     },
     upload() {
       this.$refs.upload.submit();
+    },
+    initParams() {
+      this.form.name = "";
+      this.form.category_id = "";
+      this.form.star = "";
+      this.imageUrl = "";
+      this.fileList = [];
     },
   },
 };

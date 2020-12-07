@@ -11,6 +11,7 @@
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Create__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Create */ "./resources/js/components/album/Create.vue");
 /* harmony import */ var _common_PictureCard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../common/PictureCard */ "./resources/js/components/common/PictureCard.vue");
+/* harmony import */ var _network_request__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../network/request */ "./resources/js/network/request.js");
 //
 //
 //
@@ -68,6 +69,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -76,11 +82,25 @@ __webpack_require__.r(__webpack_exports__);
       "abstract": "",
       abstract_index: 0,
       interval: null,
-      drawer: false
+      drawer: false,
+      masterpiece: []
     };
   },
   mounted: function mounted() {
+    var _this = this;
+
     this.initAbstract();
+    Object(_network_request__WEBPACK_IMPORTED_MODULE_2__["request"])({
+      method: "get",
+      url: "album",
+      params: {
+        page: 1,
+        limit: 3,
+        masterpiece: 1
+      }
+    }).then(function (response) {
+      _this.masterpiece = response.data;
+    });
   },
   methods: {
     showAbstract: function showAbstract() {
@@ -110,6 +130,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _network_request__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../network/request */ "./resources/js/network/request.js");
 //
 //
 //
@@ -137,10 +158,29 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      currentDate: new Date()
+      albums: [],
+      page: 1
     };
   },
   computed: {
@@ -148,12 +188,32 @@ __webpack_require__.r(__webpack_exports__);
       return function (index) {
         var offset = 1;
 
-        if (index % 3 == 0) {
+        if (index % 4 == 0) {
           offset = 0;
         }
 
         return offset;
       };
+    }
+  },
+  methods: {
+    load: function load() {
+      var _this = this;
+
+      Object(_network_request__WEBPACK_IMPORTED_MODULE_0__["request"])({
+        method: "get",
+        url: "album",
+        params: {
+          page: this.page,
+          limit: 4
+        }
+      }).then(function (response) {
+        if (response.data.length > 0) {
+          _this.empty_page = "";
+          _this.page++;
+          _this.albums = _this.albums.concat(response.data);
+        }
+      });
     }
   }
 });
@@ -172,7 +232,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".el-row[data-v-577bd1d2] {\n  margin-bottom: 20px;\n}\n.el-row[data-v-577bd1d2]:last-child {\n  margin-bottom: 0;\n}\n.middle-content[data-v-577bd1d2] {\n  height: 100%;\n}\n.middle-col[data-v-577bd1d2] {\n  height: 100px;\n}\n#abstract[data-v-577bd1d2] {\n  font-size: 14px;\n  color: #99a9bf;\n  padding: 10px;\n}\n.el-carousel__item h3[data-v-577bd1d2] {\n  color: #475669;\n  font-size: 14px;\n  opacity: 0.75;\n  line-height: 200px;\n  margin: 0;\n}\n.el-carousel__item[data-v-577bd1d2]:nth-child(2n) {\n  background-color: #99a9bf;\n}\n.el-carousel__item[data-v-577bd1d2]:nth-child(2n+1) {\n  background-color: #d3dce6;\n}", ""]);
+exports.push([module.i, ".el-row[data-v-577bd1d2] {\n  margin-bottom: 20px;\n}\n.el-row[data-v-577bd1d2]:last-child {\n  margin-bottom: 0;\n}\n.middle-content[data-v-577bd1d2] {\n  height: 100%;\n}\n.middle-col[data-v-577bd1d2] {\n  height: 100px;\n}\n#abstract[data-v-577bd1d2] {\n  font-size: 14px;\n  color: #99a9bf;\n  padding: 10px;\n}", ""]);
 
 // exports
 
@@ -191,7 +251,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".time[data-v-24a0fb75] {\n  font-size: 13px;\n  color: #999;\n}\n.bottom[data-v-24a0fb75] {\n  margin-top: 13px;\n  line-height: 12px;\n}\n.button[data-v-24a0fb75] {\n  padding: 0;\n  float: right;\n}\n.image[data-v-24a0fb75] {\n  width: 100%;\n  display: block;\n}\n.el-col[data-v-24a0fb75] {\n  width: 30.5%;\n}\n.el-card[data-v-24a0fb75] {\n  margin-bottom: 20px;\n}", ""]);
+exports.push([module.i, ".time[data-v-24a0fb75] {\n  font-size: 13px;\n  color: #999;\n}\n.bottom[data-v-24a0fb75] {\n  margin-top: 13px;\n  line-height: 12px;\n}\n.button[data-v-24a0fb75] {\n  padding: 0;\n  float: right;\n}\n.image[data-v-24a0fb75] {\n  width: 100%;\n  height: 300px;\n  display: block;\n}\n.el-col[data-v-24a0fb75] {\n  width: 21.8%;\n}\n.el-card[data-v-24a0fb75] {\n  margin-bottom: 20px;\n}\n.infinite-list[data-v-24a0fb75] {\n  height: 1200px;\n}", ""]);
 
 // exports
 
@@ -286,11 +346,22 @@ var render = function() {
             [
               _c(
                 "el-carousel",
-                { attrs: { interval: 4000, type: "card", height: "200px" } },
-                _vm._l(6, function(item) {
-                  return _c("el-carousel-item", { key: item }, [
-                    _c("h3", { staticClass: "medium" }, [_vm._v(_vm._s(item))])
-                  ])
+                {
+                  staticStyle: { height: "20%" },
+                  attrs: { interval: 4000, type: "card" }
+                },
+                _vm._l(_vm.masterpiece, function(item) {
+                  return _c(
+                    "el-carousel-item",
+                    { key: item.id },
+                    [
+                      _c("el-image", {
+                        staticStyle: { width: "100%", height: "100%" },
+                        attrs: { src: item.url, fit: "fill" }
+                      })
+                    ],
+                    1
+                  )
                 }),
                 1
               )
@@ -455,39 +526,70 @@ var render = function() {
     [
       _c(
         "el-row",
-        _vm._l(7, function(o, index) {
+        {
+          directives: [
+            {
+              name: "infinite-scroll",
+              rawName: "v-infinite-scroll",
+              value: _vm.load,
+              expression: "load"
+            }
+          ],
+          staticClass: "infinite-list",
+          staticStyle: { overflow: "auto" }
+        },
+        _vm._l(_vm.albums, function(item, index) {
           return _c(
             "el-col",
-            { key: o, attrs: { span: 8, offset: _vm.getOffset(index) } },
+            {
+              key: index,
+              staticClass: "infinite-list-item",
+              attrs: { span: 6, offset: _vm.getOffset(index) }
+            },
             [
               _c("el-card", { attrs: { "body-style": { padding: "10px" } } }, [
-                _c("img", {
-                  staticClass: "image",
-                  attrs: {
-                    src:
-                      "https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png"
-                  }
-                }),
+                _c(
+                  "div",
+                  [
+                    _c("el-image", {
+                      staticClass: "image",
+                      attrs: {
+                        src: item.url,
+                        fit: "contain",
+                        "preview-src-list": [item.url],
+                        lazy: ""
+                      }
+                    })
+                  ],
+                  1
+                ),
                 _vm._v(" "),
                 _c("div", { staticStyle: { padding: "14px" } }, [
-                  _c("span", [_vm._v("好吃的汉堡")]),
+                  _c("span", [_vm._v(_vm._s(item.name))]),
                   _vm._v(" "),
                   _c(
-                    "div",
-                    { staticClass: "bottom clearfix" },
+                    "span",
+                    { staticStyle: { float: "right" } },
                     [
-                      _c("time", { staticClass: "time" }, [
-                        _vm._v(_vm._s(_vm.currentDate))
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "el-button",
-                        { staticClass: "button", attrs: { type: "text" } },
-                        [_vm._v("操作按钮")]
-                      )
+                      _c("el-rate", {
+                        attrs: { disabled: "", "text-color": "#ff9900" },
+                        model: {
+                          value: item.star,
+                          callback: function($$v) {
+                            _vm.$set(item, "star", $$v)
+                          },
+                          expression: "item.star"
+                        }
+                      })
                     ],
                     1
-                  )
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "bottom clearfix" }, [
+                    _c("time", { staticClass: "time" }, [
+                      _vm._v(_vm._s(item.created_at))
+                    ])
+                  ])
                 ])
               ])
             ],

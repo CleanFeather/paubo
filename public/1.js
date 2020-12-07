@@ -116,10 +116,19 @@ __webpack_require__.r(__webpack_exports__);
           type: "success",
           message: "上传成功"
         });
+
+        _this.initParams();
       });
     },
     upload: function upload() {
       this.$refs.upload.submit();
+    },
+    initParams: function initParams() {
+      this.form.name = "";
+      this.form.category_id = "";
+      this.form.star = "";
+      this.imageUrl = "";
+      this.fileList = [];
     }
   }
 });

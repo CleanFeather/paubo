@@ -62,6 +62,9 @@ Route::namespace('Note')->middleware('auth.token')->group(function (){
 // 画册
 Route::namespace('Album')->middleware('auth.token')->group(function (){
     Route::prefix('album')->group(function (){
+        // 画册列表
+        Route::get('/','AlbumController@index')->name('album.index');
+        // 创建绘画
         Route::post('/','AlbumController@store')->name('album.store');
     });
 });

@@ -9,6 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _network_request__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../network/request */ "./resources/js/network/request.js");
 //
 //
 //
@@ -36,10 +37,29 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      currentDate: new Date()
+      albums: [],
+      page: 1
     };
   },
   computed: {
@@ -47,12 +67,32 @@ __webpack_require__.r(__webpack_exports__);
       return function (index) {
         var offset = 1;
 
-        if (index % 3 == 0) {
+        if (index % 4 == 0) {
           offset = 0;
         }
 
         return offset;
       };
+    }
+  },
+  methods: {
+    load: function load() {
+      var _this = this;
+
+      Object(_network_request__WEBPACK_IMPORTED_MODULE_0__["request"])({
+        method: "get",
+        url: "album",
+        params: {
+          page: this.page,
+          limit: 4
+        }
+      }).then(function (response) {
+        if (response.data.length > 0) {
+          _this.empty_page = "";
+          _this.page++;
+          _this.albums = _this.albums.concat(response.data);
+        }
+      });
     }
   }
 });
@@ -71,7 +111,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".time[data-v-24a0fb75] {\n  font-size: 13px;\n  color: #999;\n}\n.bottom[data-v-24a0fb75] {\n  margin-top: 13px;\n  line-height: 12px;\n}\n.button[data-v-24a0fb75] {\n  padding: 0;\n  float: right;\n}\n.image[data-v-24a0fb75] {\n  width: 100%;\n  display: block;\n}\n.el-col[data-v-24a0fb75] {\n  width: 30.5%;\n}\n.el-card[data-v-24a0fb75] {\n  margin-bottom: 20px;\n}", ""]);
+exports.push([module.i, ".time[data-v-24a0fb75] {\n  font-size: 13px;\n  color: #999;\n}\n.bottom[data-v-24a0fb75] {\n  margin-top: 13px;\n  line-height: 12px;\n}\n.button[data-v-24a0fb75] {\n  padding: 0;\n  float: right;\n}\n.image[data-v-24a0fb75] {\n  width: 100%;\n  height: 300px;\n  display: block;\n}\n.el-col[data-v-24a0fb75] {\n  width: 21.8%;\n}\n.el-card[data-v-24a0fb75] {\n  margin-bottom: 20px;\n}\n.infinite-list[data-v-24a0fb75] {\n  height: 1200px;\n}", ""]);
 
 // exports
 
@@ -129,39 +169,70 @@ var render = function() {
     [
       _c(
         "el-row",
-        _vm._l(7, function(o, index) {
+        {
+          directives: [
+            {
+              name: "infinite-scroll",
+              rawName: "v-infinite-scroll",
+              value: _vm.load,
+              expression: "load"
+            }
+          ],
+          staticClass: "infinite-list",
+          staticStyle: { overflow: "auto" }
+        },
+        _vm._l(_vm.albums, function(item, index) {
           return _c(
             "el-col",
-            { key: o, attrs: { span: 8, offset: _vm.getOffset(index) } },
+            {
+              key: index,
+              staticClass: "infinite-list-item",
+              attrs: { span: 6, offset: _vm.getOffset(index) }
+            },
             [
               _c("el-card", { attrs: { "body-style": { padding: "10px" } } }, [
-                _c("img", {
-                  staticClass: "image",
-                  attrs: {
-                    src:
-                      "https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png"
-                  }
-                }),
+                _c(
+                  "div",
+                  [
+                    _c("el-image", {
+                      staticClass: "image",
+                      attrs: {
+                        src: item.url,
+                        fit: "contain",
+                        "preview-src-list": [item.url],
+                        lazy: ""
+                      }
+                    })
+                  ],
+                  1
+                ),
                 _vm._v(" "),
                 _c("div", { staticStyle: { padding: "14px" } }, [
-                  _c("span", [_vm._v("好吃的汉堡")]),
+                  _c("span", [_vm._v(_vm._s(item.name))]),
                   _vm._v(" "),
                   _c(
-                    "div",
-                    { staticClass: "bottom clearfix" },
+                    "span",
+                    { staticStyle: { float: "right" } },
                     [
-                      _c("time", { staticClass: "time" }, [
-                        _vm._v(_vm._s(_vm.currentDate))
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "el-button",
-                        { staticClass: "button", attrs: { type: "text" } },
-                        [_vm._v("操作按钮")]
-                      )
+                      _c("el-rate", {
+                        attrs: { disabled: "", "text-color": "#ff9900" },
+                        model: {
+                          value: item.star,
+                          callback: function($$v) {
+                            _vm.$set(item, "star", $$v)
+                          },
+                          expression: "item.star"
+                        }
+                      })
                     ],
                     1
-                  )
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "bottom clearfix" }, [
+                    _c("time", { staticClass: "time" }, [
+                      _vm._v(_vm._s(item.created_at))
+                    ])
+                  ])
                 ])
               ])
             ],
