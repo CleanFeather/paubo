@@ -2,8 +2,8 @@
   <div id="main">
     <el-row>
       <el-col
-        :span="10"
-        v-for="(o, index) in 7"
+        :span="8"
+        v-for="(o,index) in 7"
         :key="o"
         :offset="getOffset(index)"
       >
@@ -35,10 +35,10 @@ export default {
   computed: {
     getOffset() {
       return function (index) {
-        let offset = 0;
-        if (index % 2) {
-          offset = 2;
-        }console.log(offset);
+        let offset = 1;
+        if (index % 3 == 0) {
+          offset = 0;
+        }
         return offset;
       };
     },
@@ -66,7 +66,12 @@ export default {
   width: 100%;
   display: block;
 }
-
+.el-col{
+  width: 30.5%;
+}
+.el-card{
+  margin-bottom: 20px;
+}
 // .clearfix:before,
 // .clearfix:after {
 //   display: table;

@@ -63,6 +63,9 @@ html{
   width: 100%;
   min-height: 100%;
 }
+main{
+  margin-bottom: 40px;
+}
 footer {
   position: fixed;
   padding: 0;
