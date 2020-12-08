@@ -10907,3 +10907,27 @@ a {
   text-decoration: none !important;
 }
 
+var map = {
+	"./boy.gif": "./resources/image/boy.gif",
+	"./girl.gif": "./resources/image/girl.gif"
+};
+
+
+function webpackContext(req) {
+	var id = webpackContextResolve(req);
+	return __webpack_require__(id);
+}
+function webpackContextResolve(req) {
+	if(!__webpack_require__.o(map, req)) {
+		var e = new Error("Cannot find module '" + req + "'");
+		e.code = 'MODULE_NOT_FOUND';
+		throw e;
+	}
+	return map[req];
+}
+webpackContext.keys = function webpackContextKeys() {
+	return Object.keys(map);
+};
+webpackContext.resolve = webpackContextResolve;
+module.exports = webpackContext;
+webpackContext.id = "./resources/image sync recursive ^\\.\\/.*\\.gif$";

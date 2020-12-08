@@ -16,8 +16,7 @@ export const request = config => {
     }, error => {
         switch (error.response.status) {
             case 401:
-                localStorage.removeItem('auth');
-                _app.$store.commit('setStatus',false);
+                _app.$store.commit('clear');
                 _app.$message.error('请登录');
                 _app.$router.push({ name: 'login' });
             break;

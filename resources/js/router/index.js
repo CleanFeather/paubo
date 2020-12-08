@@ -50,6 +50,12 @@ const routes = [
         props: true
     },
     {
+        name: 'hobby',
+        path: '/hobby',
+        component: imp('hobby/Index'),
+        props: true
+    },
+    {
         name: 'test',
         path: '/test',
         component: imp('common/RichTextEditor'),

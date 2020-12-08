@@ -3684,7 +3684,7 @@ __webpack_require__.r(__webpack_exports__);
     if (auth) {
       auth = JSON.parse(auth);
       this.$store.commit("setStatus", auth.status);
-      this.$store.commit("setName", auth.username);
+      this.$store.commit("setData", auth.data);
     }
 
     window.addEventListener("beforeunload", function () {
@@ -3701,7 +3701,7 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (response) {
         _this2.$store.commit("setStatus", false);
 
-        _this2.$store.commit("setName", "");
+        _this2.$store.commit("setData", {});
 
         localStorage.removeItem("auth");
 
@@ -3784,19 +3784,27 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       menu: [{
         title: "<i class='el-icon-house'></i>",
-        route: "home"
+        route: "home",
+        name: "首页"
       }, {
         title: "<i class='el-icon-notebook-2'></i>",
-        route: "note"
+        route: "note",
+        name: "笔记"
       }, {
         title: "<i class='el-icon-picture-outline'></i>",
-        route: "album"
+        route: "album",
+        name: "画册"
+      }, {
+        title: "<i class='el-icon-guide'></i>",
+        route: "hobby",
+        name: "习惯"
       }],
       activeIndex: ""
     };
@@ -3809,7 +3817,7 @@ __webpack_require__.r(__webpack_exports__);
         method: "delete",
         url: "logout"
       }).then(function (response) {
-        _this.$store.commit("setStatus", false);
+        _this.$store.commit("clear");
 
         _this.$router.push({
           name: "login"
@@ -82600,7 +82608,7 @@ var render = function() {
                   }
                 ],
                 key: index,
-                attrs: { id: "menu", index: index.toString() }
+                attrs: { id: "menu", index: index.toString(), title: item.name }
               },
               [
                 _c("router-link", {
@@ -82618,7 +82626,7 @@ var render = function() {
                   "span",
                   [
                     _c("span", [
-                      _vm._v(_vm._s(_vm.$store.state.auth.username))
+                      _vm._v(_vm._s(_vm.$store.state.auth.data.username))
                     ]),
                     _vm._v(" "),
                     _c("el-divider", { attrs: { direction: "vertical" } }),
@@ -99387,6 +99395,14 @@ var map = {
 		0,
 		7
 	],
+	"./hobby/Index": [
+		"./resources/js/components/hobby/Index.vue",
+		13
+	],
+	"./hobby/Index.vue": [
+		"./resources/js/components/hobby/Index.vue",
+		13
+	],
 	"./layouts/Footer": [
 		"./resources/js/components/layouts/Footer.vue"
 	],
@@ -99753,9 +99769,7 @@ var request = function request(config) {
   }, function (error) {
     switch (error.response.status) {
       case 401:
-        localStorage.removeItem('auth');
-
-        _app.$store.commit('setStatus', false);
+        _app.$store.commit('clear');
 
         _app.$message.error('请登录');
 
@@ -99835,6 +99849,11 @@ var routes = [{
   component: imp('album/Index'),
   props: true
 }, {
+  name: 'hobby',
+  path: '/hobby',
+  component: imp('hobby/Index'),
+  props: true
+}, {
   name: 'test',
   path: '/test',
   component: imp('common/RichTextEditor')
@@ -99864,14 +99883,19 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__
 var auth = {
   state: {
     status: false,
-    username: ''
+    data: {}
   },
   mutations: {
     setStatus: function setStatus(state, status) {
       state.status = status;
     },
-    setName: function setName(state, username) {
-      state.username = username;
+    setData: function setData(state, data) {
+      state.data = data;
+    },
+    clear: function clear(state) {
+      this.commit('setStatus', false);
+      this.commit('setData', {});
+      localStorage.removeItem('auth');
     }
   }
 };

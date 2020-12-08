@@ -11,6 +11,7 @@
         :key="index"
         :index="index.toString()"
         v-show="$store.state.auth.status"
+        :title="item.name"
       >
         <router-link
           :to="{ name: item.route }"
@@ -19,7 +20,7 @@
       </el-menu-item>
       <p id="auth" style="float: right">
         <span v-if="$store.state.auth.status">
-          <span>{{ $store.state.auth.username }}</span>
+          <span>{{ $store.state.auth.data.username }}</span>
           <el-divider direction="vertical"></el-divider>
           <router-link to="" @click.native="logout">登出</router-link>
         </span>
@@ -43,14 +44,22 @@ export default {
         {
           title: "<i class='el-icon-house'></i>",
           route: "home",
+          name: "首页"
         },
         {
           title: "<i class='el-icon-notebook-2'></i>",
           route: "note",
+          name: "笔记"
         },
         {
           title: "<i class='el-icon-picture-outline'></i>",
           route: "album",
+          name: "画册"
+        },
+        {
+          title: "<i class='el-icon-guide'></i>",
+          route: "hobby",
+          name: "习惯"
         },
       ],
       activeIndex: "",
@@ -62,7 +71,7 @@ export default {
         method: "delete",
         url: "logout",
       }).then((response) => {
-        this.$store.commit("setStatus", false);
+        this.$store.commit("clear");
         this.$router.push({ name: "login" });
       });
     },

@@ -26,7 +26,7 @@ export default {
     if (auth) {
       auth = JSON.parse(auth);
       this.$store.commit("setStatus", auth.status);
-      this.$store.commit("setName", auth.username);
+      this.$store.commit("setData", auth.data);
     }
     window.addEventListener("beforeunload", () => {
       localStorage.setItem("auth", JSON.stringify(this.$store.state.auth));
@@ -39,7 +39,7 @@ export default {
         url: "logout",
       }).then((response) => {
         this.$store.commit("setStatus", false);
-        this.$store.commit("setName", "");
+        this.$store.commit("setData", {});
         localStorage.removeItem("auth");
         this.$router.push({ name: "login" });
       });

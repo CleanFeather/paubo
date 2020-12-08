@@ -40,32 +40,31 @@ export default {
         method: "post",
         url: "login",
         data: this.$data,
-      })
-        .then((response) => {
-          if (response.status == 200) {
-            localStorage.setItem(
-              "access_token",
-              "Bearer " + response.data.access_token
-            );
-            this.$store.commit('setStatus',true);
+      }).then((response) => {
+        if (response.status == 200) {
+          localStorage.setItem(
+            "access_token",
+            "Bearer " + response.data.access_token
+          );
+          this.$store.commit("setStatus", true);
+          request({
+            method: "get",
+            url: "auth/user",
+          }).then((response) => {
+            this.$store.commit("setData", response.data);
             localStorage.setItem(
               "auth",
               JSON.stringify(this.$store.state.auth)
             );
-            request({
-              method: "get",
-              url: "auth/user",
-            }).then((response) => {
-              this.$store.commit("setName", response.data.username);
-              this.$message({
-                type: 'success',
-                message: '欢迎您 ' + response.data.username,
-                center: true
-              });
+            this.$message({
+              type: "success",
+              message: "欢迎您 " + response.data.username,
+              center: true,
             });
-            this.$router.push({ name: "home" });
-          }
-        })
+          });
+          this.$router.push({ name: "home" });
+        }
+      });
     },
   },
 };

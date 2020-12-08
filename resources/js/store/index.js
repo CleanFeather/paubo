@@ -6,14 +6,19 @@ Vue.use(Vuex);
 const auth = {
     state: {
         status: false,
-        username: ''
+        data: {}
     },
     mutations: {
-        setStatus(state,status) {
+        setStatus(state, status) {
             state.status = status;
         },
-        setName(state,username) {
-            state.username = username;
+        setData(state, data) {
+            state.data = data;
+        },
+        clear(state) {
+            this.commit('setStatus', false);
+            this.commit('setData', {});
+            localStorage.removeItem('auth');
         }
     }
 };
@@ -24,14 +29,14 @@ export default new Vuex.Store({
     },
     mutations: {
         add(state) {
-            state.count ++;
+            state.count++;
         },
     },
     getters: {
 
     },
     actions: {
-        
+
     },
     modules: {
         auth,

@@ -15,7 +15,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ __webpack_exports__["default"] = ({});
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  computed: {
+    homeImg: function homeImg() {
+      if (Object.keys(this.$store.state.auth.data).length > 0) {
+        var gender = this.$store.state.auth.data.gender ? "boy" : "girl";
+        return __webpack_require__("./resources/image sync recursive ^\\.\\/.*\\.gif$")("./" + gender + ".gif");
+      }
+    }
+  }
+});
 
 /***/ }),
 
@@ -31,7 +42,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#main[data-v-f2b6376c] {\n  color: red;\n}", ""]);
+exports.push([module.i, "#main[data-v-f2b6376c] {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n}", ""]);
 
 // exports
 
@@ -83,21 +94,88 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c(
+    "div",
+    { attrs: { id: "main" } },
+    [
+      _c(
+        "el-image",
+        {
+          staticStyle: { width: "50%", height: "50%" },
+          attrs: { src: _vm.homeImg, fit: "contain" }
+        },
+        [
+          _c("div", {
+            staticClass: "image-slot",
+            attrs: { slot: "error" },
+            slot: "error"
+          })
+        ]
+      )
+    ],
+    1
+  )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { attrs: { id: "main" } }, [
-      _c("h1", [_vm._v("我是首页")])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
+
+/***/ }),
+
+/***/ "./resources/image sync recursive ^\\.\\/.*\\.gif$":
+/*!********************************************!*\
+  !*** ./resources/image sync ^\.\/.*\.gif$ ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var map = {
+	"./boy.gif": "./resources/image/boy.gif",
+	"./girl.gif": "./resources/image/girl.gif"
+};
+
+
+function webpackContext(req) {
+	var id = webpackContextResolve(req);
+	return __webpack_require__(id);
+}
+function webpackContextResolve(req) {
+	if(!__webpack_require__.o(map, req)) {
+		var e = new Error("Cannot find module '" + req + "'");
+		e.code = 'MODULE_NOT_FOUND';
+		throw e;
+	}
+	return map[req];
+}
+webpackContext.keys = function webpackContextKeys() {
+	return Object.keys(map);
+};
+webpackContext.resolve = webpackContextResolve;
+module.exports = webpackContext;
+webpackContext.id = "./resources/image sync recursive ^\\.\\/.*\\.gif$";
+
+/***/ }),
+
+/***/ "./resources/image/boy.gif":
+/*!*********************************!*\
+  !*** ./resources/image/boy.gif ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/boy.gif?1b2f25ac0b43ba3f2746e77b4b0bf5f2";
+
+/***/ }),
+
+/***/ "./resources/image/girl.gif":
+/*!**********************************!*\
+  !*** ./resources/image/girl.gif ***!
+  \**********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/girl.gif?6fa411d96b58f72466012cd3a1480b2b";
 
 /***/ }),
 

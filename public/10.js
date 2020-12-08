@@ -57,18 +57,19 @@ __webpack_require__.r(__webpack_exports__);
         if (response.status == 200) {
           localStorage.setItem("access_token", "Bearer " + response.data.access_token);
 
-          _this.$store.commit('setStatus', true);
+          _this.$store.commit("setStatus", true);
 
-          localStorage.setItem("auth", JSON.stringify(_this.$store.state.auth));
           Object(_network_request__WEBPACK_IMPORTED_MODULE_0__["request"])({
             method: "get",
             url: "auth/user"
           }).then(function (response) {
-            _this.$store.commit("setName", response.data.username);
+            _this.$store.commit("setData", response.data);
+
+            localStorage.setItem("auth", JSON.stringify(_this.$store.state.auth));
 
             _this.$message({
-              type: 'success',
-              message: '欢迎您 ' + response.data.username,
+              type: "success",
+              message: "欢迎您 " + response.data.username,
               center: true
             });
           });
