@@ -100,8 +100,9 @@ __webpack_require__.r(__webpack_exports__);
       url: "note/category"
     }).then(function (response) {
       _this.categories = response.data;
+
+      _this.initPage();
     });
-    this.initPage();
   },
   methods: {
     destroy: function destroy(note_id, index) {

@@ -27,6 +27,7 @@ class IndexAlbumRequest extends FormRequest
             'page' => 'required|integer',
             'limit' => 'required|integer',
             'masterpiece' => 'boolean',
+            'category_id' => 'integer|nullable'
         ];
     }
 }

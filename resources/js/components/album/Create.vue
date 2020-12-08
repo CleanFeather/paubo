@@ -53,20 +53,11 @@ export default {
         category_id: "",
         star: 0,
       },
-      category: [
-        {
-          name: "绘画",
-          id: "1",
-        },
-        {
-          name: "照片",
-          id: "2",
-        },
-      ],
       imageUrl: "",
       fileList: [],
     };
   },
+  props: ['category'],
   methods: {
     imgChange(file, fileList) {
       const allowFileType = ["image/jpeg", "image/png", "image/gif"];
@@ -112,7 +103,7 @@ export default {
     initParams() {
       this.form.name = "";
       this.form.category_id = "";
-      this.form.star = "";
+      this.form.star = 0;
       this.imageUrl = "";
       this.fileList = [];
     },

@@ -73,6 +73,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 
@@ -83,7 +89,8 @@ __webpack_require__.r(__webpack_exports__);
       abstract_index: 0,
       interval: null,
       drawer: false,
-      masterpiece: []
+      masterpiece: [],
+      category: []
     };
   },
   mounted: function mounted() {
@@ -92,14 +99,20 @@ __webpack_require__.r(__webpack_exports__);
     this.initAbstract();
     Object(_network_request__WEBPACK_IMPORTED_MODULE_2__["request"])({
       method: "get",
-      url: "album",
-      params: {
-        page: 1,
-        limit: 3,
-        masterpiece: 1
-      }
+      url: "album/category"
     }).then(function (response) {
-      _this.masterpiece = response.data;
+      _this.category = response.data;
+      Object(_network_request__WEBPACK_IMPORTED_MODULE_2__["request"])({
+        method: "get",
+        url: "album",
+        params: {
+          page: 1,
+          limit: 3,
+          masterpiece: 1
+        }
+      }).then(function (response) {
+        _this.masterpiece = response.data;
+      });
     });
   },
   methods: {
@@ -111,6 +124,9 @@ __webpack_require__.r(__webpack_exports__);
       clearInterval(this.interval);
       this.abstract_index = 0;
       this.interval = setInterval(this.showAbstract, 200);
+    },
+    selectCategory: function selectCategory(category_id) {
+      this.$refs.pictureCard.initParams(category_id);
     }
   },
   components: {
@@ -173,14 +189,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       albums: [],
-      page: 1
+      page: 1,
+      category_id: "",
+      infinite_key: 0
     };
   },
   computed: {
@@ -205,7 +221,8 @@ __webpack_require__.r(__webpack_exports__);
         url: "album",
         params: {
           page: this.page,
-          limit: 4
+          limit: 4,
+          category_id: this.category_id
         }
       }).then(function (response) {
         if (response.data.length > 0) {
@@ -214,6 +231,13 @@ __webpack_require__.r(__webpack_exports__);
           _this.albums = _this.albums.concat(response.data);
         }
       });
+    },
+    initParams: function initParams() {
+      var category_id = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
+      this.albums = [];
+      this.page = 1;
+      this.category_id = category_id;
+      this.infinite_key++;
     }
   }
 });
@@ -423,10 +447,18 @@ var render = function() {
                 [
                   _c(
                     "el-dropdown",
+                    { on: { command: _vm.selectCategory } },
                     [
                       _c(
                         "el-button",
-                        { attrs: { type: "primary", size: "medium" } },
+                        {
+                          attrs: { type: "primary", size: "medium" },
+                          on: {
+                            click: function($event) {
+                              return _vm.$router.go(0)
+                            }
+                          }
+                        },
                         [
                           _vm._v("\n            作品类目"),
                           _c("i", {
@@ -438,7 +470,19 @@ var render = function() {
                       _c(
                         "el-dropdown-menu",
                         { attrs: { slot: "dropdown" }, slot: "dropdown" },
-                        [_c("el-dropdown-item", [_vm._v("绘画")])],
+                        _vm._l(_vm.category, function(item) {
+                          return _c(
+                            "el-dropdown-item",
+                            { key: item.id, attrs: { command: item.id } },
+                            [
+                              _vm._v(
+                                "\n              " +
+                                  _vm._s(item.name) +
+                                  "\n            "
+                              )
+                            ]
+                          )
+                        }),
                         1
                       )
                     ],
@@ -472,7 +516,7 @@ var render = function() {
                         }
                       }
                     },
-                    [_c("Drawer")],
+                    [_c("Drawer", { attrs: { category: _vm.category } })],
                     1
                   )
                 ],
@@ -489,7 +533,12 @@ var render = function() {
         "el-row",
         [
           _c("el-col", { attrs: { span: 24 } }, [
-            _c("div", { staticClass: "middle-content" }, [_c("PictureCard")], 1)
+            _c(
+              "div",
+              { staticClass: "middle-content" },
+              [_c("PictureCard", { ref: "pictureCard" })],
+              1
+            )
           ])
         ],
         1
@@ -535,8 +584,10 @@ var render = function() {
               expression: "load"
             }
           ],
+          key: _vm.infinite_key,
           staticClass: "infinite-list",
-          staticStyle: { overflow: "auto" }
+          staticStyle: { overflow: "auto" },
+          attrs: { "infinite-scroll-delay": 1000 }
         },
         _vm._l(_vm.albums, function(item, index) {
           return _c(

@@ -13,7 +13,10 @@ class AlbumController extends Controller
 {
     public function index(IndexAlbumRequest $request,Album $album)
     {
-        $query = $album->query();
+        $query = $album->query()->where('user_id',auth('api')->user()->id);
+        if ($request->filled('category_id')){
+            $query->where('category_id',$request->category_id);
+        }
         if ($request->filled('masterpiece')){
             $query->orderBydesc('star')->orderByDesc('created_at');
         }

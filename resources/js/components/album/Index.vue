@@ -32,19 +32,25 @@
           class="middle-content"
           id="operate"
         >
-          <el-dropdown>
-            <el-button type="primary" size="medium">
+          <el-dropdown @command="selectCategory">
+            <el-button type="primary" size="medium" @click="$router.go(0)">
               作品类目<i class="el-icon-arrow-down el-icon--right"></i>
             </el-button>
             <el-dropdown-menu slot="dropdown">
-              <el-dropdown-item>绘画</el-dropdown-item>
+              <el-dropdown-item
+                v-for="item in category"
+                :key="item.id"
+                :command="item.id"
+              >
+                {{ item.name }}
+              </el-dropdown-item>
             </el-dropdown-menu>
           </el-dropdown>
           <el-button type="primary" size="medium" @click="drawer = true">
             上传作品
           </el-button>
           <el-drawer title="上传" :visible.sync="drawer" :with-header="false">
-            <Drawer />
+            <Drawer :category="category" />
           </el-drawer>
         </el-card>
       </el-col>
@@ -52,7 +58,7 @@
     <el-row>
       <el-col :span="24">
         <div class="middle-content">
-          <PictureCard />
+          <PictureCard ref="pictureCard" />
         </div>
       </el-col>
     </el-row>
@@ -72,20 +78,27 @@ export default {
       interval: null,
       drawer: false,
       masterpiece: [],
+      category: [],
     };
   },
   mounted: function () {
     this.initAbstract();
     request({
       method: "get",
-      url: "album",
-      params: {
-        page: 1,
-        limit: 3,
-        masterpiece: 1,
-      },
+      url: "album/category",
     }).then((response) => {
-      this.masterpiece = response.data;
+      this.category = response.data;
+      request({
+        method: "get",
+        url: "album",
+        params: {
+          page: 1,
+          limit: 3,
+          masterpiece: 1,
+        },
+      }).then((response) => {
+        this.masterpiece = response.data;
+      });
     });
   },
   methods: {
@@ -98,6 +111,9 @@ export default {
       clearInterval(this.interval);
       this.abstract_index = 0;
       this.interval = setInterval(this.showAbstract, 200);
+    },
+    selectCategory(category_id) {
+      this.$refs.pictureCard.initParams(category_id);
     },
   },
   components: {

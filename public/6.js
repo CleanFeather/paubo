@@ -52,14 +52,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       albums: [],
-      page: 1
+      page: 1,
+      category_id: "",
+      infinite_key: 0
     };
   },
   computed: {
@@ -84,7 +84,8 @@ __webpack_require__.r(__webpack_exports__);
         url: "album",
         params: {
           page: this.page,
-          limit: 4
+          limit: 4,
+          category_id: this.category_id
         }
       }).then(function (response) {
         if (response.data.length > 0) {
@@ -93,6 +94,13 @@ __webpack_require__.r(__webpack_exports__);
           _this.albums = _this.albums.concat(response.data);
         }
       });
+    },
+    initParams: function initParams() {
+      var category_id = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
+      this.albums = [];
+      this.page = 1;
+      this.category_id = category_id;
+      this.infinite_key++;
     }
   }
 });
@@ -178,8 +186,10 @@ var render = function() {
               expression: "load"
             }
           ],
+          key: _vm.infinite_key,
           staticClass: "infinite-list",
-          staticStyle: { overflow: "auto" }
+          staticStyle: { overflow: "auto" },
+          attrs: { "infinite-scroll-delay": 1000 }
         },
         _vm._l(_vm.albums, function(item, index) {
           return _c(

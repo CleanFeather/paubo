@@ -4,6 +4,8 @@
       class="infinite-list"
       style="overflow: auto"
       v-infinite-scroll="load"
+      :infinite-scroll-delay="1000"
+      :key="infinite_key"
     >
       <el-col
         class="infinite-list-item"
@@ -24,12 +26,8 @@
           </div>
           <div style="padding: 14px">
             <span>{{ item.name }}</span>
-            <span style="float:right">
-              <el-rate
-                v-model="item.star"
-                disabled
-                text-color="#ff9900"
-              >
+            <span style="float: right">
+              <el-rate v-model="item.star" disabled text-color="#ff9900">
               </el-rate>
             </span>
             <div class="bottom clearfix">
@@ -50,6 +48,8 @@ export default {
     return {
       albums: [],
       page: 1,
+      category_id: "",
+      infinite_key: 0,
     };
   },
   computed: {
@@ -71,6 +71,7 @@ export default {
         params: {
           page: this.page,
           limit: 4,
+          category_id: this.category_id,
         },
       }).then((response) => {
         if (response.data.length > 0) {
@@ -79,6 +80,12 @@ export default {
           this.albums = this.albums.concat(response.data);
         }
       });
+    },
+    initParams(category_id = "") {
+      this.albums = [];
+      this.page = 1;
+      this.category_id = category_id;
+      this.infinite_key++;
     },
   },
 };

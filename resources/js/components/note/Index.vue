@@ -88,8 +88,8 @@ export default {
       url: "note/category",
     }).then((response) => {
       this.categories = response.data;
+      this.initPage();
     });
-    this.initPage();
   },
   methods: {
     destroy(note_id, index) {

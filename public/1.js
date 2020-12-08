@@ -63,17 +63,11 @@ __webpack_require__.r(__webpack_exports__);
         category_id: "",
         star: 0
       },
-      category: [{
-        name: "绘画",
-        id: "1"
-      }, {
-        name: "照片",
-        id: "2"
-      }],
       imageUrl: "",
       fileList: []
     };
   },
+  props: ['category'],
   methods: {
     imgChange: function imgChange(file, fileList) {
       var allowFileType = ["image/jpeg", "image/png", "image/gif"];
@@ -126,7 +120,7 @@ __webpack_require__.r(__webpack_exports__);
     initParams: function initParams() {
       this.form.name = "";
       this.form.category_id = "";
-      this.form.star = "";
+      this.form.star = 0;
       this.imageUrl = "";
       this.fileList = [];
     }

@@ -52,19 +52,23 @@ Route::namespace('Note')->middleware('auth.token')->group(function (){
         Route::delete('/','NoteController@delete')->name('note.delete');
         // 上传图片
         Route::post('upload','NoteController@upload')->name('note.upload')->withoutMiddleware('auth.token');
-        // 笔记
+        // 笔记类别
         Route::prefix('category')->group(function (){
-            Route::get('/','CategoryController@index')->name('note.category.index')->withoutMiddleware('auth.token');
+            Route::get('/','CategoryController@index')->name('note.category.index');
         });
     });
 });
 
-// 画册
+// 作品
 Route::namespace('Album')->middleware('auth.token')->group(function (){
     Route::prefix('album')->group(function (){
-        // 画册列表
+        // 作品列表
         Route::get('/','AlbumController@index')->name('album.index');
-        // 创建绘画
+        // 创建作品
         Route::post('/','AlbumController@store')->name('album.store');
+        // 作品类别
+        Route::prefix('category')->group(function (){
+            Route::get('/','CategoryController@index')->name('album.category.index');
+        });
     });
 });
