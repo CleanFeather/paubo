@@ -11,12 +11,13 @@
         :key="index"
         :index="index.toString()"
         v-show="$store.state.auth.status"
-        :title="item.name"
       >
-        <router-link
-          :to="{ name: item.route }"
-          v-html="item.title"
-        ></router-link>
+        <el-tooltip :content="item.name" placement="bottom" effect="light">
+          <router-link
+            :to="{ name: item.route }"
+            v-html="item.title"
+          ></router-link>
+        </el-tooltip>
       </el-menu-item>
       <p id="auth" style="float: right">
         <span v-if="$store.state.auth.status">
@@ -44,22 +45,22 @@ export default {
         {
           title: "<i class='el-icon-house'></i>",
           route: "home",
-          name: "首页"
+          name: "首页",
         },
         {
           title: "<i class='el-icon-notebook-2'></i>",
           route: "note",
-          name: "笔记"
+          name: "笔记",
         },
         {
           title: "<i class='el-icon-picture-outline'></i>",
           route: "album",
-          name: "画册"
+          name: "画册",
         },
         {
           title: "<i class='el-icon-guide'></i>",
           route: "hobby",
-          name: "习惯"
+          name: "习惯",
         },
       ],
       activeIndex: "",
@@ -90,7 +91,7 @@ export default {
 #menu {
   i {
     font-size: 25px;
-    &:hover{
+    &:hover {
       color: #3490dc;
     }
   }

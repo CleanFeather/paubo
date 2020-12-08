@@ -3785,6 +3785,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -82608,13 +82609,26 @@ var render = function() {
                   }
                 ],
                 key: index,
-                attrs: { id: "menu", index: index.toString(), title: item.name }
+                attrs: { id: "menu", index: index.toString() }
               },
               [
-                _c("router-link", {
-                  attrs: { to: { name: item.route } },
-                  domProps: { innerHTML: _vm._s(item.title) }
-                })
+                _c(
+                  "el-tooltip",
+                  {
+                    attrs: {
+                      content: item.name,
+                      placement: "bottom",
+                      effect: "light"
+                    }
+                  },
+                  [
+                    _c("router-link", {
+                      attrs: { to: { name: item.route } },
+                      domProps: { innerHTML: _vm._s(item.title) }
+                    })
+                  ],
+                  1
+                )
               ],
               1
             )
