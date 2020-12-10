@@ -99375,11 +99375,11 @@ var map = {
 	],
 	"./album/Edit": [
 		"./resources/js/components/album/Edit.vue",
-		12
+		13
 	],
 	"./album/Edit.vue": [
 		"./resources/js/components/album/Edit.vue",
-		12
+		13
 	],
 	"./album/Index": [
 		"./resources/js/components/album/Index.vue",
@@ -99411,11 +99411,11 @@ var map = {
 	],
 	"./hobby/Index": [
 		"./resources/js/components/hobby/Index.vue",
-		13
+		12
 	],
 	"./hobby/Index.vue": [
 		"./resources/js/components/hobby/Index.vue",
-		13
+		12
 	],
 	"./layouts/Footer": [
 		"./resources/js/components/layouts/Footer.vue"

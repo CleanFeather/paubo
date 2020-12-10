@@ -58,7 +58,15 @@ class SeedCategoryData extends Migration
             [
                 'name' => '照片',
                 'type' => 'album'
-            ]
+            ],
+            [
+                'name' => '养成好习惯',
+                'type' => 'hobby'
+            ],
+            [
+                'name' => '戒掉坏习惯',
+                'type' => 'hobby'
+            ],
         ];
         DB::table('categories')->insert($categories);
     }

@@ -22,7 +22,7 @@ __webpack_require__.r(__webpack_exports__);
     homeImg: function homeImg() {
       if (Object.keys(this.$store.state.auth.data).length > 0) {
         var gender = this.$store.state.auth.data.gender ? "boy" : "girl";
-        return __webpack_require__("./resources/image sync recursive ^\\.\\/.*\\.gif$")("./" + gender + ".gif");
+        return __webpack_require__("./resources/img sync recursive ^\\.\\/.*\\.gif$")("./" + gender + ".gif");
       }
     }
   }
@@ -123,16 +123,16 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./resources/image sync recursive ^\\.\\/.*\\.gif$":
-/*!********************************************!*\
-  !*** ./resources/image sync ^\.\/.*\.gif$ ***!
-  \********************************************/
+/***/ "./resources/img sync recursive ^\\.\\/.*\\.gif$":
+/*!******************************************!*\
+  !*** ./resources/img sync ^\.\/.*\.gif$ ***!
+  \******************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
-	"./boy.gif": "./resources/image/boy.gif",
-	"./girl.gif": "./resources/image/girl.gif"
+	"./boy.gif": "./resources/img/boy.gif",
+	"./girl.gif": "./resources/img/girl.gif"
 };
 
 
@@ -153,14 +153,14 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = "./resources/image sync recursive ^\\.\\/.*\\.gif$";
+webpackContext.id = "./resources/img sync recursive ^\\.\\/.*\\.gif$";
 
 /***/ }),
 
-/***/ "./resources/image/boy.gif":
-/*!*********************************!*\
-  !*** ./resources/image/boy.gif ***!
-  \*********************************/
+/***/ "./resources/img/boy.gif":
+/*!*******************************!*\
+  !*** ./resources/img/boy.gif ***!
+  \*******************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -168,10 +168,10 @@ module.exports = "/images/boy.gif?1b2f25ac0b43ba3f2746e77b4b0bf5f2";
 
 /***/ }),
 
-/***/ "./resources/image/girl.gif":
-/*!**********************************!*\
-  !*** ./resources/image/girl.gif ***!
-  \**********************************/
+/***/ "./resources/img/girl.gif":
+/*!********************************!*\
+  !*** ./resources/img/girl.gif ***!
+  \********************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 

@@ -10908,8 +10908,8 @@ a {
 }
 
 var map = {
-	"./boy.gif": "./resources/image/boy.gif",
-	"./girl.gif": "./resources/image/girl.gif"
+	"./boy.gif": "./resources/img/boy.gif",
+	"./girl.gif": "./resources/img/girl.gif"
 };
 
 
@@ -10930,4 +10930,4 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = "./resources/image sync recursive ^\\.\\/.*\\.gif$";
+webpackContext.id = "./resources/img sync recursive ^\\.\\/.*\\.gif$";

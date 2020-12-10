@@ -72,3 +72,11 @@ Route::namespace('Album')->middleware('auth.token')->group(function (){
         });
     });
 });
+
+// 习惯
+Route::namespace('Hobby')->middleware('auth.token')->group(function (){
+    // 习惯类型
+    Route::prefix('hobby')->group(function (){
+        Route::get('category','CategoryController@index')->name('hobby.category.index');
+    });
+});

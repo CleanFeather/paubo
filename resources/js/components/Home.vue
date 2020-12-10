@@ -12,7 +12,7 @@ export default {
     homeImg() {
       if (Object.keys(this.$store.state.auth.data).length > 0) {
         let gender = this.$store.state.auth.data.gender ? "boy" : "girl";
-        return require("./../../image/" + gender + ".gif");
+        return require("./../../img/" + gender + ".gif");
       }
     },
   },
