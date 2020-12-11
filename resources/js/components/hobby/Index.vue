@@ -3,14 +3,17 @@
     <el-button
       id="createButton"
       style="margin-bottom: 20px"
-      @click="drawer = true"
+      @click="$refs.drawer.drawer = true"
     >
       <i class="el-icon-plus"></i>
     </el-button>
-    <el-drawer title="我是标题" :visible.sync="drawer" :with-header="false">
-      <span>我来啦!</span>
-    </el-drawer>
-    <el-tabs v-model="activeName" tab-position="left" type="border-card" @tab-click="handleClick">
+    <Drawer ref="drawer" :category="category" />
+    <el-tabs
+      v-model="activeName"
+      tab-position="left"
+      type="border-card"
+      @tab-click="handleClick"
+    >
       <el-tab-pane
         v-for="item in category"
         :key="item.id"
@@ -23,13 +26,13 @@
 
 <script>
 import { request } from "../../network/request";
+import Drawer from "./Create";
 
 export default {
   data() {
     return {
-      activeName: "12",
+      activeName: "13",
       category: [],
-      drawer: false
     };
   },
   mounted: function () {
@@ -44,6 +47,9 @@ export default {
     handleClick(tab, event) {
       console.log(tab, event);
     },
+  },
+  components: {
+    Drawer,
   },
 };
 </script>

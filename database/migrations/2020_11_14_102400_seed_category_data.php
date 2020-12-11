@@ -60,11 +60,11 @@ class SeedCategoryData extends Migration
                 'type' => 'album'
             ],
             [
-                'name' => '养成好习惯',
+                'name' => '戒掉坏习惯',
                 'type' => 'hobby'
             ],
             [
-                'name' => '戒掉坏习惯',
+                'name' => '养成好习惯',
                 'type' => 'hobby'
             ],
         ];
