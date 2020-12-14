@@ -68,12 +68,19 @@ export default {
     getStage(stage) {
       this.form.stages.push(stage);
     },
+    initParams() {
+      this.form.type = "";
+      this.form.name = "";
+      this.form.stages = [];
+      this.drawer = false;
+    },
     submit() {
       request({
         method: 'post',
         url: 'hobby',
         data: this.form
       }).then(response => {
+        this.initParams();
         this.$message({
           type: 'success',
           message: '创建成功'

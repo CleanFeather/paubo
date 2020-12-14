@@ -79,6 +79,12 @@ __webpack_require__.r(__webpack_exports__);
     getStage: function getStage(stage) {
       this.form.stages.push(stage);
     },
+    initParams: function initParams() {
+      this.form.type = "";
+      this.form.name = "";
+      this.form.stages = [];
+      this.drawer = false;
+    },
     submit: function submit() {
       var _this = this;
 
@@ -87,6 +93,8 @@ __webpack_require__.r(__webpack_exports__);
         url: 'hobby',
         data: this.form
       }).then(function (response) {
+        _this.initParams();
+
         _this.$message({
           type: 'success',
           message: '创建成功'
@@ -144,6 +152,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -162,8 +178,16 @@ __webpack_require__.r(__webpack_exports__);
     submit: function submit() {
       if (this.score <= 0) {
         this.$message({
-          type: 'warning',
-          message: '分数已分配完毕'
+          type: "warning",
+          message: "分数已分配完毕"
+        });
+        return;
+      }
+
+      if (this.stage.score <= 0) {
+        this.$message({
+          type: "warning",
+          message: "分数必须大于0"
         });
         return;
       }
@@ -533,8 +557,13 @@ var render = function() {
                 "el-form-item",
                 { attrs: { label: "阶段目标分数:" } },
                 [
-                  _c("el-input-number", {
-                    attrs: { min: 1, max: _vm.score },
+                  _c("el-slider", {
+                    attrs: {
+                      step: 5,
+                      min: 0,
+                      max: _vm.score,
+                      "show-stops": ""
+                    },
                     model: {
                       value: _vm.stage.score,
                       callback: function($$v) {
@@ -553,7 +582,7 @@ var render = function() {
                   _c(
                     "el-button",
                     { attrs: { type: "primary" }, on: { click: _vm.submit } },
-                    [_vm._v("提交")]
+                    [_vm._v("添加")]
                   )
                 ],
                 1

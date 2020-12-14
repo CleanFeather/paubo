@@ -21,14 +21,22 @@
           ></el-input>
         </el-form-item>
         <el-form-item label="阶段目标分数:">
-          <el-input-number
+          <!-- <el-input-number
             v-model="stage.score"
             :min="1"
             :max="score"
-          ></el-input-number>
+          ></el-input-number> -->
+          <el-slider
+            v-model="stage.score"
+            :step="5"
+            :min="0"
+            :max="score"
+            show-stops
+          >
+          </el-slider>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" @click="submit">提交</el-button>
+          <el-button type="primary" @click="submit">添加</el-button>
         </el-form-item>
       </el-form>
     </el-drawer>
@@ -52,11 +60,18 @@ export default {
   },
   methods: {
     submit() {
-      if (this.score <= 0){
+      if (this.score <= 0) {
         this.$message({
-          type: 'warning',
-          message: '分数已分配完毕'
-        })
+          type: "warning",
+          message: "分数已分配完毕",
+        });
+        return;
+      }
+      if (this.stage.score <= 0) {
+        this.$message({
+          type: "warning",
+          message: "分数必须大于0",
+        });
         return;
       }
       this.$emit("getStage", {
