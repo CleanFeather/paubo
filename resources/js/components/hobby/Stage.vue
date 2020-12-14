@@ -43,26 +43,37 @@ export default {
       stage: {
         name: "",
         description: "",
-        score: 100,
-        level: 0,
+        score: "",
+        level: "",
       },
+      level: 1,
       score: 100,
     };
   },
   methods: {
     submit() {
-      this.$emit("getStage", this.stage);
+      if (this.score <= 0){
+        this.$message({
+          type: 'warning',
+          message: '分数已分配完毕'
+        })
+        return;
+      }
+      this.$emit("getStage", {
+        name: this.stage.name,
+        description: this.stage.description,
+        score: this.stage.score,
+        level: this.stage.level,
+      });
       this.drawer = false;
-      setInterval(function (){
-        this.initParams();
-      },1000)
+      this.level++;
+      this.score -= this.stage.score;
     },
     initParams() {
       this.stage.name = "";
       this.stage.description = "";
-      this.score -= this.stage.score;
       this.stage.score = this.score;
-      this.stage.level++;
+      this.stage.level = this.level;
     },
   },
 };

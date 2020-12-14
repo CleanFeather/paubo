@@ -3,7 +3,7 @@
     <el-drawer :visible.sync="drawer" :with-header="false" size="50%">
       <el-form v-model="form" ref="form">
         <el-form-item>
-          <el-select v-model="form.type">
+          <el-select v-model="form.type" placeholder="请选择习惯类型">
             <el-option
               v-for="item in category"
               :key="item.id"
@@ -18,12 +18,10 @@
         <el-form-item>
           <el-card>
             <div slot="header">
-              <el-button @click="incStage" type="text"
-                >添加阶段</el-button
-              >
+              <el-button @click="incStage" type="text">添加阶段</el-button>
             </div>
             <div>
-              <el-steps :active="2" align-center>
+              <el-steps :active="form.stages.length" align-center>
                 <el-step
                   v-for="item in form.stages"
                   :key="item.level"
@@ -34,6 +32,9 @@
             </div>
           </el-card>
           <Stage ref="stage" @getStage="getStage" />
+        </el-form-item>
+        <el-form-item>
+          <el-button type="primary" @click="submit">提交</el-button>
         </el-form-item>
       </el-form>
     </el-drawer>
@@ -49,7 +50,7 @@ export default {
     return {
       drawer: false,
       form: {
-        type: 13,
+        type: "",
         name: "",
         stages: [],
       },
@@ -61,12 +62,24 @@ export default {
   },
   methods: {
     incStage() {
-      this.$refs.stage.drawer = true
+      this.$refs.stage.drawer = true;
+      this.$refs.stage.initParams();
     },
     getStage(stage) {
       this.form.stages.push(stage);
-      console.log(this.form.stages);
     },
+    submit() {
+      request({
+        method: 'post',
+        url: 'hobby',
+        data: this.form
+      }).then(response => {
+        this.$message({
+          type: 'success',
+          message: '创建成功'
+        })
+      })
+    }
   },
 };
 </script>

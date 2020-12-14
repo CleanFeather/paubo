@@ -9,7 +9,7 @@
     </el-button>
     <Drawer ref="drawer" :category="category" />
     <el-tabs
-      v-model="activeName"
+      v-model="activeCategory"
       tab-position="left"
       type="border-card"
       @tab-click="handleClick"
@@ -31,7 +31,7 @@ import Drawer from "./Create";
 export default {
   data() {
     return {
-      activeName: "13",
+      activeCategory: "",
       category: [],
     };
   },
@@ -41,6 +41,7 @@ export default {
       url: "hobby/category",
     }).then((response) => {
       this.category = response.data;
+      this.activeCategory = this.category[0].id.toString();
     });
   },
   methods: {

@@ -99359,81 +99359,81 @@ window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
 var map = {
 	"./Home": [
 		"./resources/js/components/Home.vue",
-		5
+		6
 	],
 	"./Home.vue": [
 		"./resources/js/components/Home.vue",
-		5
+		6
 	],
 	"./album/Create": [
 		"./resources/js/components/album/Create.vue",
-		1
+		2
 	],
 	"./album/Create.vue": [
 		"./resources/js/components/album/Create.vue",
-		1
+		2
 	],
 	"./album/Edit": [
 		"./resources/js/components/album/Edit.vue",
-		13
+		15
 	],
 	"./album/Edit.vue": [
 		"./resources/js/components/album/Edit.vue",
-		13
+		15
 	],
 	"./album/Index": [
 		"./resources/js/components/album/Index.vue",
-		1,
-		2
+		2,
+		3
 	],
 	"./album/Index.vue": [
 		"./resources/js/components/album/Index.vue",
-		1,
-		2
+		2,
+		3
 	],
 	"./common/PictureCard": [
 		"./resources/js/components/common/PictureCard.vue",
-		6
+		7
 	],
 	"./common/PictureCard.vue": [
 		"./resources/js/components/common/PictureCard.vue",
-		6
+		7
 	],
 	"./common/RichTextEditor": [
 		"./resources/js/components/common/RichTextEditor.vue",
 		0,
-		7
+		8
 	],
 	"./common/RichTextEditor.vue": [
 		"./resources/js/components/common/RichTextEditor.vue",
 		0,
-		7
+		8
 	],
 	"./hobby/Create": [
 		"./resources/js/components/hobby/Create.vue",
-		14
+		1
 	],
 	"./hobby/Create.vue": [
 		"./resources/js/components/hobby/Create.vue",
-		14
+		1
 	],
 	"./hobby/Index": [
 		"./resources/js/components/hobby/Index.vue",
-		14,
-		15
+		1,
+		14
 	],
 	"./hobby/Index.vue": [
 		"./resources/js/components/hobby/Index.vue",
-		14,
-		15
+		1,
+		14
 	],
 	"./hobby/Stage": [
 		"./resources/js/components/hobby/Stage.vue",
-		12
+		9
 	],
 	"./hobby/Stage.vue": [
 		"./resources/js/components/hobby/Stage.vue",
-		12
+		9
 	],
 	"./layouts/Footer": [
 		"./resources/js/components/layouts/Footer.vue"
@@ -99456,54 +99456,54 @@ var map = {
 	"./note/Create": [
 		"./resources/js/components/note/Create.vue",
 		0,
-		3
+		4
 	],
 	"./note/Create.vue": [
 		"./resources/js/components/note/Create.vue",
 		0,
-		3
+		4
 	],
 	"./note/Edit": [
 		"./resources/js/components/note/Edit.vue",
 		0,
-		4
+		5
 	],
 	"./note/Edit.vue": [
 		"./resources/js/components/note/Edit.vue",
 		0,
-		4
+		5
 	],
 	"./note/Index": [
 		"./resources/js/components/note/Index.vue",
-		8
+		10
 	],
 	"./note/Index.vue": [
 		"./resources/js/components/note/Index.vue",
-		8
+		10
 	],
 	"./note/Show": [
 		"./resources/js/components/note/Show.vue",
-		9
+		11
 	],
 	"./note/Show.vue": [
 		"./resources/js/components/note/Show.vue",
-		9
+		11
 	],
 	"./user/Login": [
 		"./resources/js/components/user/Login.vue",
-		10
+		12
 	],
 	"./user/Login.vue": [
 		"./resources/js/components/user/Login.vue",
-		10
+		12
 	],
 	"./user/Register": [
 		"./resources/js/components/user/Register.vue",
-		11
+		13
 	],
 	"./user/Register.vue": [
 		"./resources/js/components/user/Register.vue",
-		11
+		13
 	]
 };
 function webpackAsyncContext(req) {
