@@ -4,7 +4,7 @@ namespace App\Http\Requests\Hobby;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateHobbyRequest extends FormRequest
+class IndexHobbyRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,13 +24,7 @@ class CreateHobbyRequest extends FormRequest
     public function rules()
     {
         return [
-            'category_id' => 'required|numeric',
-            'name' => 'required|string',
-            'stages' => 'required|array',
-            'stages.*.name' => 'required|string',
-            'stages.*.description' => 'required|string',
-            'stages.*.score' => 'required|numeric',
-            'stages.*.level' => 'required|integer',
+            'category_id' => 'required'
         ];
     }
 }

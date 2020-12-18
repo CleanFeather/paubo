@@ -5686,7 +5686,7 @@ exports = module.exports = __webpack_require__(/*! ../../node_modules/css-loader
 
 
 // module
-exports.push([module.i, "body[data-v-f348271a] {\n  margin: 0;\n  padding: 0;\n}\nhtml[data-v-f348271a] {\n  position: relative;\n  width: 100%;\n  min-height: 100%;\n}\nmain[data-v-f348271a] {\n  margin-bottom: 40px;\n}\nfooter[data-v-f348271a] {\n  position: fixed;\n  padding: 0;\n  bottom: 0;\n  left: 0;\n  right: 0;\n}", ""]);
+exports.push([module.i, "body[data-v-f348271a] {\n  margin: 0;\n  padding: 0;\n}\nhtml[data-v-f348271a] {\n  position: relative;\n  width: 100%;\n  min-height: 100%;\n}\nmain[data-v-f348271a] {\n  margin-bottom: 40px;\n}\nfooter[data-v-f348271a] {\n  position: fixed;\n  padding: 0;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  z-index: 100;\n}", ""]);
 
 // exports
 
@@ -99420,20 +99420,20 @@ var map = {
 	"./hobby/Index": [
 		"./resources/js/components/hobby/Index.vue",
 		1,
-		14
+		9
 	],
 	"./hobby/Index.vue": [
 		"./resources/js/components/hobby/Index.vue",
 		1,
-		14
+		9
 	],
 	"./hobby/Stage": [
 		"./resources/js/components/hobby/Stage.vue",
-		9
+		10
 	],
 	"./hobby/Stage.vue": [
 		"./resources/js/components/hobby/Stage.vue",
-		9
+		10
 	],
 	"./layouts/Footer": [
 		"./resources/js/components/layouts/Footer.vue"
@@ -99475,35 +99475,35 @@ var map = {
 	],
 	"./note/Index": [
 		"./resources/js/components/note/Index.vue",
-		10
+		11
 	],
 	"./note/Index.vue": [
 		"./resources/js/components/note/Index.vue",
-		10
+		11
 	],
 	"./note/Show": [
 		"./resources/js/components/note/Show.vue",
-		11
+		12
 	],
 	"./note/Show.vue": [
 		"./resources/js/components/note/Show.vue",
-		11
+		12
 	],
 	"./user/Login": [
 		"./resources/js/components/user/Login.vue",
-		12
+		13
 	],
 	"./user/Login.vue": [
 		"./resources/js/components/user/Login.vue",
-		12
+		13
 	],
 	"./user/Register": [
 		"./resources/js/components/user/Register.vue",
-		13
+		14
 	],
 	"./user/Register.vue": [
 		"./resources/js/components/user/Register.vue",
-		13
+		14
 	]
 };
 function webpackAsyncContext(req) {

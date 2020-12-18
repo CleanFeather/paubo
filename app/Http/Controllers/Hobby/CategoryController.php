@@ -12,7 +12,7 @@ class CategoryController extends Controller
     public function index(Category $category)
     {
         if (!Redis::get('hobby_category')){
-            $hobby_category = $category->query()->where('type','hobby')->orderByDesc('id')->get();
+            $hobby_category = $category->query()->where('type','hobby')->get();
             Redis::set('hobby_category',serialize($hobby_category));
         }
         return unserialize(Redis::get('hobby_category'));

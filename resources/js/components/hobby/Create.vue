@@ -3,7 +3,7 @@
     <el-drawer :visible.sync="drawer" :with-header="false" size="50%">
       <el-form v-model="form" ref="form">
         <el-form-item>
-          <el-select v-model="form.type" placeholder="请选择习惯类型">
+          <el-select v-model="form.category_id" placeholder="请选择习惯类型">
             <el-option
               v-for="item in category"
               :key="item.id"
@@ -50,7 +50,7 @@ export default {
     return {
       drawer: false,
       form: {
-        type: "",
+        category_id: "",
         name: "",
         stages: [],
       },
@@ -68,23 +68,17 @@ export default {
     getStage(stage) {
       this.form.stages.push(stage);
     },
-    initParams() {
-      this.form.type = "";
-      this.form.name = "";
-      this.form.stages = [];
-      this.drawer = false;
-    },
     submit() {
       request({
         method: 'post',
         url: 'hobby',
         data: this.form
       }).then(response => {
-        this.initParams();
         this.$message({
           type: 'success',
           message: '创建成功'
         })
+        this.$router.go(0);
       })
     }
   },

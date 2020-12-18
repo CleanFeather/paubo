@@ -21,11 +21,6 @@
           ></el-input>
         </el-form-item>
         <el-form-item label="阶段目标分数:">
-          <!-- <el-input-number
-            v-model="stage.score"
-            :min="1"
-            :max="score"
-          ></el-input-number> -->
           <el-slider
             v-model="stage.score"
             :step="5"

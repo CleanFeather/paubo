@@ -17,10 +17,10 @@ class CreateHobbiesTable extends Migration
             $table->id();
             $table->bigInteger('user_id')->index()->comment('用户id');
             $table->string('name')->comment('习惯名称');
-            $table->string('type')->comment('习惯类型：good/bad');
+            $table->string('category_id')->comment('习惯类型');
             $table->integer('score')->default(0)->comment('分数：100分满');
             $table->timestamps();
-            $table->index(['user_id','type']);
+            $table->index(['user_id','category_id']);
         });
     }
 

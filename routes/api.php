@@ -77,6 +77,8 @@ Route::namespace('Album')->middleware('auth.token')->group(function (){
 Route::namespace('Hobby')->middleware('auth.token')->group(function (){
     // 习惯类型
     Route::prefix('hobby')->group(function (){
+        // 习惯列表
+        Route::get('/','HobbyController@index')->name('hobby.index');
         // 习惯类型
         Route::get('category','CategoryController@index')->name('hobby.category.index');
         // 添加习惯

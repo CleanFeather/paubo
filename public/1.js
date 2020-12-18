@@ -61,7 +61,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       drawer: false,
       form: {
-        type: "",
+        category_id: "",
         name: "",
         stages: []
       }
@@ -79,12 +79,6 @@ __webpack_require__.r(__webpack_exports__);
     getStage: function getStage(stage) {
       this.form.stages.push(stage);
     },
-    initParams: function initParams() {
-      this.form.type = "";
-      this.form.name = "";
-      this.form.stages = [];
-      this.drawer = false;
-    },
     submit: function submit() {
       var _this = this;
 
@@ -93,12 +87,12 @@ __webpack_require__.r(__webpack_exports__);
         url: 'hobby',
         data: this.form
       }).then(function (response) {
-        _this.initParams();
-
         _this.$message({
           type: 'success',
           message: '创建成功'
         });
+
+        _this.$router.go(0);
       });
     }
   }
@@ -115,11 +109,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
 //
 //
 //
@@ -361,11 +350,11 @@ var render = function() {
                     {
                       attrs: { placeholder: "请选择习惯类型" },
                       model: {
-                        value: _vm.form.type,
+                        value: _vm.form.category_id,
                         callback: function($$v) {
-                          _vm.$set(_vm.form, "type", $$v)
+                          _vm.$set(_vm.form, "category_id", $$v)
                         },
-                        expression: "form.type"
+                        expression: "form.category_id"
                       }
                     },
                     _vm._l(_vm.category, function(item) {

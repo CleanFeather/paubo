@@ -13,13 +13,28 @@
       tab-position="left"
       type="border-card"
       @tab-click="handleClick"
+      :key="vender"
     >
       <el-tab-pane
         v-for="item in category"
         :key="item.id"
         :label="item.name"
         :name="item.id.toString()"
-      ></el-tab-pane>
+      >
+        <el-row v-for="(item,index) in hobbies" :key="item.id">
+          <el-card class="box-card">
+            <div slot="header" class="clearfix">
+              <span>{{ item.name }}</span>
+              <el-button style="float: right; padding: 3px 0" type="text"
+                >查看详情</el-button
+              >
+            </div>
+              <el-steps :active="activeStep(index)" finish-status="success" simple>
+                <el-step v-for="i in item.stages" :key="i.id" :title="i.name"></el-step>
+              </el-steps>
+          </el-card>
+        </el-row>
+      </el-tab-pane>
     </el-tabs>
   </div>
 </template>
@@ -33,6 +48,8 @@ export default {
     return {
       activeCategory: "",
       category: [],
+      hobbies: [],
+      vender: 0
     };
   },
   mounted: function () {
@@ -42,12 +59,38 @@ export default {
     }).then((response) => {
       this.category = response.data;
       this.activeCategory = this.category[0].id.toString();
+      this.getHobbies();
     });
   },
   methods: {
     handleClick(tab, event) {
-      console.log(tab, event);
+      // console.log(tab, event);
     },
+    getHobbies() {
+      request({
+        method: "get",
+        url: "hobby",
+        params: {
+          category_id: this.activeCategory,
+        },
+      }).then((response) => {
+        this.hobbies = response.data;
+      });
+    },
+  },
+  computed: {
+    activeStep() {
+      return (index) => {
+        let stages = this.hobbies[index].stages;
+        let level = 0;
+        stages.forEach(stage => {
+          if (this.hobbies[index].score >= stage.score){
+            level = stage.level;
+          }
+        });
+        return level;
+      }
+    }
   },
   components: {
     Drawer,
@@ -56,4 +99,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.el-row{
+  margin-bottom: 15px;
+  &:last-child{
+    margin-bottom: 0;
+  }
+}
 </style>
