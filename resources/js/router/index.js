@@ -47,12 +47,16 @@ const routes = [
         name: 'album',
         path: '/album',
         component: imp('album/Index'),
-        props: true
     },
     {
         name: 'hobby',
         path: '/hobby',
         component: imp('hobby/Index'),
+    },
+    {
+        name: 'hobby.show',
+        path: '/hobby/:hobby_id',
+        component: imp('hobby/Show'),
         props: true
     },
     {

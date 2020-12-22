@@ -21,17 +21,27 @@
         :label="item.name"
         :name="item.id.toString()"
       >
-        <el-row v-for="(item,index) in hobbies" :key="item.id">
+        <el-row v-for="(item, index) in hobbies" :key="item.id">
           <el-card class="box-card">
             <div slot="header" class="clearfix">
               <span>{{ item.name }}</span>
-              <el-button style="float: right; padding: 3px 0" type="text"
-                >查看详情</el-button
+              <router-link
+                style="float: right; padding: 3px 0"
+                :to="{ name: 'hobby.show', params: { hobby_id: item.id } }"
+                >查看详情</router-link
               >
             </div>
-              <el-steps :active="activeStep(index)" finish-status="success" simple>
-                <el-step v-for="i in item.stages" :key="i.id" :title="i.name"></el-step>
-              </el-steps>
+            <el-steps
+              :active="activeStep(index)"
+              finish-status="success"
+              simple
+            >
+              <el-step
+                v-for="i in item.stages"
+                :key="i.id"
+                :title="i.name"
+              ></el-step>
+            </el-steps>
           </el-card>
         </el-row>
       </el-tab-pane>
@@ -49,7 +59,7 @@ export default {
       activeCategory: "",
       category: [],
       hobbies: [],
-      vender: 0
+      vender: 0,
     };
   },
   mounted: function () {
@@ -83,14 +93,14 @@ export default {
       return (index) => {
         let stages = this.hobbies[index].stages;
         let level = 0;
-        stages.forEach(stage => {
-          if (this.hobbies[index].score >= stage.score){
+        stages.forEach((stage) => {
+          if (this.hobbies[index].days >= stage.days) {
             level = stage.level;
           }
         });
         return level;
-      }
-    }
+      };
+    },
   },
   components: {
     Drawer,
@@ -99,9 +109,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.el-row{
+.el-row {
   margin-bottom: 15px;
-  &:last-child{
+  &:last-child {
     margin-bottom: 0;
   }
 }

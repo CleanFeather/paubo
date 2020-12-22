@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateHobbyStagesTable extends Migration
+class CreateHobbyRecordsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class CreateHobbyStagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('hobby_stages', function (Blueprint $table) {
+        Schema::create('hobby_records', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('hobby_id')->index()->comment('习惯id');
-            $table->string('name')->comment('阶段名称');
-            $table->string('description')->nullable()->comment('阶段描述');
-            $table->integer('days')->comment('阶段目标天数');
-            $table->tinyInteger('level')->comment('阶段级别（第几阶段）');
+            $table->integer('days')->default(1)->comment('计算天数 可正负');
+            $table->string('content')->nullable()->comment('说点什么');
+            $table->timestamps();
         });
     }
 
@@ -30,6 +29,6 @@ class CreateHobbyStagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('hobby_stages');
+        Schema::dropIfExists('hobby_records');
     }
 }

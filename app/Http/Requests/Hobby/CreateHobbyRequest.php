@@ -29,7 +29,7 @@ class CreateHobbyRequest extends FormRequest
             'stages' => 'required|array',
             'stages.*.name' => 'required|string',
             'stages.*.description' => 'required|string',
-            'stages.*.score' => 'required|numeric',
+            'stages.*.days' => 'required|numeric',
             'stages.*.level' => 'required|integer',
         ];
     }

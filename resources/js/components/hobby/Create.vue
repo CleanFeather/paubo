@@ -16,6 +16,36 @@
           <el-input v-model="form.name" placeholder="请输入你的目标"></el-input>
         </el-form-item>
         <el-form-item>
+          <el-switch
+            style="display: block"
+            v-model="keep_type"
+            active-color="#13ce66"
+            inactive-color="#13ce66"
+            active-text="期限"
+            inactive-text="天数"
+            :disabled="switch_status"
+          >
+          </el-switch>
+        </el-form-item>
+        <el-form-item>
+          <div v-if="keep_type">
+            <el-date-picker
+              v-model="keep_date"
+              type="date"
+              placeholder="选择日期"
+              :disabled="switch_status"
+            >
+            </el-date-picker>
+          </div>
+          <div v-else>
+            <el-input-number
+              v-model="keep_num"
+              :min="1"
+              :disabled="switch_status"
+            ></el-input-number>
+          </div>
+        </el-form-item>
+        <el-form-item>
           <el-card>
             <div slot="header">
               <el-button @click="incStage" type="text">添加阶段</el-button>
@@ -31,7 +61,7 @@
               </el-steps>
             </div>
           </el-card>
-          <Stage ref="stage" @getStage="getStage" />
+          <Stage ref="stage" :days="days" @getStage="getStage" />
         </el-form-item>
         <el-form-item>
           <el-button type="primary" @click="submit">提交</el-button>
@@ -44,11 +74,15 @@
 <script>
 import { request } from "../../network/request";
 import Stage from "./Stage";
+import moment from "moment";
 
 export default {
   data() {
     return {
       drawer: false,
+      keep_type: true,
+      keep_num: 1,
+      keep_date: moment().add(1, "days"),
       form: {
         category_id: "",
         name: "",
@@ -60,6 +94,22 @@ export default {
   components: {
     Stage,
   },
+  computed: {
+    days() {
+      let days = this.keep_num;
+      if (this.keep_type) {
+        let keep_date = this.keep_date;
+        if (!keep_date._isAMomentObject) {
+          keep_date = moment(keep_date, "YYYY-MM-DD");
+        }
+        days = keep_date.diff(moment(), "days") + 1;
+      }
+      return days;
+    },
+    switch_status() {
+      return this.form.stages.length != 0;
+    },
+  },
   methods: {
     incStage() {
       this.$refs.stage.drawer = true;
@@ -70,17 +120,17 @@ export default {
     },
     submit() {
       request({
-        method: 'post',
-        url: 'hobby',
-        data: this.form
-      }).then(response => {
+        method: "post",
+        url: "hobby",
+        data: this.form,
+      }).then((response) => {
         this.$message({
-          type: 'success',
-          message: '创建成功'
-        })
+          type: "success",
+          message: "创建成功",
+        });
         this.$router.go(0);
-      })
-    }
+      });
+    },
   },
 };
 </script>

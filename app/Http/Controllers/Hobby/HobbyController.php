@@ -42,13 +42,13 @@ class HobbyController extends Controller
                     $hobbyStage->hobby_id,
                     $hobbyStage->name,
                     $hobbyStage->description,
-                    $hobbyStage->score,
+                    $hobbyStage->days,
                     $hobbyStage->level,
                 ) = [
                     $hobby->id,
                     $stage['name'],
                     $stage['description'],
-                    $stage['score'],
+                    $stage['days'],
                     $stage['level'],
                 ];
                 $hobbyStage->save();

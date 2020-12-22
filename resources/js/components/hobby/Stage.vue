@@ -20,12 +20,12 @@
             placeholder="请为该阶段添加描述信息"
           ></el-input>
         </el-form-item>
-        <el-form-item label="阶段目标分数:">
+        <el-form-item label="阶段目标天数:">
           <el-slider
-            v-model="stage.score"
+            v-model="stage.days"
             :step="5"
             :min="0"
-            :max="score"
+            :max="stage_days"
             show-stops
           >
           </el-slider>
@@ -46,43 +46,49 @@ export default {
       stage: {
         name: "",
         description: "",
-        score: "",
+        days: "",
         level: "",
       },
       level: 1,
-      score: 100,
+      stage_days: 1,
     };
+  },
+  props: ["days"],
+  watch: {
+    days() {
+      this.stage_days = this.days;
+    },
   },
   methods: {
     submit() {
-      if (this.score <= 0) {
+      if (this.stage_days <= 0) {
         this.$message({
           type: "warning",
-          message: "分数已分配完毕",
+          message: "天数已分配完毕",
         });
         return;
       }
-      if (this.stage.score <= 0) {
+      if (this.stage.days <= 0) {
         this.$message({
           type: "warning",
-          message: "分数必须大于0",
+          message: "天数必须大于0",
         });
         return;
       }
       this.$emit("getStage", {
         name: this.stage.name,
         description: this.stage.description,
-        score: this.stage.score,
+        days: this.stage.days,
         level: this.stage.level,
       });
       this.drawer = false;
       this.level++;
-      this.score -= this.stage.score;
+      this.stage_days -= this.stage.days;
     },
     initParams() {
       this.stage.name = "";
       this.stage.description = "";
-      this.stage.score = this.score;
+      this.stage.days = this.stage_days;
       this.stage.level = this.level;
     },
   },

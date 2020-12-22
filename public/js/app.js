@@ -99375,11 +99375,11 @@ var map = {
 	],
 	"./album/Edit": [
 		"./resources/js/components/album/Edit.vue",
-		15
+		16
 	],
 	"./album/Edit.vue": [
 		"./resources/js/components/album/Edit.vue",
-		15
+		16
 	],
 	"./album/Index": [
 		"./resources/js/components/album/Index.vue",
@@ -99411,29 +99411,41 @@ var map = {
 	],
 	"./hobby/Create": [
 		"./resources/js/components/hobby/Create.vue",
-		1
+		1,
+		11
 	],
 	"./hobby/Create.vue": [
 		"./resources/js/components/hobby/Create.vue",
-		1
+		1,
+		11
 	],
 	"./hobby/Index": [
 		"./resources/js/components/hobby/Index.vue",
 		1,
-		9
+		11,
+		17
 	],
 	"./hobby/Index.vue": [
 		"./resources/js/components/hobby/Index.vue",
 		1,
-		9
+		11,
+		17
+	],
+	"./hobby/Show": [
+		"./resources/js/components/hobby/Show.vue",
+		10
+	],
+	"./hobby/Show.vue": [
+		"./resources/js/components/hobby/Show.vue",
+		10
 	],
 	"./hobby/Stage": [
 		"./resources/js/components/hobby/Stage.vue",
-		10
+		9
 	],
 	"./hobby/Stage.vue": [
 		"./resources/js/components/hobby/Stage.vue",
-		10
+		9
 	],
 	"./layouts/Footer": [
 		"./resources/js/components/layouts/Footer.vue"
@@ -99475,35 +99487,35 @@ var map = {
 	],
 	"./note/Index": [
 		"./resources/js/components/note/Index.vue",
-		11
+		12
 	],
 	"./note/Index.vue": [
 		"./resources/js/components/note/Index.vue",
-		11
+		12
 	],
 	"./note/Show": [
 		"./resources/js/components/note/Show.vue",
-		12
+		13
 	],
 	"./note/Show.vue": [
 		"./resources/js/components/note/Show.vue",
-		12
+		13
 	],
 	"./user/Login": [
 		"./resources/js/components/user/Login.vue",
-		13
+		14
 	],
 	"./user/Login.vue": [
 		"./resources/js/components/user/Login.vue",
-		13
+		14
 	],
 	"./user/Register": [
 		"./resources/js/components/user/Register.vue",
-		14
+		15
 	],
 	"./user/Register.vue": [
 		"./resources/js/components/user/Register.vue",
-		14
+		15
 	]
 };
 function webpackAsyncContext(req) {
@@ -99878,12 +99890,15 @@ var routes = [{
 }, {
   name: 'album',
   path: '/album',
-  component: imp('album/Index'),
-  props: true
+  component: imp('album/Index')
 }, {
   name: 'hobby',
   path: '/hobby',
-  component: imp('hobby/Index'),
+  component: imp('hobby/Index')
+}, {
+  name: 'hobby.show',
+  path: '/hobby/:hobby_id',
+  component: imp('hobby/Show'),
   props: true
 }, {
   name: 'test',
