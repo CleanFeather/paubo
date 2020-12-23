@@ -2,14 +2,14 @@
   <div>
     <el-row :gutter="20">
       <el-col :span="12">
-        <el-calendar v-model="value">
+        <el-calendar v-model="date">
           <template slot="dateCell" slot-scope="{ date, data }">
             <p
               @click="dateClick(data, date)"
-              :class="data.isSelected ? 'is-selected' : ''"
+              :class="{ isSelected: data.isSelected }"
             >
-              {{ data.day.split("-").slice(-1)[0] }}
-              {{ data.isSelected ? "✔️" : "" }}
+              {{ formToDay(data.day) }}
+              {{ signed(data.day) ? "✔️" : "" }}
             </p>
           </template>
         </el-calendar>
@@ -24,18 +24,25 @@
 </template>
 
 <script>
+import { request } from "./../../network/request";
+import moment from "moment";
+
 export default {
   data() {
     return {
-      value: new Date(),
+      date: new Date(),
+      signs: [],
     };
   },
   props: ["hobby_id"],
   mounted: function () {
-    console.log(this.hobby_id);
+    this.getSigned();
   },
   methods: {
     dateClick(data, date) {
+      if (data.day != moment().format("YYYY-MM-DD") || this.signed(data.day)) {
+        return;
+      }
       this.$prompt("", "", {
         inputPlaceholder: "说点什么 ...",
         confirmButtonText: "签到",
@@ -43,12 +50,45 @@ export default {
         showClose: false,
       })
         .then(({ value }) => {
-          this.$message({
-            type: "success",
-            message: "签到成功",
+          request({
+            method: "post",
+            url: "hobby/sign",
+            data: {
+              hobby_id: this.hobby_id,
+              content: value,
+              date: data.day,
+            },
+          }).then((response) => {
+            this.getSigned();
+            this.$message({
+              type: "success",
+              message: "签到成功",
+            });
           });
         })
         .catch(() => {});
+    },
+    formToDay(date) {
+      return moment(date).format("DD");
+    },
+    signed(date) {
+      for (let i = 0; i < this.signs.length; i++) {
+        if (date == this.signs[i].date) {
+          return true;
+        }
+      }
+    },
+    getSigned() {
+      request({
+        method: "get",
+        url: "hobby/sign",
+        params: {
+          start_date: moment().startOf("month").format("YYYY-MM-DD"),
+          end_date: moment().endOf("month").format("YYYY-MM-DD"),
+        },
+      }).then((response) => {
+        this.signs = response.data;
+      });
     },
   },
 };
@@ -70,5 +110,15 @@ export default {
 }
 .el-calendar-table th {
   text-align: center;
+}
+.el-calendar-table {
+  &:not(.is-today) {
+    td.next {
+      pointer-events: none;
+    }
+    td.prev {
+      pointer-events: none;
+    }
+  }
 }
 </style>
