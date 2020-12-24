@@ -16,9 +16,11 @@ class CreateHobbySignsTable extends Migration
         Schema::create('hobby_signs', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('hobby_id')->index()->comment('习惯id');
+            $table->string('type', 10)->default('sign')->comment('sign:打卡，custom:自定义奖惩');
             $table->integer('days')->default(1)->comment('计算天数 可正负');
             $table->string('content')->nullable()->comment('说点什么');
-            $table->date('date')->unique()->comment('打卡日期');
+            $table->date('date')->comment('打卡日期');
+            $table->index(['hobby_id', 'type', 'date']);
         });
     }
 

@@ -138,6 +138,7 @@ __webpack_require__.r(__webpack_exports__);
     submit: function submit() {
       var _this = this;
 
+      this.form.days = this.days;
       Object(_network_request__WEBPACK_IMPORTED_MODULE_0__["request"])({
         method: "post",
         url: "hobby",

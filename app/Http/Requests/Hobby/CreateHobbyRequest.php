@@ -26,6 +26,7 @@ class CreateHobbyRequest extends FormRequest
         return [
             'category_id' => 'required|numeric',
             'name' => 'required|string',
+            'days' => 'required|integer',
             'stages' => 'required|array',
             'stages.*.name' => 'required|string',
             'stages.*.description' => 'required|string',

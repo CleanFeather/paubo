@@ -29,10 +29,12 @@ class HobbyController extends Controller
         list(
             $hobby->user_id,
             $hobby->name,
+            $hobby->days,
             $hobby->category_id,
         ) = [
             auth('api')->user()->id,
             $request->name,
+            $request->days,
             $request->category_id
         ];
         if ($hobby->save()){

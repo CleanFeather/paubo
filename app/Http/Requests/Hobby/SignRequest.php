@@ -25,7 +25,9 @@ class SignRequest extends FormRequest
     {
         return [
             'hobby_id' => 'required|integer',
-            'content' => 'string',
+            'type' => 'in:sign,custom',
+            'content' => 'string|nullable',
+            'days' => 'integer',
             'date' => 'required|date'
         ];
     }

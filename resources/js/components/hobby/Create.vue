@@ -119,6 +119,7 @@ export default {
       this.form.stages.push(stage);
     },
     submit() {
+      this.form.days = this.days;
       request({
         method: "post",
         url: "hobby",

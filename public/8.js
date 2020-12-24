@@ -37,13 +37,39 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       date: new Date(),
-      signs: []
+      signs: [],
+      custom: {
+        content: "",
+        days: 1
+      }
     };
   },
   props: ["hobby_id"],
@@ -65,23 +91,37 @@ __webpack_require__.r(__webpack_exports__);
         showClose: false
       }).then(function (_ref) {
         var value = _ref.value;
-        Object(_network_request__WEBPACK_IMPORTED_MODULE_0__["request"])({
-          method: "post",
-          url: "hobby/sign",
-          data: {
-            hobby_id: _this.hobby_id,
-            content: value,
-            date: data.day
-          }
-        }).then(function (response) {
-          _this.getSigned();
 
-          _this.$message({
-            type: "success",
-            message: "签到成功"
-          });
-        });
+        _this.sign(value, 1, data.day);
       })["catch"](function () {});
+    },
+    customClick: function customClick() {
+      this.sign(this.custom.content, this.custom.days, moment__WEBPACK_IMPORTED_MODULE_1___default()().format("YYYY-MM-DD"), "custom");
+      this.custom.content = "";
+      this.custom.days = 1;
+    },
+    sign: function sign(content, days, date) {
+      var _this2 = this;
+
+      var type = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : "sign";
+      Object(_network_request__WEBPACK_IMPORTED_MODULE_0__["request"])({
+        method: "post",
+        url: "hobby/sign",
+        data: {
+          hobby_id: this.hobby_id,
+          type: type,
+          content: content,
+          days: days,
+          date: date
+        }
+      }).then(function (response) {
+        _this2.getSigned();
+
+        _this2.$message({
+          type: "success",
+          message: "签到成功"
+        });
+      });
     },
     formToDay: function formToDay(date) {
       return moment__WEBPACK_IMPORTED_MODULE_1___default()(date).format("DD");
@@ -94,17 +134,18 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     getSigned: function getSigned() {
-      var _this2 = this;
+      var _this3 = this;
 
       Object(_network_request__WEBPACK_IMPORTED_MODULE_0__["request"])({
         method: "get",
         url: "hobby/sign",
         params: {
+          hobby_id: this.hobby_id,
           start_date: moment__WEBPACK_IMPORTED_MODULE_1___default()().startOf("month").format("YYYY-MM-DD"),
           end_date: moment__WEBPACK_IMPORTED_MODULE_1___default()().endOf("month").format("YYYY-MM-DD")
         }
       }).then(function (response) {
-        _this2.signs = response.data;
+        _this3.signs = response.data;
       });
     }
   }
@@ -533,7 +574,93 @@ var render = function() {
             1
           ),
           _vm._v(" "),
-          _c("el-col", { attrs: { span: 6 } }, [_c("div", [_vm._v("a")])]),
+          _c(
+            "el-col",
+            { attrs: { span: 6 } },
+            [
+              _c(
+                "el-card",
+                [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "clearfix",
+                      attrs: { slot: "header" },
+                      slot: "header"
+                    },
+                    [_c("span", [_vm._v("自定义奖惩")])]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "el-form",
+                    {
+                      attrs: { "label-position": "top" },
+                      model: {
+                        value: _vm.custom,
+                        callback: function($$v) {
+                          _vm.custom = $$v
+                        },
+                        expression: "custom"
+                      }
+                    },
+                    [
+                      _c(
+                        "el-form-item",
+                        [
+                          _c("el-input", {
+                            attrs: { placeholder: "请说明具体情况.." },
+                            model: {
+                              value: _vm.custom.content,
+                              callback: function($$v) {
+                                _vm.$set(_vm.custom, "content", $$v)
+                              },
+                              expression: "custom.content"
+                            }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "el-form-item",
+                        { attrs: { label: "延长天数:" } },
+                        [
+                          _c("el-input-number", {
+                            model: {
+                              value: _vm.custom.days,
+                              callback: function($$v) {
+                                _vm.$set(_vm.custom, "days", $$v)
+                              },
+                              expression: "custom.days"
+                            }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "el-form-item",
+                        [
+                          _c(
+                            "el-button",
+                            {
+                              attrs: { type: "primary", size: "small" },
+                              on: { click: _vm.customClick }
+                            },
+                            [_vm._v("提交")]
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          ),
           _vm._v(" "),
           _c("el-col", { attrs: { span: 6 } }, [_c("div", [_vm._v("b")])])
         ],
