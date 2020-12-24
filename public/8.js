@@ -59,6 +59,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -69,12 +78,31 @@ __webpack_require__.r(__webpack_exports__);
       custom: {
         content: "",
         days: 1
-      }
+      },
+      hobby: {},
+      prog_status: "success"
     };
   },
   props: ["hobby_id"],
   mounted: function mounted() {
     this.getSigned();
+    this.getHobby();
+  },
+  computed: {
+    progPercent: function progPercent() {
+      var percent = Math.round(this.hobby.keep_days / this.hobby.days * 100);
+      percent = isNaN(percent) ? 0 : percent;
+
+      if (percent < 0) {
+        percent = 0;
+      }
+
+      if (percent > 100) {
+        percent = 100;
+      }
+
+      return percent;
+    }
   },
   methods: {
     dateClick: function dateClick(data, date) {
@@ -133,8 +161,21 @@ __webpack_require__.r(__webpack_exports__);
         }
       }
     },
-    getSigned: function getSigned() {
+    getHobby: function getHobby() {
       var _this3 = this;
+
+      Object(_network_request__WEBPACK_IMPORTED_MODULE_0__["request"])({
+        method: "get",
+        url: "hobby/show",
+        params: {
+          hobby_id: this.hobby_id
+        }
+      }).then(function (response) {
+        _this3.hobby = response.data;
+      });
+    },
+    getSigned: function getSigned() {
+      var _this4 = this;
 
       Object(_network_request__WEBPACK_IMPORTED_MODULE_0__["request"])({
         method: "get",
@@ -145,7 +186,7 @@ __webpack_require__.r(__webpack_exports__);
           end_date: moment__WEBPACK_IMPORTED_MODULE_1___default()().endOf("month").format("YYYY-MM-DD")
         }
       }).then(function (response) {
-        _this3.signs = response.data;
+        _this4.signs = response.data;
       });
     }
   }
@@ -662,7 +703,27 @@ var render = function() {
             1
           ),
           _vm._v(" "),
-          _c("el-col", { attrs: { span: 6 } }, [_c("div", [_vm._v("b")])])
+          _c(
+            "el-col",
+            { attrs: { span: 6 } },
+            [
+              _c(
+                "el-card",
+                [
+                  _c("el-progress", {
+                    attrs: {
+                      type: "circle",
+                      percentage: _vm.progPercent,
+                      width: 260,
+                      "stroke-width": 16
+                    }
+                  })
+                ],
+                1
+              )
+            ],
+            1
+          )
         ],
         1
       ),

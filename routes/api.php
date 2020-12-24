@@ -83,6 +83,8 @@ Route::namespace('Hobby')->middleware('auth.token')->group(function () {
         Route::get('category', 'CategoryController@index')->name('hobby.category.index');
         // 添加习惯
         Route::post('/', 'HobbyController@store')->name('hobby.store');
+        // 习惯详情
+        Route::get('/show','HobbyController@show')->name('hobby.show');
         Route::prefix('sign')->group(function () {
             // 打卡
             Route::post('/', 'SignController@store')->name('hobby.sign.store');

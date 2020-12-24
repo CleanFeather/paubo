@@ -37,7 +37,16 @@
           </el-form>
         </el-card>
       </el-col>
-      <el-col :span="6"><div>b</div></el-col>
+      <el-col :span="6">
+        <el-card>
+          <el-progress
+            type="circle"
+            :percentage="progPercent"
+            :width="260"
+            :stroke-width="16"
+          ></el-progress>
+        </el-card>
+      </el-col>
     </el-row>
     <el-row>
       <el-col><div>c</div></el-col>
@@ -58,11 +67,27 @@ export default {
         content: "",
         days: 1,
       },
+      hobby: {},
+      prog_status: "success",
     };
   },
   props: ["hobby_id"],
   mounted: function () {
     this.getSigned();
+    this.getHobby();
+  },
+  computed: {
+    progPercent() {
+      let percent = Math.round((this.hobby.keep_days / this.hobby.days) * 100);
+      percent = isNaN(percent) ? 0 : percent;
+      if (percent < 0) {
+        percent = 0;
+      }
+      if (percent > 100) {
+        percent = 100;
+      }
+      return percent;
+    },
   },
   methods: {
     dateClick(data, date) {
@@ -118,6 +143,17 @@ export default {
           return true;
         }
       }
+    },
+    getHobby() {
+      request({
+        method: "get",
+        url: "hobby/show",
+        params: {
+          hobby_id: this.hobby_id,
+        },
+      }).then((response) => {
+        this.hobby = response.data;
+      });
     },
     getSigned() {
       request({

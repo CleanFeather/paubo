@@ -37,7 +37,7 @@
               simple
             >
               <el-step
-                v-for="i in item.stages"
+                v-for="i in item.hobby_stage"
                 :key="i.id"
                 :title="i.name"
               ></el-step>
@@ -91,9 +91,9 @@ export default {
   computed: {
     activeStep() {
       return (index) => {
-        let stages = this.hobbies[index].stages;
+        let hobby_stage = this.hobbies[index].hobby_stage;
         let level = 0;
-        stages.forEach((stage) => {
+        hobby_stage.forEach((stage) => {
           if (this.hobbies[index].days >= stage.days) {
             level = stage.level;
           }

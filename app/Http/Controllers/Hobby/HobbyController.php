@@ -19,9 +19,19 @@ class HobbyController extends Controller
         }
         $hobbies = $query->get();
         collect($hobbies)->map(function ($item) use ($hobby){
-            $item->stages = $hobby->query()->find($item->id)->hobbyStage;
+            $item->hobbyStage;
         });
         return response()->json($hobbies);
+    }
+
+    public function show(Request $request,Hobby $hobby)
+    {
+        $this->validate($request,[
+            'hobby_id' => 'required|integer'
+        ]);
+        $data = $hobby->query()->find($request->hobby_id);
+        $data->hobbyStage;
+        return response()->json($data);
     }
 
     public function store(CreateHobbyRequest $request, Hobby $hobby)

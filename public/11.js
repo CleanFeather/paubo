@@ -108,9 +108,9 @@ __webpack_require__.r(__webpack_exports__);
       var _this3 = this;
 
       return function (index) {
-        var stages = _this3.hobbies[index].stages;
+        var hobby_stage = _this3.hobbies[index].hobby_stage;
         var level = 0;
-        stages.forEach(function (stage) {
+        hobby_stage.forEach(function (stage) {
           if (_this3.hobbies[index].days >= stage.days) {
             level = stage.level;
           }
@@ -276,7 +276,7 @@ var render = function() {
                             simple: ""
                           }
                         },
-                        _vm._l(item.stages, function(i) {
+                        _vm._l(item.hobby_stage, function(i) {
                           return _c("el-step", {
                             key: i.id,
                             attrs: { title: i.name }
