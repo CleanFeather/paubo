@@ -12,7 +12,6 @@
       v-model="activeCategory"
       tab-position="left"
       type="border-card"
-      @tab-click="handleClick"
       :key="vender"
     >
       <el-tab-pane
@@ -72,10 +71,12 @@ export default {
       this.getHobbies();
     });
   },
+  watch: {
+    activeCategory(category_id) {
+      this.getHobbies();
+    }
+  },
   methods: {
-    handleClick(tab, event) {
-      // console.log(tab, event);
-    },
     getHobbies() {
       request({
         method: "get",

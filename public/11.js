@@ -61,7 +61,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -86,9 +85,12 @@ __webpack_require__.r(__webpack_exports__);
       _this.getHobbies();
     });
   },
+  watch: {
+    activeCategory: function activeCategory(category_id) {
+      this.getHobbies();
+    }
+  },
   methods: {
-    handleClick: function handleClick(tab, event) {// console.log(tab, event);
-    },
     getHobbies: function getHobbies() {
       var _this2 = this;
 
@@ -215,7 +217,6 @@ var render = function() {
         {
           key: _vm.vender,
           attrs: { "tab-position": "left", type: "border-card" },
-          on: { "tab-click": _vm.handleClick },
           model: {
             value: _vm.activeCategory,
             callback: function($$v) {

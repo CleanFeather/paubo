@@ -19,6 +19,10 @@ class SignController extends Controller
 
     public function index(IndexSignRequest $request,HobbySign $hobbySign)
     {
-        return $hobbySign->query()->where('hobby_id',$request->hobby_id)->where('type','sign')->whereBetween('date',[$request->start_date,$request->end_date])->get();
+        $query = $hobbySign->query()->where('hobby_id',$request->hobby_id)->whereBetween('date',[$request->start_date,$request->end_date]);
+        if ($request->filled('type')){
+            $query->where('type','sign');
+        }
+        return $query->orderByDesc('id')->get();
     }
 }

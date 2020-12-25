@@ -15,7 +15,7 @@
         </el-calendar>
       </el-col>
       <el-col :span="6">
-        <el-card>
+        <el-card style="height: 334px">
           <div slot="header" class="clearfix">
             <span>自定义奖惩</span>
           </div>
@@ -26,19 +26,21 @@
                 placeholder="请说明具体情况.."
               ></el-input>
             </el-form-item>
-            <el-form-item label="延长天数:">
+            <el-form-item label="奖惩天数:">
               <el-input-number v-model="custom.days"></el-input-number>
             </el-form-item>
             <el-form-item>
-              <el-button type="primary" size="small" @click="customClick"
-                >提交</el-button
-              >
+              <el-popconfirm @confirm="customClick" title="确定记录么?">
+                <el-button slot="reference" type="primary" size="small"
+                  >提交</el-button
+                >
+              </el-popconfirm>
             </el-form-item>
           </el-form>
         </el-card>
       </el-col>
       <el-col :span="6">
-        <el-card>
+        <el-card style="height: 334px">
           <el-progress
             type="circle"
             :percentage="progPercent"
@@ -49,7 +51,25 @@
       </el-col>
     </el-row>
     <el-row>
-      <el-col><div>c</div></el-col>
+      <el-col>
+        <el-card>
+          <el-timeline>
+            <el-timeline-item
+              v-for="item in signs"
+              :key="item.id"
+              :timestamp="item.date"
+              placement="top"
+            >
+              <el-card>
+                <div slot="header" class="clearfix">
+                  <h5>{{ timeLineTitle(item) }}</h5>
+                </div>
+                <p>{{ item.content }}</p>
+              </el-card>
+            </el-timeline-item>
+          </el-timeline>
+        </el-card>
+      </el-col>
     </el-row>
   </div>
 </template>
@@ -128,9 +148,10 @@ export default {
         },
       }).then((response) => {
         this.getSigned();
+        this.getHobby();
         this.$message({
           type: "success",
-          message: "签到成功",
+          message: "记录成功",
         });
       });
     },
@@ -139,7 +160,7 @@ export default {
     },
     signed(date) {
       for (let i = 0; i < this.signs.length; i++) {
-        if (date == this.signs[i].date) {
+        if (date == this.signs[i].date && this.signs[i].type == "sign") {
           return true;
         }
       }
@@ -155,7 +176,7 @@ export default {
         this.hobby = response.data;
       });
     },
-    getSigned() {
+    getSigned(type = "") {
       request({
         method: "get",
         url: "hobby/sign",
@@ -168,6 +189,19 @@ export default {
         this.signs = response.data;
       });
     },
+    timeLineTitle(item) {
+      let type = "";
+      switch (item.type) {
+        case "sign":
+          type = "打卡";
+          break;
+        case "custom":
+          type = "自定义奖惩";
+          break;
+      }
+      let days = item.days > 0 ? '+' + item.days : item.days;
+      return type + " 进度 " + days + " 天";
+    },
   },
 };
 </script>
@@ -178,10 +212,6 @@ export default {
   &:last-child {
     margin-bottom: 0;
   }
-}
-.el-col > div {
-  background-color: #d3dce6;
-  height: 334px;
 }
 .el-calendar-table .el-calendar-day {
   height: 30px;

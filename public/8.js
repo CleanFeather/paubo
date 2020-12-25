@@ -68,6 +68,26 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -145,9 +165,11 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (response) {
         _this2.getSigned();
 
+        _this2.getHobby();
+
         _this2.$message({
           type: "success",
-          message: "签到成功"
+          message: "记录成功"
         });
       });
     },
@@ -156,7 +178,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     signed: function signed(date) {
       for (var i = 0; i < this.signs.length; i++) {
-        if (date == this.signs[i].date) {
+        if (date == this.signs[i].date && this.signs[i].type == "sign") {
           return true;
         }
       }
@@ -177,6 +199,7 @@ __webpack_require__.r(__webpack_exports__);
     getSigned: function getSigned() {
       var _this4 = this;
 
+      var type = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
       Object(_network_request__WEBPACK_IMPORTED_MODULE_0__["request"])({
         method: "get",
         url: "hobby/sign",
@@ -188,6 +211,22 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (response) {
         _this4.signs = response.data;
       });
+    },
+    timeLineTitle: function timeLineTitle(item) {
+      var type = "";
+
+      switch (item.type) {
+        case "sign":
+          type = "打卡";
+          break;
+
+        case "custom":
+          type = "自定义奖惩";
+          break;
+      }
+
+      var days = item.days > 0 ? '+' + item.days : item.days;
+      return type + " 进度 " + days + " 天";
     }
   }
 });
@@ -206,7 +245,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".el-row {\n  margin-bottom: 15px;\n}\n.el-row:last-child {\n  margin-bottom: 0;\n}\n.el-col > div {\n  background-color: #d3dce6;\n  height: 334px;\n}\n.el-calendar-table .el-calendar-day {\n  height: 30px;\n}\n.el-calendar-table th {\n  text-align: center;\n}\n.el-calendar-table:not(.is-today) td.next {\n  pointer-events: none;\n}\n.el-calendar-table:not(.is-today) td.prev {\n  pointer-events: none;\n}", ""]);
+exports.push([module.i, ".el-row {\n  margin-bottom: 15px;\n}\n.el-row:last-child {\n  margin-bottom: 0;\n}\n.el-calendar-table .el-calendar-day {\n  height: 30px;\n}\n.el-calendar-table th {\n  text-align: center;\n}\n.el-calendar-table:not(.is-today) td.next {\n  pointer-events: none;\n}\n.el-calendar-table:not(.is-today) td.prev {\n  pointer-events: none;\n}", ""]);
 
 // exports
 
@@ -621,6 +660,7 @@ var render = function() {
             [
               _c(
                 "el-card",
+                { staticStyle: { height: "334px" } },
                 [
                   _c(
                     "div",
@@ -664,7 +704,7 @@ var render = function() {
                       _vm._v(" "),
                       _c(
                         "el-form-item",
-                        { attrs: { label: "延长天数:" } },
+                        { attrs: { label: "奖惩天数:" } },
                         [
                           _c("el-input-number", {
                             model: {
@@ -683,12 +723,26 @@ var render = function() {
                         "el-form-item",
                         [
                           _c(
-                            "el-button",
+                            "el-popconfirm",
                             {
-                              attrs: { type: "primary", size: "small" },
-                              on: { click: _vm.customClick }
+                              attrs: { title: "确定记录么?" },
+                              on: { confirm: _vm.customClick }
                             },
-                            [_vm._v("提交")]
+                            [
+                              _c(
+                                "el-button",
+                                {
+                                  attrs: {
+                                    slot: "reference",
+                                    type: "primary",
+                                    size: "small"
+                                  },
+                                  slot: "reference"
+                                },
+                                [_vm._v("提交")]
+                              )
+                            ],
+                            1
                           )
                         ],
                         1
@@ -709,6 +763,7 @@ var render = function() {
             [
               _c(
                 "el-card",
+                { staticStyle: { height: "334px" } },
                 [
                   _c("el-progress", {
                     attrs: {
@@ -728,7 +783,57 @@ var render = function() {
         1
       ),
       _vm._v(" "),
-      _c("el-row", [_c("el-col", [_c("div", [_vm._v("c")])])], 1)
+      _c(
+        "el-row",
+        [
+          _c(
+            "el-col",
+            [
+              _c(
+                "el-card",
+                [
+                  _c(
+                    "el-timeline",
+                    _vm._l(_vm.signs, function(item) {
+                      return _c(
+                        "el-timeline-item",
+                        {
+                          key: item.id,
+                          attrs: { timestamp: item.date, placement: "top" }
+                        },
+                        [
+                          _c("el-card", [
+                            _c(
+                              "div",
+                              {
+                                staticClass: "clearfix",
+                                attrs: { slot: "header" },
+                                slot: "header"
+                              },
+                              [
+                                _c("h5", [
+                                  _vm._v(_vm._s(_vm.timeLineTitle(item)))
+                                ])
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c("p", [_vm._v(_vm._s(item.content))])
+                          ])
+                        ],
+                        1
+                      )
+                    }),
+                    1
+                  )
+                ],
+                1
+              )
+            ],
+            1
+          )
+        ],
+        1
+      )
     ],
     1
   )
