@@ -80,9 +80,7 @@ __webpack_require__.r(__webpack_exports__);
       url: "hobby/category"
     }).then(function (response) {
       _this.category = response.data;
-      _this.activeCategory = _this.category[0].id.toString();
-
-      _this.getHobbies();
+      _this.activeCategory = _this.category[0].id.toString(); // this.getHobbies();
     });
   },
   watch: {
@@ -94,15 +92,17 @@ __webpack_require__.r(__webpack_exports__);
     getHobbies: function getHobbies() {
       var _this2 = this;
 
-      Object(_network_request__WEBPACK_IMPORTED_MODULE_0__["request"])({
-        method: "get",
-        url: "hobby",
-        params: {
-          category_id: this.activeCategory
-        }
-      }).then(function (response) {
-        _this2.hobbies = response.data;
-      });
+      if (this.activeCategory > 0) {
+        Object(_network_request__WEBPACK_IMPORTED_MODULE_0__["request"])({
+          method: "get",
+          url: "hobby",
+          params: {
+            category_id: this.activeCategory
+          }
+        }).then(function (response) {
+          _this2.hobbies = response.data;
+        });
+      }
     }
   },
   computed: {

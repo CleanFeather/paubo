@@ -68,25 +68,27 @@ export default {
     }).then((response) => {
       this.category = response.data;
       this.activeCategory = this.category[0].id.toString();
-      this.getHobbies();
+      // this.getHobbies();
     });
   },
   watch: {
     activeCategory(category_id) {
       this.getHobbies();
-    }
+    },
   },
   methods: {
     getHobbies() {
-      request({
-        method: "get",
-        url: "hobby",
-        params: {
-          category_id: this.activeCategory,
-        },
-      }).then((response) => {
-        this.hobbies = response.data;
-      });
+      if (this.activeCategory > 0) {
+        request({
+          method: "get",
+          url: "hobby",
+          params: {
+            category_id: this.activeCategory,
+          },
+        }).then((response) => {
+          this.hobbies = response.data;
+        });
+      }
     },
   },
   computed: {
