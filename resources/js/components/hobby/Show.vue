@@ -40,7 +40,14 @@
         </el-card>
       </el-col>
       <el-col :span="6">
-        <el-card style="height: 334px">
+        <el-card
+          :body-style="{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }"
+          style="height: 334px"
+        >
           <el-progress
             type="circle"
             :percentage="progPercent"
@@ -165,7 +172,7 @@ export default {
         }
       }
     },
-    getHobby(callback = function(){}) {
+    getHobby(callback = function () {}) {
       request({
         method: "get",
         url: "hobby/show",
@@ -177,7 +184,7 @@ export default {
         callback();
       });
     },
-    getSigned(type = "",callback = function(){}) {
+    getSigned(type = "", callback = function () {}) {
       request({
         method: "get",
         url: "hobby/sign",
@@ -201,7 +208,7 @@ export default {
           type = "自定义奖惩";
           break;
       }
-      let days = item.days > 0 ? '+' + item.days : item.days;
+      let days = item.days > 0 ? "+" + item.days : item.days;
       return type + " 进度 " + days + " 天";
     },
   },

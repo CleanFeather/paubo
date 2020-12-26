@@ -31,6 +31,7 @@ __webpack_require__.r(__webpack_exports__);
     this.editor.config.zIndex = 1;
     this.editor.config.uploadImgMaxLength = 1;
     this.editor.create();
+    this.setContent("如题");
   },
   methods: {
     getContent: function getContent() {

@@ -113,7 +113,7 @@ __webpack_require__.r(__webpack_exports__);
         var hobby_stage = _this3.hobbies[index].hobby_stage;
         var level = 0;
         hobby_stage.forEach(function (stage) {
-          if (_this3.hobbies[index].days >= stage.days) {
+          if (_this3.hobbies[index].keep_days >= stage.days) {
             level = stage.level;
           }
         });
@@ -249,7 +249,16 @@ var render = function() {
                           slot: "header"
                         },
                         [
-                          _c("span", [_vm._v(_vm._s(item.name))]),
+                          _c(
+                            "h4",
+                            {
+                              staticStyle: {
+                                display: "inline",
+                                color: "#909399"
+                              }
+                            },
+                            [_vm._v(_vm._s(item.name))]
+                          ),
                           _vm._v(" "),
                           _c(
                             "router-link",

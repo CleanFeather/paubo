@@ -88,6 +88,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -227,7 +234,7 @@ __webpack_require__.r(__webpack_exports__);
           break;
       }
 
-      var days = item.days > 0 ? '+' + item.days : item.days;
+      var days = item.days > 0 ? "+" + item.days : item.days;
       return type + " 进度 " + days + " 天";
     }
   }
@@ -765,7 +772,16 @@ var render = function() {
             [
               _c(
                 "el-card",
-                { staticStyle: { height: "334px" } },
+                {
+                  staticStyle: { height: "334px" },
+                  attrs: {
+                    "body-style": {
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center"
+                    }
+                  }
+                },
                 [
                   _c("el-progress", {
                     attrs: {

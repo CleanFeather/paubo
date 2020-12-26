@@ -177,7 +177,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.item {\n  margin-bottom: 1em;\n}\n.item p {\n  margin-bottom: 0.2px;\n}\n.item span {\n  color: darkgrey;\n}\n#paginate {\n  text-align: center;\n}\n.el-dropdown-link {\n  color: #409eff;\n}\n#emptyStatus {\n  text-align: center;\n  color: #909399;\n}\n", ""]);
+exports.push([module.i, "\n.item {\r\n  margin-bottom: 1em;\n}\n.item p {\r\n  margin-bottom: 0.2px;\n}\n.item span {\r\n  color: darkgrey;\n}\n#paginate {\r\n  text-align: center;\n}\n.el-dropdown-link {\r\n  color: #409eff;\n}\n#emptyStatus {\r\n  text-align: center;\r\n  color: #909399;\n}\r\n", ""]);
 
 // exports
 

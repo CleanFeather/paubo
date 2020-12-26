@@ -52,6 +52,10 @@ class SeedCategoryData extends Migration
                 'type' => 'note',
             ],
             [
+                'name' => 'mysql',
+                'type' => 'note',
+            ],
+            [
                 'name' => '绘画',
                 'type' => 'album'
             ],

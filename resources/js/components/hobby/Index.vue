@@ -23,7 +23,7 @@
         <el-row v-for="(item, index) in hobbies" :key="item.id">
           <el-card class="box-card">
             <div slot="header" class="clearfix">
-              <span>{{ item.name }}</span>
+              <h4 style="display:inline;color:#909399">{{ item.name }}</h4>
               <router-link
                 style="float: right; padding: 3px 0"
                 :to="{ name: 'hobby.show', params: { hobby_id: item.id } }"
@@ -97,7 +97,7 @@ export default {
         let hobby_stage = this.hobbies[index].hobby_stage;
         let level = 0;
         hobby_stage.forEach((stage) => {
-          if (this.hobbies[index].days >= stage.days) {
+          if (this.hobbies[index].keep_days >= stage.days) {
             level = stage.level;
           }
         });
