@@ -20,6 +20,14 @@ export const request = config => {
                 _app.$message.error('请登录');
                 _app.$router.push({ name: 'login' });
             break;
+            case 403:
+                if (error.response.data.message == 'This action is unauthorized.'){
+                    _app.$message.error('您没有权限做此操作');
+                    setInterval(function (){
+                        _app.$router.go(-1);
+                    },1000);
+                }
+            break;
             default:
                 _app.$message.error('操作失败');
         }

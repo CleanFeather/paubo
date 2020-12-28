@@ -30,6 +30,7 @@ class HobbyController extends Controller
             'hobby_id' => 'required|integer'
         ]);
         $data = $hobby->query()->find($request->hobby_id);
+        $this->authorize('view',$data);
         $data->hobbyStage;
         return response()->json($data);
     }
