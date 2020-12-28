@@ -99829,7 +99829,7 @@ var request = function request(config) {
         if (error.response.data.message == 'This action is unauthorized.') {
           _app.$message.error('您没有权限做此操作');
 
-          setInterval(function () {
+          setTimeout(function () {
             _app.$router.go(-1);
           }, 1000);
         }

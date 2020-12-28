@@ -58,12 +58,12 @@ body {
   margin: 0;
   padding: 0;
 }
-html{
+html {
   position: relative;
   width: 100%;
   min-height: 100%;
 }
-main{
+main {
   margin-bottom: 40px;
 }
 footer {
