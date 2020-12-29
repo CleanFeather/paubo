@@ -99813,6 +99813,10 @@ var request = function request(config) {
 
     return response;
   }, function (error) {
+    if ('authorization' in error.response.headers) {
+      localStorage.setItem('access_token', error.response.headers.authorization);
+    }
+
     switch (error.response.status) {
       case 401:
         _app.$store.commit('clear');

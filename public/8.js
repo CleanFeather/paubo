@@ -112,7 +112,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   props: ["hobby_id"],
   mounted: function mounted() {
-    this.getSigned(this.getHobby()); // this.getHobby();
+    this.getSigned();
   },
   computed: {
     progPercent: function progPercent() {
@@ -169,8 +169,7 @@ __webpack_require__.r(__webpack_exports__);
           date: date
         }
       }).then(function (response) {
-        _this2.getSigned(_this2.getHobby()); // this.getHobby();
-
+        _this2.getSigned();
 
         _this2.$message({
           type: "success",
@@ -191,7 +190,6 @@ __webpack_require__.r(__webpack_exports__);
     getHobby: function getHobby() {
       var _this3 = this;
 
-      var callback = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : function () {};
       Object(_network_request__WEBPACK_IMPORTED_MODULE_0__["request"])({
         method: "get",
         url: "hobby/show",
@@ -200,14 +198,12 @@ __webpack_require__.r(__webpack_exports__);
         }
       }).then(function (response) {
         _this3.hobby = response.data;
-        callback();
       });
     },
     getSigned: function getSigned() {
       var _this4 = this;
 
       var type = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
-      var callback = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : function () {};
       Object(_network_request__WEBPACK_IMPORTED_MODULE_0__["request"])({
         method: "get",
         url: "hobby/sign",
@@ -218,7 +214,8 @@ __webpack_require__.r(__webpack_exports__);
         }
       }).then(function (response) {
         _this4.signs = response.data;
-        callback();
+
+        _this4.getHobby();
       });
     },
     timeLineTitle: function timeLineTitle(item) {

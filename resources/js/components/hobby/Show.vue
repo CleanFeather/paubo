@@ -100,8 +100,7 @@ export default {
   },
   props: ["hobby_id"],
   mounted: function () {
-    this.getSigned(this.getHobby());
-    // this.getHobby();
+    this.getSigned();
   },
   computed: {
     progPercent() {
@@ -154,8 +153,7 @@ export default {
           date: date,
         },
       }).then((response) => {
-        this.getSigned(this.getHobby());
-        // this.getHobby();
+        this.getSigned();
         this.$message({
           type: "success",
           message: "记录成功",
@@ -172,7 +170,7 @@ export default {
         }
       }
     },
-    getHobby(callback = function () {}) {
+    getHobby() {
       request({
         method: "get",
         url: "hobby/show",
@@ -181,10 +179,9 @@ export default {
         },
       }).then((response) => {
         this.hobby = response.data;
-        callback();
       });
     },
-    getSigned(type = "", callback = function () {}) {
+    getSigned(type = "") {
       request({
         method: "get",
         url: "hobby/sign",
@@ -195,7 +192,7 @@ export default {
         },
       }).then((response) => {
         this.signs = response.data;
-        callback();
+        this.getHobby();
       });
     },
     timeLineTitle(item) {
